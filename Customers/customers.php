@@ -513,7 +513,7 @@
         // ============================================
         // CONFIG
         // ============================================
-        const API_BASE = 'http://localhost:8080/hascol_customer/api/customers/';
+        const API_BASE = 'https://hascol.allowance.flamboyant-spence.92-205-119-218.plesk.page/api/customers/';
 
         let dataTable = null;
         window.customerStore = {};

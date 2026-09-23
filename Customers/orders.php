@@ -780,7 +780,7 @@
         // ============================================
         // CONFIG
         // ============================================
-        const API_BASE = 'http://localhost:8080/hascol_customer/api/orders/';
+        const API_BASE = 'https://hascol.allowance.flamboyant-spence.92-205-119-218.plesk.page/api/orders/';
 
         let dataTable = null;
         window.ordStore = {};
