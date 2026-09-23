@@ -766,6 +766,7 @@
         // LOAD COUPONS
         // ============================================
         function loadCoupons() {
+        // hello 
             const payload = {};
             const customer_id = $('#filterCustomer').val();
             const status = $('#filterStatus').val();
