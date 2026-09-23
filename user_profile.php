@@ -262,7 +262,7 @@
             content: "";
             position: absolute;
             inset: -22px;
-            background-image: url("http://localhost:8080/hascol_dashboard/assets/images/banner.png");
+            background-image: url("assets/images/banner.png");
             background-size: cover;
             background-position: center;
             filter: blur(16px);
@@ -1778,14 +1778,14 @@
                 <!-- DEALER IDENTITY -->
                 <section class="dealer-profile-card">
                     <div class="dealer-cover">
-                        <img src="http://localhost:8080/hascol_dashboard/assets/images/banner.png" alt="Station"
+                        <img src="assets/images/banner.png" alt="Station"
                             id="bannerImg">
                         <div class="cover-chip"><i class="fa-solid fa-circle"></i> Station profile</div>
                     </div>
 
                     <div class="dealer-identity">
                         <div class="dealer-logo">
-                            <img src="http://localhost:8080/hascol_dashboard/assets/images/system.png" alt="Hascol"
+                            <img src="assets/images/system.png" alt="Hascol"
                                 id="profileLogo">
                         </div>
 
@@ -2047,7 +2047,7 @@
         // ============================================
         // API Configuration - LOCALHOST
         // ============================================
-        const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE_URL = 'api/';
         const ENCRYPTION_KEY = 'Hamza Ansari';
 
         // ============================================

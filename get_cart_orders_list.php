@@ -1200,7 +1200,7 @@
 
         let dataTable = null;
         let cartOrdersData = [];
-        const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE_URL = 'api/';
 
         // Column Visibility Configuration
         const columnConfig = [
@@ -1498,7 +1498,7 @@ function updateDataTable(data) {
                 signPath = matched || signs[0];
             }
             
-            sign = `<a href="http://localhost:8080/hascol_dashboard/api/uploads/signatures/${signPath}" 
+            sign = `<a href="api/uploads/signatures/${signPath}" 
                       target="_blank" 
                       style="color: #3b82f6; font-weight: 400; text-decoration: none; transition: all 0.2s;" 
                       onmouseover="this.style.textDecoration='underline'" 

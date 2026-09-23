@@ -776,7 +776,7 @@
             }
         }
 
-        const API_BASE = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE = 'api/';
         const API_KEY = '03201232927';
         const USER_ID = '1';
         const PRIVILEGE = 'Admin';

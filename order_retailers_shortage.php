@@ -483,7 +483,7 @@
     </div>
 
     <script>
-        const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE_URL = 'api/';
 
         let table;
 
@@ -785,9 +785,9 @@
                                 parseFloat(quantity_less_L).toLocaleString(),
                                 temperature,
                                 Density,
-                                `<a href="http://localhost:8080/hascol_dashboard/api/uploads/${data.file}" target="_blank" class="link-btn">View File</a>`,
-                                `<a href="http://localhost:8080/hascol_dashboard/api/uploads/${data.sign}" target="_blank" class="link-btn">View File</a>`,
-                                `<a href="http://localhost:8080/hascol_dashboard/api/uploads/${data.dealer_sign}" target="_blank" class="link-btn">View File</a>`
+                                `<a href="api/uploads/${data.file}" target="_blank" class="link-btn">View File</a>`,
+                                `<a href="api/uploads/${data.sign}" target="_blank" class="link-btn">View File</a>`,
+                                `<a href="api/uploads/${data.dealer_sign}" target="_blank" class="link-btn">View File</a>`
                             ]).draw(false);
                         });
                     }

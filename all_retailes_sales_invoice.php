@@ -566,7 +566,7 @@
     </main>
 
     <script>
-        const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE_URL = 'api/';
 
         let table;
 

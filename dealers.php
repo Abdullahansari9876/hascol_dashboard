@@ -1345,7 +1345,7 @@
         // ============================================
         // API Configuration - LOCALHOST
         // ============================================
-        const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE_URL = 'api/';
         const PRE = 'Admin';
         const USER_ID = '1';
 
@@ -2295,7 +2295,7 @@
 
                 // Show existing images
                 if (dealer.banner) {
-                    $('#bannerPreview').attr('src', 'http://localhost:8080/hascol_dashboard/assets/images/banner.png').addClass('show');
+                    $('#bannerPreview').attr('src', 'assets/images/banner.png').addClass('show');
                     $('#bannerFileName').text(dealer.banner);
                 } else {
                     $('#bannerPreview').removeClass('show');
@@ -2303,7 +2303,7 @@
                 }
 
                 if (dealer.logo) {
-                    $('#logoPreview').attr('src', 'http://localhost:8080/hascol_dashboard/assets/images/system.png').addClass('show');
+                    $('#logoPreview').attr('src', 'assets/images/system.png').addClass('show');
                     $('#logoFileName').text(dealer.logo);
                 } else {
                     $('#logoPreview').removeClass('show');

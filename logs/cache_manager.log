@@ -7224,30 +7224,30 @@ ters
 [2026-08-18 20:38:24] [INFO] UPDATE completed: dashboard_data_70d84853327fdd259dcdd8c38336e228
 [2026-08-19 11:01:48] [INFO] READ: filter_options - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:01:48] [INFO] Cache file not found, generating: filter_options_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:01:48] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/filter_options.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:01:48] [INFO] Calling API: api/filter_options.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:01:48] [INFO] API Response: filter_options - HTTP: 200, Duration: 0.09s
 [2026-08-19 11:01:49] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:01:49] [INFO] Cache file not found, generating: dashboard_data_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:01:49] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:01:49] [INFO] Calling API: api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:01:49] [INFO] READ: variance_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:01:49] [INFO] Cache file not found, generating: variance_data_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:01:49] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:01:49] [INFO] Calling API: api/variance_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:01:49] [INFO] READ: alerts_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:01:49] [INFO] Cache file not found, generating: alerts_data_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:01:49] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:01:49] [INFO] Calling API: api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:01:49] [INFO] READ: map_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:01:49] [INFO] Cache file not found, generating: map_data_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:01:49] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:01:49] [INFO] Calling API: api/map_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:01:49] [INFO] READ: trends_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:01:49] [INFO] Cache file not found, generating: trends_data_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:01:49] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:01:49] [INFO] Calling API: api/trends_data.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:01:49] [INFO] READ: recon_efficiency - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:01:49] [INFO] Cache file not found, generating: recon_efficiency_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:01:49] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:01:49] [INFO] Calling API: api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:01:49] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.43s
 [2026-08-19 11:01:49] [INFO] READ: tm_performance - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:01:49] [INFO] Cache file not found, generating: tm_performance_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:01:49] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:01:49] [INFO] Calling API: api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:01:50] [INFO] API Response: map_data - HTTP: 200, Duration: 0.83s
 [2026-08-19 11:01:50] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.4s
 [2026-08-19 11:01:51] [INFO] API Response: dashboard_data - HTTP: 200, Duration: 1.89s
@@ -7273,7 +7273,7 @@ ters
 [2026-08-19 11:25:09] [INFO] Background update triggered: dashboard_data with filters
 [2026-08-19 11:25:09] [INFO] READ: top_sites - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:25:09] [INFO] Cache file not found, generating: top_sites_199f125ab6850d643601266e01d8c3d8
-[2026-08-19 11:25:09] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-19 11:25:09] [INFO] Calling API: api/top_sites.php?date_from=2026-07-31&date_to=2026-08-19&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-19 11:25:09] [INFO] READ: variance_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-19 11:25:09] [INFO] Cache stale (age: 1399s), returning stale data for: map_data_199f125ab6850d643601266e01d8c3d8
 [2026-08-19 11:25:09] [INFO] Background update triggered: map_data with filters
@@ -8022,29 +8022,29 @@ d8
 ad
 [2026-08-19 13:44:29] [INFO] Cache file not found, generating: map_data_52a9a6c6af99d9abef804a43da0b7472
 [2026-08-19 13:44:29] [INFO] Cache file not found, generating: alerts_data_52a9a6c6af99d9abef804a43da0b7472
-[2026-08-19 13:44:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
-[2026-08-19 13:44:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
+[2026-08-19 13:44:29] [INFO] Calling API: api/map_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
+[2026-08-19 13:44:29] [INFO] Calling API: api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
 [2026-08-19 13:44:29] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:29] [INFO] Cache file not found, generating: dashboard_data_52a9a6c6af99d9abef804a43da0b7472
-[2026-08-19 13:44:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
+[2026-08-19 13:44:29] [INFO] Calling API: api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
 [2026-08-19 13:44:29] [INFO] READ: trends_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:29] [INFO] Cache file not found, generating: trends_data_52a9a6c6af99d9abef804a43da0b7472
-[2026-08-19 13:44:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
+[2026-08-19 13:44:29] [INFO] Calling API: api/trends_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
 [2026-08-19 13:44:29] [INFO] READ: variance_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:29] [INFO] Cache file not found, generating: variance_data_52a9a6c6af99d9abef804a43da0b7472
 [2026-08-19 13:44:29] [INFO] READ: recon_efficiency - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:29] [INFO] Cache file not found, generating: recon_efficiency_52a9a6c6af99d9abef804a43da0b7472
-[2026-08-19 13:44:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
+[2026-08-19 13:44:29] [INFO] Calling API: api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
 [2026-08-19 13:44:29] [INFO] API Response: map_data - HTTP: 200, Duration: 0.03s
-[2026-08-19 13:44:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
+[2026-08-19 13:44:29] [INFO] Calling API: api/variance_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
 [2026-08-19 13:44:29] [INFO] READ: tm_performance - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:29] [INFO] Cache file not found, generating: tm_performance_52a9a6c6af99d9abef804a43da0b7472
-[2026-08-19 13:44:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
+[2026-08-19 13:44:29] [INFO] Calling API: api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
 [2026-08-19 13:44:29] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.13s
 [2026-08-19 13:44:29] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.08s
 [2026-08-19 13:44:29] [INFO] READ: top_sites - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:29] [INFO] Cache file not found, generating: top_sites_52a9a6c6af99d9abef804a43da0b7472
-[2026-08-19 13:44:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
+[2026-08-19 13:44:29] [INFO] Calling API: api/top_sites.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=all&tm=all&site=all&product=all
 [2026-08-19 13:44:29] [INFO] API Response: top_sites - HTTP: 200, Duration: 0.04s
 [2026-08-19 13:44:30] [INFO] API Response: dashboard_data - HTTP: 200, Duration: 0.4s
 [2026-08-19 13:44:30] [INFO] API Response: recon_efficiency - HTTP: 200, Duration: 0.37s
@@ -8054,7 +8054,7 @@ ad
 [2026-08-19 13:44:30] [INFO] API Response: variance_data - HTTP: 200, Duration: 0.47s
 [2026-08-19 13:44:30] [INFO] READ: map_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:30] [INFO] Cache file not found, generating: map_data_3d772d96d3259d98a8cc1b5315f4ba18
-[2026-08-19 13:44:30] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:30] [INFO] Calling API: api/map_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:30] [INFO] READ: alerts_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:30] [INFO] READ: recon_efficiency - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:30] [INFO] READ: variance_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
@@ -8062,17 +8062,17 @@ ad
 [2026-08-19 13:44:30] [INFO] Cache file not found, generating: recon_efficiency_3d772d96d3259d98a8cc1b5315f4ba18
 [2026-08-19 13:44:30] [INFO] Cache file not found, generating: dashboard_data_3d772d96d3259d98a8cc1b5315f4ba18
 from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
-[2026-08-19 13:44:30] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
-[2026-08-19 13:44:30] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:30] [INFO] Calling API: api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:30] [INFO] Calling API: api/variance_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 
 [2026-08-19 13:44:30] [INFO] API Response: map_data - HTTP: 200, Duration: 0.01s
 [2026-08-19 13:44:30] [INFO] READ: tm_performance - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:30] [INFO] Cache file not found, generating: tm_performance_3d772d96d3259d98a8cc1b5315f4ba18
-[2026-08-19 13:44:30] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:30] [INFO] Calling API: api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:30] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.03s
 [2026-08-19 13:44:31] [INFO] READ: top_sites - Filters: date_from=2026-07-31, date_to=2026-08-19, region=Faisalabad
 [2026-08-19 13:44:31] [INFO] Cache file not found, generating: top_sites_3d772d96d3259d98a8cc1b5315f4ba18
-[2026-08-19 13:44:31] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:31] [INFO] Calling API: api/top_sites.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:31] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.13s
 [2026-08-19 13:44:31] [INFO] API Response: top_sites - HTTP: 200, Duration: 0.07s
 [2026-08-19 13:44:31] [INFO] API Response: recon_efficiency - HTTP: 200, Duration: 0.31s
@@ -8084,43 +8084,43 @@ from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all
 [2026-08-19 13:44:31] [INFO] API Response: trends_data - HTTP: 200, Duration: 1.94s
 [2026-08-19 13:44:33] [INFO] UPDATE_ALL started
 [2026-08-19 13:44:33] [INFO] Updating: dashboard_data with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: dashboard_data - HTTP: 200, Duration: 0.13s
 [2026-08-19 13:44:33] [INFO] Updated: dashboard_data - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: map_data with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/map_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: map_data - HTTP: 200, Duration: 0.01s
 [2026-08-19 13:44:33] [INFO] Updated: map_data - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: alerts_data with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.05s
 [2026-08-19 13:44:33] [INFO] Updated: alerts_data - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: trends_data with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/trends_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: trends_data - HTTP: 200, Duration: 0.07s
 [2026-08-19 13:44:33] [INFO] Updated: trends_data - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: variance_data with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/variance_data.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: variance_data - HTTP: 200, Duration: 0.18s
 [2026-08-19 13:44:33] [INFO] Updated: variance_data - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: recon_efficiency with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: recon_efficiency - HTTP: 200, Duration: 0.09s
 [2026-08-19 13:44:33] [INFO] Updated: recon_efficiency - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: tm_performance with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.02s
 [2026-08-19 13:44:33] [INFO] Updated: tm_performance - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: top_sites with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/top_sites.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: top_sites - HTTP: 200, Duration: 0.05s
 [2026-08-19 13:44:33] [INFO] Updated: top_sites - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: site_details with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/site_details.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/site_details.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: site_details - HTTP: 200, Duration: 0.08s
 [2026-08-19 13:44:33] [INFO] Updated: site_details - SUCCESS
 [2026-08-19 13:44:33] [INFO] Updating: filter_options with filters: date_from=2026-07-31, date_to=2026-08-19
-[2026-08-19 13:44:33] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/filter_options.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
+[2026-08-19 13:44:33] [INFO] Calling API: api/filter_options.php?date_from=2026-07-31&date_to=2026-08-19&region=Faisalabad&territory=Gujranwala&tm=all&site=all&product=all
 [2026-08-19 13:44:33] [INFO] API Response: filter_options - HTTP: 200, Duration: 0.02s
 [2026-08-19 13:44:33] [INFO] Updated: filter_options - SUCCESS
 [2026-08-19 13:44:33] [INFO] UPDATE_ALL completed. Updated: 10, Failed: 0
@@ -8962,34 +8962,34 @@ e01d8c3d8
 [2026-08-19 22:26:45] [INFO] READ: alerts_data - Filters: date_from=2026-07-31, date_to=2026-08-19, region=all
 [2026-08-20 14:18:49] [INFO] READ: filter_options - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-20 14:18:49] [INFO] Cache file not found, generating: filter_options_396351476f5423c105ebcfd1501d8f2d
-[2026-08-20 14:18:49] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/filter_options.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:49] [INFO] Calling API: api/filter_options.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-20 14:18:49] [INFO] API Response: filter_options - HTTP: 200, Duration: 0.05s
 [2026-08-20 14:18:51] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-20 14:18:51] [INFO] Cache file not found, generating: dashboard_data_396351476f5423c105ebcfd1501d8f2d
-[2026-08-20 14:18:51] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:51] [INFO] Calling API: api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-20 14:18:51] [INFO] READ: map_data - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-20 14:18:51] [INFO] Cache file not found, generating: map_data_396351476f5423c105ebcfd1501d8f2d
-[2026-08-20 14:18:51] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:51] [INFO] Calling API: api/map_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-20 14:18:51] [INFO] READ: alerts_data - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-20 14:18:51] [INFO] READ: variance_data - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-20 14:18:51] [INFO] Cache file not found, generating: variance_data_396351476f5423c105ebcfd1501d8f2d
 
 [2026-08-20 14:18:51] [INFO] Cache file not found, generating: alerts_data_396351476f5423c105ebcfd1501d8f2d
-[2026-08-20 14:18:51] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
-[2026-08-20 14:18:51] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:51] [INFO] Calling API: api/variance_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:51] [INFO] Calling API: api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-20 14:18:51] [INFO] Cache file not found, generating: trends_data_396351476f5423c105ebcfd1501d8f2d
-[2026-08-20 14:18:51] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:51] [INFO] Calling API: api/trends_data.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-20 14:18:51] [INFO] READ: recon_efficiency - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-20 14:18:51] [INFO] Cache file not found, generating: recon_efficiency_396351476f5423c105ebcfd1501d8f2d
-[2026-08-20 14:18:51] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:51] [INFO] Calling API: api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-20 14:18:51] [INFO] API Response: map_data - HTTP: 200, Duration: 0.15s
 [2026-08-20 14:18:51] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.31s
 [2026-08-20 14:18:51] [INFO] READ: tm_performance - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-20 14:18:51] [INFO] Cache file not found, generating: tm_performance_396351476f5423c105ebcfd1501d8f2d
-[2026-08-20 14:18:51] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:51] [INFO] Calling API: api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-20 14:18:51] [INFO] READ: top_sites - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-20 14:18:51] [INFO] Cache file not found, generating: top_sites_396351476f5423c105ebcfd1501d8f2d
-[2026-08-20 14:18:51] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-20 14:18:51] [INFO] Calling API: api/top_sites.php?date_from=2026-07-31&date_to=2026-08-20&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-20 14:18:51] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.12s
 [2026-08-20 14:18:51] [INFO] API Response: dashboard_data - HTTP: 200, Duration: 0.56s
 [2026-08-20 14:18:51] [INFO] API Response: recon_efficiency - HTTP: 200, Duration: 0.49s
@@ -9189,34 +9189,34 @@ l
 [2026-08-20 16:37:20] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-20, region=all
 [2026-08-24 16:46:35] [INFO] READ: filter_options - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:35] [INFO] Cache file not found, generating: filter_options_905427144b046411591680690c398eaf
-[2026-08-24 16:46:35] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/filter_options.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:35] [INFO] Calling API: api/filter_options.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:35] [INFO] API Response: filter_options - HTTP: 200, Duration: 0.06s
 [2026-08-24 16:46:36] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:36] [INFO] Cache file not found, generating: dashboard_data_905427144b046411591680690c398eaf
-[2026-08-24 16:46:36] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:36] [INFO] Calling API: api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:36] [INFO] READ: map_data - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:36] [INFO] Cache file not found, generating: map_data_905427144b046411591680690c398eaf
-[2026-08-24 16:46:36] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:36] [INFO] Calling API: api/map_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:36] [INFO] READ: alerts_data - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:36] [INFO] Cache file not found, generating: alerts_data_905427144b046411591680690c398eaf
-[2026-08-24 16:46:36] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:36] [INFO] Calling API: api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:36] [INFO] READ: trends_data - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:36] [INFO] Cache file not found, generating: trends_data_905427144b046411591680690c398eaf
-[2026-08-24 16:46:36] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:36] [INFO] Calling API: api/trends_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:36] [INFO] API Response: map_data - HTTP: 200, Duration: 0.5s
 [2026-08-24 16:46:37] [INFO] READ: recon_efficiency - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:37] [INFO] Cache file not found, generating: recon_efficiency_905427144b046411591680690c398eaf
-[2026-08-24 16:46:37] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:37] [INFO] Calling API: api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:37] [INFO] READ: variance_data - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:37] [INFO] Cache file not found, generating: variance_data_905427144b046411591680690c398eaf
-[2026-08-24 16:46:37] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:37] [INFO] Calling API: api/variance_data.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:37] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.85s
 [2026-08-24 16:46:37] [INFO] READ: tm_performance - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:37] [INFO] Cache file not found, generating: tm_performance_905427144b046411591680690c398eaf
-[2026-08-24 16:46:37] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:37] [INFO] Calling API: api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:37] [INFO] READ: top_sites - Filters: date_from=2026-07-31, date_to=2026-08-24, region=all
 [2026-08-24 16:46:37] [INFO] Cache file not found, generating: top_sites_905427144b046411591680690c398eaf
-[2026-08-24 16:46:37] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-24 16:46:37] [INFO] Calling API: api/top_sites.php?date_from=2026-07-31&date_to=2026-08-24&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-24 16:46:37] [INFO] API Response: recon_efficiency - HTTP: 200, Duration: 0.44s
 [2026-08-24 16:46:37] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.15s
 [2026-08-24 16:46:37] [INFO] API Response: dashboard_data - HTTP: 200, Duration: 1.23s
@@ -9228,35 +9228,35 @@ l
 [2026-08-24 16:46:51] [INFO] API Response: trends_data - HTTP: 200, Duration: 14.92s
 [2026-08-27 14:42:04] [INFO] READ: filter_options - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:04] [INFO] Cache file not found, generating: filter_options_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:04] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/filter_options.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:04] [INFO] Calling API: api/filter_options.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:04] [INFO] API Response: filter_options - HTTP: 200, Duration: 0.09s
 [2026-08-27 14:42:05] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:05] [INFO] Cache file not found, generating: dashboard_data_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:05] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:05] [INFO] Calling API: api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:05] [INFO] READ: map_data - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:05] [INFO] Cache file not found, generating: map_data_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:05] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:05] [INFO] Calling API: api/map_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:05] [INFO] READ: alerts_data - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:05] [INFO] Cache file not found, generating: alerts_data_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:05] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:05] [INFO] Calling API: api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:05] [INFO] READ: trends_data - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:05] [INFO] Cache file not found, generating: trends_data_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:05] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:05] [INFO] Calling API: api/trends_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:05] [INFO] READ: variance_data - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:05] [INFO] Cache file not found, generating: variance_data_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:05] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:05] [INFO] Calling API: api/variance_data.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:05] [INFO] API Response: map_data - HTTP: 200, Duration: 0.31s
 [2026-08-27 14:42:05] [INFO] READ: recon_efficiency - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:05] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.45s
 [2026-08-27 14:42:05] [INFO] Cache file not found, generating: recon_efficiency_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:05] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:05] [INFO] Calling API: api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:05] [INFO] READ: tm_performance - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:05] [INFO] Cache file not found, generating: tm_performance_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:05] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:05] [INFO] Calling API: api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:05] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.14s
 [2026-08-27 14:42:06] [INFO] READ: top_sites - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:06] [INFO] Cache file not found, generating: top_sites_9b0486244e9fb4b8e8aa5654062c76b7
-[2026-08-27 14:42:06] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-27 14:42:06] [INFO] Calling API: api/top_sites.php?date_from=2026-07-31&date_to=2026-08-27&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-27 14:42:06] [INFO] API Response: dashboard_data - HTTP: 200, Duration: 0.76s
 [2026-08-27 14:42:06] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-27 14:42:06] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
@@ -9280,34 +9280,34 @@ l
 [2026-08-27 14:44:41] [INFO] READ: alerts_data - Filters: date_from=2026-07-31, date_to=2026-08-27, region=all
 [2026-08-30 09:33:28] [INFO] READ: filter_options - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:28] [INFO] Cache file not found, generating: filter_options_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:28] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/filter_options.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:28] [INFO] Calling API: api/filter_options.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:28] [INFO] API Response: filter_options - HTTP: 200, Duration: 0.11s
 [2026-08-30 09:33:29] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:29] [INFO] Cache file not found, generating: dashboard_data_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:29] [INFO] Calling API: api/dashboard_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:29] [INFO] READ: map_data - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:29] [INFO] Cache file not found, generating: map_data_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:29] [INFO] Calling API: api/map_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:29] [INFO] READ: recon_efficiency - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:29] [INFO] Cache file not found, generating: recon_efficiency_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:29] [INFO] Calling API: api/recon_efficiency.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:29] [INFO] READ: variance_data - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:29] [INFO] Cache file not found, generating: variance_data_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:29] [INFO] Calling API: api/variance_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:29] [INFO] READ: alerts_data - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:29] [INFO] Cache file not found, generating: alerts_data_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:29] [INFO] Calling API: api/alerts_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:29] [INFO] READ: trends_data - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:29] [INFO] Cache file not found, generating: trends_data_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:29] [INFO] Calling API: api/trends_data.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:29] [INFO] API Response: map_data - HTTP: 200, Duration: 0.33s
 [2026-08-30 09:33:29] [INFO] READ: tm_performance - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:29] [INFO] Cache file not found, generating: tm_performance_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:29] [INFO] Calling API: api/tm_performance.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:29] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.54s
 [2026-08-30 09:33:29] [INFO] READ: top_sites - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-08-30 09:33:29] [INFO] Cache file not found, generating: top_sites_de5a935c7e35b522a3e178f616da834c
-[2026-08-30 09:33:29] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
+[2026-08-30 09:33:29] [INFO] Calling API: api/top_sites.php?date_from=2026-07-31&date_to=2026-08-30&region=all&territory=all&tm=all&site=all&product=all
 [2026-08-30 09:33:30] [INFO] API Response: top_sites - HTTP: 200, Duration: 0.17s
 [2026-08-30 09:33:30] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.23s
 [2026-08-30 09:33:30] [INFO] API Response: recon_efficiency - HTTP: 200, Duration: 0.81s
@@ -9451,36 +9451,36 @@ s
 [2026-08-30 09:49:52] [INFO] READ: dashboard_data - Filters: date_from=2026-07-31, date_to=2026-08-30, region=all
 [2026-09-23 08:32:14] [INFO] READ: filter_options - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:14] [INFO] Cache file not found, generating: filter_options_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:14] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/filter_options.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:14] [INFO] Calling API: api/filter_options.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:14] [INFO] API Response: filter_options - HTTP: 200, Duration: 0.14s
 [2026-09-23 08:32:15] [INFO] READ: dashboard_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:15] [INFO] Cache file not found, generating: dashboard_data_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:15] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/dashboard_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:15] [INFO] Calling API: api/dashboard_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:15] [INFO] READ: map_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:15] [INFO] Cache file not found, generating: map_data_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:15] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/map_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:15] [INFO] Calling API: api/map_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:15] [INFO] READ: variance_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:15] [INFO] Cache file not found, generating: variance_data_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:15] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/variance_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:15] [INFO] Calling API: api/variance_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:15] [INFO] READ: trends_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:15] [INFO] Cache file not found, generating: trends_data_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:15] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:15] [INFO] Calling API: api/trends_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:15] [INFO] READ: recon_efficiency - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:15] [INFO] Cache file not found, generating: recon_efficiency_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:15] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/recon_efficiency.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:15] [INFO] Calling API: api/recon_efficiency.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:15] [INFO] READ: alerts_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:15] [INFO] Cache file not found, generating: alerts_data_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:15] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/alerts_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:15] [INFO] Calling API: api/alerts_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:15] [INFO] API Response: map_data - HTTP: 200, Duration: 0.5s
 [2026-09-23 08:32:16] [INFO] API Response: alerts_data - HTTP: 200, Duration: 0.54s
 [2026-09-23 08:32:16] [INFO] READ: tm_performance - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:16] [INFO] Cache file not found, generating: tm_performance_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:16] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/tm_performance.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:16] [INFO] Calling API: api/tm_performance.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:16] [INFO] API Response: dashboard_data - HTTP: 200, Duration: 0.86s
 [2026-09-23 08:32:16] [INFO] API Response: recon_efficiency - HTTP: 200, Duration: 0.74s
 [2026-09-23 08:32:16] [INFO] READ: top_sites - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:16] [INFO] Cache file not found, generating: top_sites_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:16] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/top_sites.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:16] [INFO] Calling API: api/top_sites.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:16] [INFO] API Response: tm_performance - HTTP: 200, Duration: 0.2s
 [2026-09-23 08:32:16] [INFO] READ: dashboard_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:16] [INFO] READ: dashboard_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
@@ -9492,7 +9492,7 @@ s
 [2026-09-23 08:32:20] [INFO] READ: map_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:20] [INFO] READ: trends_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:20] [INFO] Cache file not found, generating: trends_data_67336f6be571470f834a06de5784945f
-[2026-09-23 08:32:20] [INFO] Calling API: http://localhost:8080/hascol_dashboard/api/trends_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
+[2026-09-23 08:32:20] [INFO] Calling API: api/trends_data.php?date_from=2026-08-31&date_to=2026-09-23&region=all&territory=all&tm=all&site=all&product=all
 [2026-09-23 08:32:20] [INFO] READ: alerts_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:20] [INFO] READ: variance_data - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all
 [2026-09-23 08:32:20] [INFO] READ: tm_performance - Filters: date_from=2026-08-31, date_to=2026-09-23, region=all

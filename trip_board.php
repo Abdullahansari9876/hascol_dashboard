@@ -512,7 +512,7 @@
         if (icon) icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
     }
 
-    const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/get/puma_sap_order';
+    const API_BASE_URL = 'api/get/puma_sap_order';
 
     let map, markersArray = [], flightPath;
 

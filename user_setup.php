@@ -1239,7 +1239,7 @@
         // ============================================
         // API Configuration
         // ============================================
-        const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE_URL = 'api/';
         const PRE = 'Admin';
         const USER_ID = '1';
 

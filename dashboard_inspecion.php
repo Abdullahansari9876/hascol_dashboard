@@ -1183,7 +1183,7 @@
             });
         });
 
-        const API_BASE = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE = 'api/';
         let issueChart, yesNoChart, filterCategoryChart, filterTimelineChart;
         let allFilteredResponses = [];
         let displayedResponses = 0;

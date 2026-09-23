@@ -690,7 +690,7 @@
                 if (update_id == 0) {
                     var data = new FormData(this);
                     $.ajax({
-                        url: "http://localhost:8080/hascol_dashboard/api/create/create_containers_sizes.php",
+                        url: "api/create/create_containers_sizes.php",
                         cache: false,
                         contentType: false,
                         processData: false,
@@ -722,7 +722,7 @@
                 } else {
                     var data = new FormData(this);
                     $.ajax({
-                        url: "http://localhost:8080/hascol_dashboard/api/update/container_size.php",
+                        url: "api/update/container_size.php",
                         cache: false,
                         contentType: false,
                         processData: false,
@@ -763,7 +763,7 @@
             });
         });
 
-        const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/';
+        const API_BASE_URL = 'api/';
 
         let ordersDataTable = null;
 
@@ -930,15 +930,15 @@
                             }
 
                             var fileLink = data.file ? 
-                                `<a href="http://localhost:8080/hascol_dashboard/api/uploads/${data.file}" target="_blank" class="text-blue-500 hover:underline text-xs">View File</a>` : 
+                                `<a href="api/uploads/${data.file}" target="_blank" class="text-blue-500 hover:underline text-xs">View File</a>` : 
                                 'N/A';
                             
                             var signLink = data.sign ? 
-                                `<a href="http://localhost:8080/hascol_dashboard/api/uploads/${data.sign}" target="_blank" class="text-blue-500 hover:underline text-xs">View File</a>` : 
+                                `<a href="api/uploads/${data.sign}" target="_blank" class="text-blue-500 hover:underline text-xs">View File</a>` : 
                                 'N/A';
                             
                             var dealerSignLink = data.dealer_sign ? 
-                                `<a href="http://localhost:8080/hascol_dashboard/api/uploads/${data.dealer_sign}" target="_blank" class="text-blue-500 hover:underline text-xs">View File</a>` : 
+                                `<a href="api/uploads/${data.dealer_sign}" target="_blank" class="text-blue-500 hover:underline text-xs">View File</a>` : 
                                 'N/A';
 
                             var row = [

@@ -957,7 +957,7 @@
             }
         }
 
-        const API_BASE_URL = 'http://localhost:8080/hascol_dashboard/api/get/';
+        const API_BASE_URL = 'api/get/';
         const API_KEY = '03201232927';
 
         let ordersData = [];
@@ -1367,7 +1367,7 @@
                 const shortageClass = shortage === 'Shortage Submitted' ? 'yes' : (shortage === 'Shortage Not Submit' ? 'no' : '');
 
                 const sign = item.sign ?
-                    `<a href="http://localhost:8080/hascol_dashboard/api/uploads/signatures/${item.sign}" target="_blank" class="text-blue-500 underline">View</a>` :
+                    `<a href="api/uploads/signatures/${item.sign}" target="_blank" class="text-blue-500 underline">View</a>` :
                     '---';
 
                 const amount = item.total_dispatched_amount && item.total_dispatched_amount !== '---' ?
