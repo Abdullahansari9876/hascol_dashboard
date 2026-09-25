@@ -462,7 +462,7 @@
         // ============================================
         // CONFIG
         // ============================================
-        const API_BASE = 'https://hascol.allowance.flamboyant-spence.92-205-119-218.plesk.page/api/dealer/';
+        const API_BASE = 'http://localhost:8080/hascol_customer/api/dealer/get-dealers.php/';
 
         let dataTable = null;
         window.dealerStore = {};
@@ -536,71 +536,68 @@
         // ============================================
         // LOAD DEALERS
         // ============================================
-        function loadDealers() {
-            const status = $('#filterStatus').val() || '';
-            $('#tableLoadingOverlay').removeClass('hidden');
+      function loadDealers() {
+    const status = $('#filterStatus').val() || '';
+    $('#tableLoadingOverlay').removeClass('hidden');
 
-            $.ajax({
-                url: API_BASE + 'get-dealers.php',
-                method: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(status ? { status: status } : {}),
-                dataType: 'json',
-                success: function(res) {
-                    console.log('Dealers Response:', res);
-                    dataTable.clear().draw();
-                    window.dealerStore = {};
+    $.ajax({
+        url: API_BASE + 'get-dealers.php',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(status ? { status: status } : {}),
+        dataType: 'json',
+        success: function(res) {
+            console.log('Dealers Response:', res);
+            dataTable.clear();
+            window.dealerStore = {};
 
-                    if (res && res.status === 'success' && Array.isArray(res.dealers) && res.dealers.length) {
-                        $.each(res.dealers, function(i, d) {
-                            window.dealerStore[d.id] = d;
+            // ✅ FIXED: API me "hascol_dealers" hai, "dealers" nahi
+            const list = (res && res.hascol_dealers) ? res.hascol_dealers : 
+                         (res && res.dealers) ? res.dealers : [];
 
-                            const statusLower = (d.status || 'active').toLowerCase();
-                            const stBadge = statusLower === 'active'
-                                ? '<span class="status-badge status-active"><span class="status-dot"></span>Active</span>'
-                                : '<span class="status-badge status-inactive"><span class="status-dot"></span>Inactive</span>';
+            if (res && res.status === 'success' && Array.isArray(list) && list.length) {
+                $.each(list, function(i, d) {
+                    window.dealerStore[d.id] = d;
 
-                            const action =
-                                '<div style="display:flex;gap:6px;">' +
-                                '<button class="btn-action btn-edit" onclick="editDealer(' + d.id + ')"><i class="fa-solid fa-pen"></i> Edit</button>' +
-                                '<button class="btn-action btn-delete" onclick="deleteDealer(' + d.id + ', \'' + escapeHtml(d.name).replace(/'/g, "\\'") + '\')"><i class="fa-solid fa-trash"></i> Delete</button>' +
-                                '</div>';
+                    const statusLower = (d.status || 'active').toLowerCase();
+                    const stBadge = statusLower === 'active'
+                        ? '<span class="status-badge status-active"><span class="status-dot"></span>Active</span>'
+                        : '<span class="status-badge status-inactive"><span class="status-dot"></span>Inactive</span>';
 
-                            dataTable.row.add([
-                                i + 1,
-                                '<span class="dealer-badge"><i class="fa-solid fa-user-tie"></i> ' + escapeHtml(d.name) + '</span>',
-                                escapeHtml(d.station_name),
-                                escapeHtml(d.mobile),
-                                d.email ? escapeHtml(d.email) : '<span style="color:var(--text-muted);">—</span>',
-                                d.city ? escapeHtml(d.city) : '<span style="color:var(--text-muted);">—</span>',
-                                stBadge,
-                                formatDate(d.created_at),
-                                action
-                            ]);
-                        });
-                        showToast('Dealers loaded (' + res.total + ')', 'success');
-                    } else {
-                        dataTable.row.add([
-                            '<span style="color:var(--text-muted);">No dealers available</span>',
-                            '', '', '', '', '', '', '', ''
-                        ]);
-                    }
+                    const action =
+                        '<div style="display:flex;gap:6px;">' +
+                        '<button class="btn-action btn-edit" onclick="editDealer(' + d.id + ')"><i class="fa-solid fa-pen"></i> Edit</button>' +
+                        '<button class="btn-action btn-delete" onclick="deleteDealer(' + d.id + ', \'' + escapeHtml(d.name).replace(/'/g, "\\'") + '\')"><i class="fa-solid fa-trash"></i> Delete</button>' +
+                        '</div>';
 
-                    dataTable.draw(false);
-                    $('#tableLoadingOverlay').addClass('hidden');
-                },
-                error: function(xhr, s, e) {
-                    console.error('Load dealers error:', e, xhr.responseText);
-                    dataTable.clear().draw();
                     dataTable.row.add([
-                        '<span style="color:#ef4444;">Error loading dealers</span>',
-                        '', '', '', '', '', '', '', ''
-                    ]).draw(false);
-                    $('#tableLoadingOverlay').addClass('hidden');
-                    showToast('Failed to load dealers', 'error');
-                }
-            });
+                        i + 1,
+                        '<span class="dealer-badge"><i class="fa-solid fa-user-tie"></i> ' + escapeHtml(d.name) + '</span>',
+                        escapeHtml(d.station_name),
+                        escapeHtml(d.mobile),
+                        d.email ? escapeHtml(d.email) : '<span style="color:var(--text-muted);">—</span>',
+                        d.city ? escapeHtml(d.city) : '<span style="color:var(--text-muted);">—</span>',
+                        stBadge,
+                        formatDate(d.created_at),
+                        action
+                    ]);
+                });
+                showToast('Dealers loaded (' + (res.total || list.length) + ')', 'success');
+            } else {
+                console.log('No dealers found in response');
+            }
+
+            dataTable.draw();
+            $('#tableLoadingOverlay').addClass('hidden');
+        },
+        error: function(xhr, s, e) {
+            console.error('Load dealers error:', e, xhr.responseText);
+            dataTable.clear().draw();
+            $('#tableLoadingOverlay').addClass('hidden');
+            showToast('Failed to load dealers', 'error');
         }
+    });
+}
 
         // ============================================
         // ADD / EDIT

@@ -13,7 +13,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- DataTables CSS & JS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -25,11 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- ============================================ -->
-    <!-- DARK MODE INIT - Page Load Se Pehle Apply   -->
-    <!-- ============================================ -->
     <script>
-        // Yeh code sab se pehle run hoga - flash effect nahi aayega
         (function() {
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             if (isDarkMode) {
@@ -59,11 +54,6 @@
         }
     </script>
     <style>
-        /* ============================================ */
-        /* THEME VARIABLES                               */
-        /* Default = LIGHT theme.                        */
-        /* html.dark-mode (set by topbar toggle) = DARK   */
-        /* ============================================ */
         :root {
             --bg-body: #f4f6fa;
             --bg-panel: #ffffff;
@@ -132,7 +122,6 @@
             transition: background-color .25s ease, border-color .25s ease;
         }
 
-        /* Sidebar Collapsed State */
         #sidebar.collapsed {
             width: 60px;
         }
@@ -177,7 +166,6 @@
             transition: all 0.3s ease-in-out;
         }
 
-        /* Table Styles */
         .table-container {
             overflow-x: auto;
         }
@@ -288,7 +276,6 @@
             color: #3b82f6;
         }
 
-        /* Toggle Switch Styles */
         .toggle-switch {
             position: relative;
             width: 38px;
@@ -369,7 +356,6 @@
             display: none;
         }
 
-        /* Offcanvas Styles */
         #offcanvasOverlay {
             position: fixed;
             inset: 0;
@@ -406,7 +392,6 @@
             right: 0;
         }
 
-        /* Delete Modal Styles */
         #deleteModal {
             background: var(--modal-overlay);
             backdrop-filter: blur(8px);
@@ -528,11 +513,7 @@
             background-color: #ef4444;
         }
 
-        /* DataTables Custom Styles */
-        .dataTables_wrapper .dataTables_filter {
-            display: none !important;
-        }
-
+        .dataTables_wrapper .dataTables_filter,
         .dataTables_wrapper .dataTables_length {
             display: none !important;
         }
@@ -574,7 +555,6 @@
             cursor: not-allowed !important;
         }
 
-        /* DataTables Buttons */
         .dt-buttons {
             display: flex !important;
             gap: 6px !important;
@@ -638,7 +618,6 @@
             box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2);
         }
 
-        /* Toast Notification */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -689,7 +668,6 @@
             margin-bottom: 0;
         }
 
-        /* Toolbar Layout */
         .toolbar-row {
             display: flex;
             align-items: center;
@@ -731,7 +709,6 @@
             }
         }
 
-        /* Column Visibility Dropdown Styles */
         .column-visibility-dropdown {
             position: relative;
             display: inline-block;
@@ -894,27 +871,14 @@
 
 <body class="flex h-screen overflow-hidden text-xs">
 
-    <!-- ============================================ -->
-    <!-- SIDEBAR - Included from includes/sidebar.php  -->
-    <!-- ============================================ -->
     <?php include 'includes/sidebar.php'; ?>
 
-    <!-- ============================================ -->
-    <!-- MAIN CONTENT                                  -->
-    <!-- ============================================ -->
     <main id="mainContent" class="flex-1 flex flex-col overflow-hidden">
 
-        <!-- ============================================ -->
-        <!-- TOPBAR - Included from includes/topbar.php   -->
-        <!-- ============================================ -->
         <?php include 'includes/topbar.php'; ?>
 
-        <!-- ============================================ -->
-        <!-- PAGE CONTENT                                 -->
-        <!-- ============================================ -->
         <div class="flex-1 overflow-y-auto p-4" id="pageContent">
 
-            <!-- Page Header -->
             <div class="flex justify-between items-center mb-4">
                 <div>
                     <h2 class="text-heading font-semibold text-base tracking-wide uppercase">Users Management</h2>
@@ -926,7 +890,6 @@
                 </button>
             </div>
 
-            <!-- Toolbar -->
             <div class="panel-card p-3 mb-4">
                 <div class="toolbar-row">
                     <div class="toolbar-left" id="exportButtonsContainer"></div>
@@ -980,7 +943,6 @@
                 </div>
             </div>
 
-            <!-- Users Table -->
             <div class="panel-card overflow-hidden">
                 <div class="table-container">
                     <table id="usersTable" class="display" style="width:100%;">
@@ -1013,24 +975,14 @@
         </div>
     </main>
 
-    <!-- ============================================ -->
-    <!-- TOAST NOTIFICATION                           -->
-    <!-- ============================================ -->
     <div id="toast" class="toast">
         <i class="fa-solid fa-check-circle mr-2"></i>
         <span id="toastMessage">Data exported successfully!</span>
     </div>
 
-    <!-- ============================================ -->
-    <!-- OFFCANVAS OVERLAY                            -->
-    <!-- ============================================ -->
     <div id="offcanvasOverlay" onclick="closeOffcanvas()"></div>
 
-    <!-- ============================================ -->
-    <!-- OFFCANVAS FORM (Create / Edit)               -->
-    <!-- ============================================ -->
     <div id="offcanvasForm">
-        <!-- Header -->
         <div class="flex justify-between items-center p-4 border-b flex-shrink-0" style="border-color: var(--border-color);">
             <h3 id="offcanvasTitle" class="text-heading font-semibold tracking-wide text-sm">
                 <i class="fa-solid fa-user-plus mr-2 text-blue-500"></i>Create User
@@ -1040,7 +992,6 @@
             </button>
         </div>
 
-        <!-- Body -->
         <div class="flex-1 overflow-y-auto p-4">
             <form id="userForm" onsubmit="saveUser(event)">
                 <input type="hidden" id="userId" value="">
@@ -1092,7 +1043,6 @@
                     </select>
                 </div>
 
-                <!-- Sales Role (shown when Role = Sales) -->
                 <div class="form-group" id="salesRoleWrapper" style="display:none;">
                     <label class="form-label">Sales Role</label>
                     <select id="salesRole" class="form-select" onchange="handleSalesRoleChange()">
@@ -1105,7 +1055,6 @@
                     </select>
                 </div>
 
-                <!-- ZM/GRM Role (shown when Sales Role = TM) -->
                 <div class="form-group" id="zmRoleWrapper" style="display:none;">
                     <label class="form-label">GRM</label>
                     <select id="zmRole" class="form-select">
@@ -1113,7 +1062,6 @@
                     </select>
                 </div>
 
-                <!-- TM/RM Role (shown when Sales Role = ASM or BSO) -->
                 <div class="form-group" id="tmRoleWrapper" style="display:none;">
                     <label class="form-label">RM</label>
                     <select id="tmRole" class="form-select">
@@ -1121,7 +1069,6 @@
                     </select>
                 </div>
 
-                <!-- Logistics Role (shown when Role = Logistics) -->
                 <div class="form-group" id="logisticsRoleWrapper" style="display:none;">
                     <label class="form-label">Logistics Role</label>
                     <select id="logisticsRole" class="form-select">
@@ -1141,7 +1088,6 @@
             </form>
         </div>
 
-        <!-- Footer -->
         <div class="flex gap-3 p-4 border-t flex-shrink-0" style="border-color: var(--border-color);">
             <button type="submit" form="userForm" class="btn-primary flex-1">
                 <i class="fa-regular fa-floppy-disk mr-1"></i> Save
@@ -1152,9 +1098,6 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- DELETE CONFIRMATION MODAL                     -->
-    <!-- ============================================ -->
     <div id="deleteModal"
         class="fixed inset-0 z-50 hidden backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 opacity-0">
         <div class="border rounded-lg shadow-2xl w-full max-w-sm transform scale-95 transition-transform duration-300"
@@ -1174,96 +1117,60 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT                                   -->
-    <!-- ============================================ -->
     <script>
-        // ============================================
-        // Dark Mode Toggle Function - Global
-        // ============================================
         function toggleDarkMode() {
             const html = document.documentElement;
             const isDark = html.classList.toggle('dark-mode');
             localStorage.setItem('darkMode', isDark);
             
-            // Update icon
             const icon = document.querySelector('.dark-mode-toggle i');
             if (icon) {
-                if (isDark) {
-                    icon.className = 'fa-solid fa-sun';
-                } else {
-                    icon.className = 'fa-solid fa-moon';
-                }
+                icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
             }
         }
 
         $(document).ready(function() {
-            // Sidebar Toggle
             $('#sidebarToggle').on('click', function() {
                 $('#sidebar').toggleClass('collapsed');
-                const isCollapsed = $('#sidebar').hasClass('collapsed');
-                localStorage.setItem('sidebarCollapsed', isCollapsed);
+                localStorage.setItem('sidebarCollapsed', $('#sidebar').hasClass('collapsed'));
             });
 
-            const savedState = localStorage.getItem('sidebarCollapsed');
-            if (savedState === 'true') {
+            if (localStorage.getItem('sidebarCollapsed') === 'true') {
                 $('#sidebar').addClass('collapsed');
             }
 
-            // Password validation
-            $('#password, #confirmPassword').on('input', function() {
-                validatePassword();
-            });
+            $('#password, #confirmPassword').on('input', validatePassword);
 
-            // Custom Search
             $('#customSearchInput').on('keyup', function() {
-                const searchTerm = $(this).val();
                 if ($.fn.DataTable.isDataTable('#usersTable')) {
-                    $('#usersTable').DataTable().search(searchTerm).draw();
+                    $('#usersTable').DataTable().search($(this).val()).draw();
                 }
             });
 
-            // Filter handlers
-            $('#statusFilter, #roleFilter').on('change', function() {
-                applyFilters();
-            });
+            $('#statusFilter, #roleFilter').on('change', applyFilters);
 
-            // Load ZM and TM dropdowns
             loadZMList();
             loadTMList();
-
             loadUsers();
 
-            // Close dropdown on outside click
             $(document).on('click', function(e) {
                 if (!$(e.target).closest('.column-visibility-dropdown').length) {
                     closeColumnDropdown();
                 }
             });
 
-            // Set initial dark mode icon state
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             const icon = document.querySelector('.dark-mode-toggle i');
             if (icon) {
-                if (isDarkMode) {
-                    icon.className = 'fa-solid fa-sun';
-                } else {
-                    icon.className = 'fa-solid fa-moon';
-                }
+                icon.className = isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
             }
         });
         
         const API_BASE_URL = 'api/';
 
-        // ============================================
-        // Data Store
-        // ============================================
         let usersData = [];
         let dataTable = null;
 
-        // ============================================
-        // Column Visibility Configuration
-        // ============================================
         const columnConfig = [
             { idx: 0, label: 'S.No' },
             { idx: 1, label: 'User-ID' },
@@ -1277,9 +1184,6 @@
             { idx: 9, label: 'Edit' }
         ];
 
-        // ============================================
-        // Password Validation
-        // ============================================
         function validatePassword() {
             var password = $('#password').val();
             var confirmPassword = $('#confirmPassword').val();
@@ -1297,9 +1201,6 @@
             }
         }
 
-        // ============================================
-        // Role Change Handlers
-        // ============================================
         function handleRoleChange() {
             var role = $('#role').val();
             $('#salesRoleWrapper, #zmRoleWrapper, #tmRoleWrapper, #logisticsRoleWrapper').hide();
@@ -1322,9 +1223,6 @@
             }
         }
 
-        // ============================================
-        // Load ZM and TM Lists
-        // ============================================
         function loadZMList() {
             $.ajax({
                 url: API_BASE_URL + 'get/get_zm.php?key=03201232927',
@@ -1334,10 +1232,7 @@
                     var select = $('#zmRole');
                     select.empty().append('<option value="">Select GRM</option>');
                     $.each(data, function(index, item) {
-                        select.append($('<option>', {
-                            value: item.id,
-                            text: item.name
-                        }));
+                        select.append($('<option>', { value: item.id, text: item.name }));
                     });
                 },
                 error: function() {
@@ -1355,10 +1250,7 @@
                     var select = $('#tmRole');
                     select.empty().append('<option value="">Select RM</option>');
                     $.each(data, function(index, item) {
-                        select.append($('<option>', {
-                            value: item.id,
-                            text: item.name
-                        }));
+                        select.append($('<option>', { value: item.id, text: item.name }));
                     });
                 },
                 error: function() {
@@ -1367,9 +1259,6 @@
             });
         }
 
-        // ============================================
-        // Load Users from API
-        // ============================================
         function loadUsers() {
             $('#usersTableBody').html(`
                 <tr>
@@ -1389,7 +1278,6 @@
                     if (response && Array.isArray(response)) {
                         usersData = response.map(function(user) {
                             var privilege = user.privilege || 'N/A';
-                            // Convert privilege names for display
                             if (privilege == 'ZM') privilege = 'GRM';
                             else if (privilege == 'TM') privilege = 'RM';
                             else if (privilege == 'ASM') privilege = 'TM';
@@ -1420,9 +1308,6 @@
             });
         }
 
-        // ============================================
-        // Toggle Status Function
-        // ============================================
         function toggleUserStatus(userId, currentStatus) {
             const newStatus = currentStatus === 'active' ? 'inactive' : 'active';
             const statusText = newStatus === 'active' ? 'Active' : 'Non-Active';
@@ -1430,7 +1315,6 @@
             const toggleInput = $(`#toggle-${userId}`);
             toggleInput.prop('disabled', true);
 
-            // Use user_active_inactive.php API
             $.ajax({
                 url: API_BASE_URL + 'update/user_active_inactive.php',
                 type: 'POST',
@@ -1443,9 +1327,7 @@
                     toggleInput.prop('disabled', false);
                     if (response === 1) {
                         const user = usersData.find(u => u.id === userId);
-                        if (user) {
-                            user.status = newStatus;
-                        }
+                        if (user) user.status = newStatus;
                         showToast(`User status updated to ${statusText}!`, 'success');
                         loadUsers();
                     } else {
@@ -1462,59 +1344,61 @@
             });
         }
 
-        // ============================================
-        // Initialize DataTable with Export Buttons
-        // ============================================
+        function getRoleBadgeClass(role) {
+            if (role === 'Admin') return 'badge-active';
+            if (role === 'Sales') return 'badge-tm';
+            if (role === 'Order') return 'badge-rm';
+            if (role === 'Logistics') return 'badge-carriage';
+            if (role === 'Cartraige') return 'badge-carriage';
+            if (role === 'Engineering') return 'badge-depot';
+            if (role === 'tracker') return 'badge-planner';
+            if (role === 'Forward_order') return 'badge-rm';
+            if (role === 'App_order') return 'badge-tm';
+            if (role === 'Back_orders') return 'badge-depot';
+            if (role === 'Reporting') return 'badge-planner';
+            if (role === 'Finance') return 'badge-tm';
+            if (role === 'GRM') return 'badge-tm';
+            if (role === 'RM') return 'badge-rm';
+            if (role === 'TM') return 'badge-tm';
+            return 'badge-planner';
+        }
+
+        function buildTableRow(user, index) {
+            const isActive = user.status === 'active';
+            const roleClass = getRoleBadgeClass(user.role);
+
+            const toggleHtml = `
+                <label class="toggle-switch" title="Toggle status">
+                    <input type="checkbox" id="toggle-${user.id}" 
+                           ${isActive ? 'checked' : ''} 
+                           onchange="toggleUserStatus(${user.id}, '${user.status}')">
+                    <span class="toggle-slider">
+                        <span class="toggle-label toggle-label-on">On</span>
+                        <span class="toggle-label toggle-label-off">Off</span>
+                    </span>
+                </label>
+            `;
+
+            return [
+                index + 1,
+                user.id,
+                user.username,
+                user.email,
+                user.password,
+                `<span class="badge ${roleClass}">${user.role}</span>`,
+                user.contact,
+                toggleHtml,
+                `<button onclick="openDeleteModal(${user.id})" class="action-btn delete"><i class="fa-solid fa-trash-can"></i></button>`,
+                `<button onclick="openEditOffcanvas(${user.id})" class="action-btn edit"><i class="fa-solid fa-pen-to-square"></i></button>`
+            ];
+        }
+
         function initializeDataTable() {
             if ($.fn.DataTable.isDataTable('#usersTable')) {
                 $('#usersTable').DataTable().destroy();
             }
 
-            const tableData = usersData.map((user, index) => {
-                const isActive = user.status === 'active';
-
-                let roleClass = 'badge-planner';
-                if (user.role === 'Admin') roleClass = 'badge-active';
-                else if (user.role === 'Sales') roleClass = 'badge-tm';
-                else if (user.role === 'Order') roleClass = 'badge-rm';
-                else if (user.role === 'Logistics') roleClass = 'badge-carriage';
-                else if (user.role === 'Cartraige') roleClass = 'badge-carriage';
-                else if (user.role === 'Engineering') roleClass = 'badge-depot';
-                else if (user.role === 'tracker') roleClass = 'badge-planner';
-                else if (user.role === 'Forward_order') roleClass = 'badge-rm';
-                else if (user.role === 'App_order') roleClass = 'badge-tm';
-                else if (user.role === 'Back_orders') roleClass = 'badge-depot';
-                else if (user.role === 'Reporting') roleClass = 'badge-planner';
-                else if (user.role === 'Finance') roleClass = 'badge-tm';
-                else if (user.role === 'GRM') roleClass = 'badge-tm';
-                else if (user.role === 'RM') roleClass = 'badge-rm';
-                else if (user.role === 'TM') roleClass = 'badge-tm';
-
-                const toggleHtml = `
-                    <label class="toggle-switch" title="Toggle status">
-                        <input type="checkbox" id="toggle-${user.id}" 
-                               ${isActive ? 'checked' : ''} 
-                               onchange="toggleUserStatus(${user.id}, '${user.status}')">
-                        <span class="toggle-slider">
-                            <span class="toggle-label toggle-label-on">On</span>
-                            <span class="toggle-label toggle-label-off">Off</span>
-                        </span>
-                    </label>
-                `;
-
-                return [
-                    index + 1,
-                    user.id,
-                    user.username,
-                    user.email,
-                    user.password,
-                    `<span class="badge ${roleClass}">${user.role}</span>`,
-                    user.contact,
-                    toggleHtml,
-                    `<button onclick="openDeleteModal(${user.id})" class="action-btn delete"><i class="fa-solid fa-trash-can"></i></button>`,
-                    `<button onclick="openEditOffcanvas(${user.id})" class="action-btn edit"><i class="fa-solid fa-pen-to-square"></i></button>`
-                ];
-            });
+            const tableData = usersData.map(buildTableRow);
 
             dataTable = $('#usersTable').DataTable({
                 data: tableData,
@@ -1585,13 +1469,10 @@
                     infoFiltered: '(filtered from _MAX_ total entries)'
                 },
                 drawCallback: function() {
-                    $('.dt-buttons .dt-button').each(function() {
-                        $(this).addClass('toolbar-btn');
-                    });
+                    $('.dt-buttons .dt-button').addClass('toolbar-btn');
                 },
                 initComplete: function() {
-                    const buttonsContainer = $('#exportButtonsContainer');
-                    $('.dt-buttons').appendTo(buttonsContainer);
+                    $('.dt-buttons').appendTo('#exportButtonsContainer');
                     populateColumnDropdown();
                 }
             });
@@ -1599,9 +1480,6 @@
             applyFilters();
         }
 
-        // ============================================
-        // Populate Column Visibility Dropdown
-        // ============================================
         function populateColumnDropdown() {
             const container = $('#columnListItems');
             container.empty();
@@ -1614,28 +1492,23 @@
                     isVisible = true;
                 }
                 
-                const item = `
+                container.append(`
                     <div class="dropdown-item" onclick="toggleColumnVisibility(${col.idx})">
                         <input type="checkbox" id="col-checkbox-${col.idx}" 
                                ${isVisible ? 'checked' : ''} 
                                onclick="event.stopPropagation(); toggleColumnVisibility(${col.idx})">
                         <span class="column-label">${col.label}</span>
                     </div>
-                `;
-                container.append(item);
+                `);
             });
         }
 
-        // ============================================
-        // Column Visibility Functions
-        // ============================================
         function toggleColumnVisibility(colIdx) {
             if (!dataTable) return;
             try {
                 const isVisible = dataTable.column(colIdx).visible();
                 dataTable.column(colIdx).visible(!isVisible);
-                const checkbox = $(`#col-checkbox-${colIdx}`);
-                checkbox.prop('checked', !isVisible);
+                $(`#col-checkbox-${colIdx}`).prop('checked', !isVisible);
             } catch(e) {
                 console.warn('Column visibility toggle error:', e);
             }
@@ -1645,14 +1518,11 @@
             if (!dataTable) return;
             try {
                 columnConfig.forEach(function(col) {
-                    if (!dataTable.column(col.idx).visible()) {
-                        dataTable.column(col.idx).visible(true);
-                    }
+                    dataTable.column(col.idx).visible(true);
                     $(`#col-checkbox-${col.idx}`).prop('checked', true);
                 });
                 showToast('All columns selected!', 'success');
             } catch(e) {
-                console.warn('Select all columns error:', e);
                 showToast('Error selecting columns', 'error');
             }
         }
@@ -1661,21 +1531,15 @@
             if (!dataTable) return;
             try {
                 columnConfig.forEach(function(col) {
-                    if (dataTable.column(col.idx).visible()) {
-                        dataTable.column(col.idx).visible(false);
-                    }
+                    dataTable.column(col.idx).visible(false);
                     $(`#col-checkbox-${col.idx}`).prop('checked', false);
                 });
                 showToast('All columns deselected!', 'success');
             } catch(e) {
-                console.warn('Deselect all columns error:', e);
                 showToast('Error deselecting columns', 'error');
             }
         }
 
-        // ============================================
-        // Dropdown Toggle Functions
-        // ============================================
         function toggleColumnDropdown() {
             const menu = $('#columnDropdownMenu');
             menu.toggleClass('show');
@@ -1685,13 +1549,9 @@
         }
 
         function closeColumnDropdown() {
-            const menu = $('#columnDropdownMenu');
-            menu.removeClass('show');
+            $('#columnDropdownMenu').removeClass('show');
         }
 
-        // ============================================
-        // Apply Filters
-        // ============================================
         function applyFilters() {
             const status = $('#statusFilter').val();
             const role = $('#roleFilter').val();
@@ -1702,51 +1562,7 @@
                 return matchStatus && matchRole;
             });
 
-            const tableData = filteredData.map((user, index) => {
-                const isActive = user.status === 'active';
-
-                let roleClass = 'badge-planner';
-                if (user.role === 'Admin') roleClass = 'badge-active';
-                else if (user.role === 'Sales') roleClass = 'badge-tm';
-                else if (user.role === 'Order') roleClass = 'badge-rm';
-                else if (user.role === 'Logistics') roleClass = 'badge-carriage';
-                else if (user.role === 'Cartraige') roleClass = 'badge-carriage';
-                else if (user.role === 'Engineering') roleClass = 'badge-depot';
-                else if (user.role === 'tracker') roleClass = 'badge-planner';
-                else if (user.role === 'Forward_order') roleClass = 'badge-rm';
-                else if (user.role === 'App_order') roleClass = 'badge-tm';
-                else if (user.role === 'Back_orders') roleClass = 'badge-depot';
-                else if (user.role === 'Reporting') roleClass = 'badge-planner';
-                else if (user.role === 'Finance') roleClass = 'badge-tm';
-                else if (user.role === 'GRM') roleClass = 'badge-tm';
-                else if (user.role === 'RM') roleClass = 'badge-rm';
-                else if (user.role === 'TM') roleClass = 'badge-tm';
-
-                const toggleHtml = `
-                    <label class="toggle-switch" title="Toggle status">
-                        <input type="checkbox" id="toggle-${user.id}" 
-                               ${isActive ? 'checked' : ''} 
-                               onchange="toggleUserStatus(${user.id}, '${user.status}')">
-                        <span class="toggle-slider">
-                            <span class="toggle-label toggle-label-on">On</span>
-                            <span class="toggle-label toggle-label-off">Off</span>
-                        </span>
-                    </label>
-                `;
-
-                return [
-                    index + 1,
-                    user.id,
-                    user.username,
-                    user.email,
-                    user.password,
-                    `<span class="badge ${roleClass}">${user.role}</span>`,
-                    user.contact,
-                    toggleHtml,
-                    `<button onclick="openDeleteModal(${user.id})" class="action-btn delete"><i class="fa-solid fa-trash-can"></i></button>`,
-                    `<button onclick="openEditOffcanvas(${user.id})" class="action-btn edit"><i class="fa-solid fa-pen-to-square"></i></button>`
-                ];
-            });
+            const tableData = filteredData.map(buildTableRow);
 
             if (dataTable) {
                 dataTable.clear();
@@ -1755,17 +1571,12 @@
             }
         }
 
-        // ============================================
-        // Toast Notification
-        // ============================================
         function showToast(message, type = 'success') {
             const toast = $('#toast');
             const toastMessage = $('#toastMessage');
             
-            toast.removeClass('success error');
-            toast.addClass(type);
+            toast.removeClass('success error').addClass(type);
             toastMessage.text(message);
-            
             toast.addClass('show');
             
             clearTimeout(window.toastTimeout);
@@ -1774,9 +1585,6 @@
             }, 3000);
         }
 
-        // ============================================
-        // Offcanvas Functions
-        // ============================================
         function openOffcanvas() {
             $('#offcanvasOverlay').addClass('active');
             $('#offcanvasForm').addClass('active');
@@ -1813,7 +1621,6 @@
         }
 
         function openEditOffcanvas(userId) {
-            // First get user details from view_user API
             $.ajax({
                 url: API_BASE_URL + 'get/view_user.php?key=03201232927&id=' + userId,
                 type: 'GET',
@@ -1834,13 +1641,11 @@
                         
                         $('#salesRoleWrapper, #zmRoleWrapper, #tmRoleWrapper, #logisticsRoleWrapper').hide();
                         
-                        // Get privilege and show appropriate fields
                         var privilege = user.privilege || '';
                         
                         if (privilege == 'ZM') {
                             $('#salesRoleWrapper').show();
                             $('#salesRole').val('ZM');
-                            // Load ZM data for this user
                             $.ajax({
                                 url: API_BASE_URL + 'get/get_zm_tm.php?key=03201232927&id=' + userId,
                                 type: 'GET',
@@ -1857,7 +1662,6 @@
                             $('#salesRoleWrapper').show();
                             $('#salesRole').val('TM');
                             $('#zmRoleWrapper').show();
-                            // Load ZM for this TM
                             $.ajax({
                                 url: API_BASE_URL + 'get/get_zm_tm.php?key=03201232927&id=' + userId,
                                 type: 'GET',
@@ -1873,7 +1677,6 @@
                             $('#salesRoleWrapper').show();
                             $('#salesRole').val(privilege);
                             $('#tmRoleWrapper').show();
-                            // Load TM for this ASM/BSO
                             $.ajax({
                                 url: API_BASE_URL + 'get/get_asm_tm.php?key=03201232927&id=' + userId,
                                 type: 'GET',
@@ -1898,9 +1701,6 @@
             });
         }
 
-        // ============================================
-        // Delete Modal Functions
-        // ============================================
         function openDeleteModal(userId) {
             $('#deleteUserId').val(userId);
             const modal = $('#deleteModal');
@@ -1920,9 +1720,6 @@
             }, 300);
         }
 
-        // ============================================
-        // Save User (Create / Update)
-        // ============================================
         function saveUser(event) {
             event.preventDefault();
 
@@ -1952,25 +1749,20 @@
             submitBtn.prop('disabled', true);
             submitBtn.html('<i class="fa-solid fa-spinner fa-spin mr-1"></i> Saving...');
 
-            if (userId) {
-                // ===== UPDATE USER =====
-                var privilege = role;
-                if (role === 'Sales') {
-                    privilege = salesRole || 'Sales';
-                } else if (role === 'Logistics') {
-                    privilege = logisticsRole || 'Logistics';
-                }
+            var privilege = role;
+            if (role === 'Sales') {
+                privilege = salesRole || 'Sales';
+            } else if (role === 'Logistics') {
+                privilege = logisticsRole || 'Logistics';
+            }
 
+            if (userId) {
                 const formData = new FormData();
                 formData.append('row_id', userId);
                 formData.append('name', username);
                 formData.append('email', email);
                 formData.append('user_id', userId);
-                if (password) {
-                    formData.append('confirm_password', password);
-                } else {
-                    formData.append('confirm_password', '');
-                }
+                formData.append('confirm_password', password || '');
                 formData.append('number', contactNo);
                 formData.append('sales_role', privilege);
                 formData.append('sales_role_hide', privilege);
@@ -2005,14 +1797,6 @@
                     }
                 });
             } else {
-                // ===== CREATE USER =====
-                var privilege = role;
-                if (role === 'Sales') {
-                    privilege = salesRole || 'Sales';
-                } else if (role === 'Logistics') {
-                    privilege = logisticsRole || 'Logistics';
-                }
-
                 const formData = new FormData();
                 formData.append('name', username);
                 formData.append('email', email);
@@ -2053,9 +1837,6 @@
             }
         }
 
-        // ============================================
-        // Delete User - Using delete_users.php API
-        // ============================================
         function confirmDelete() {
             const userId = parseInt($('#deleteUserId').val());
 
@@ -2093,7 +1874,6 @@
             });
         }
 
-        // Close offcanvas on ESC key
         $(document).on('keydown', function(e) {
             if (e.key === 'Escape') {
                 if ($('#offcanvasForm').hasClass('active')) {
@@ -2106,7 +1886,6 @@
             }
         });
 
-        // Close delete modal on outside click
         $(document).on('click', '#deleteModal', function(e) {
             if (e.target === this) closeDeleteModal();
         });

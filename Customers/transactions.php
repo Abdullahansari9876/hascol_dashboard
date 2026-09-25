@@ -564,7 +564,7 @@
         // ============================================
         // CONFIG
         // ============================================
-        const API_BASE = 'https://hascol.allowance.flamboyant-spence.92-205-119-218.plesk.page/api/transactions/';
+        const API_BASE = 'http://localhost:8080/hascol_customer/api/transactions/';
 
         let dataTable = null;
         window.txStore = {};
@@ -659,7 +659,7 @@
         // ============================================
         function loadDealersForFilter() {
             $.ajax({
-                url: API_BASE + 'get-transaction-dealers.php',
+                // url: API_BASE + 'get-transaction-dealers.php',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({}),
@@ -684,7 +684,7 @@
             if (dealerId) payload.dealer_id = parseInt(dealerId);
 
             $.ajax({
-                url: API_BASE + 'get-transaction-customers.php',
+                // url: API_BASE + 'get-transaction-customers.php',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(payload),

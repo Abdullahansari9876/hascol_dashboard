@@ -21,7 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        (function() {
+        (function () {
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             if (isDarkMode) document.documentElement.classList.add('dark-mode');
         })();
@@ -29,7 +29,7 @@
 
     <script>
         tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'] } } }
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
         }
     </script>
 
@@ -56,6 +56,7 @@
             --btn-secondary-hover-text: #0f2440;
             --toolbar-btn-bg: #ffffff;
         }
+
         html.dark-mode {
             --bg-body: #060b13;
             --bg-panel: #0d1520;
@@ -71,7 +72,7 @@
             --table-row-hover: #0d1a2a;
             --scrollbar-track: #060b13;
             --scrollbar-thumb: #1a2635;
-            --modal-overlay: rgba(6,11,19,.85);
+            --modal-overlay: rgba(6, 11, 19, .85);
             --btn-secondary-bg: #1a2635;
             --btn-secondary-text: #94a3b8;
             --btn-secondary-hover-bg: #1f2a3d;
@@ -79,8 +80,15 @@
             --toolbar-btn-bg: #060b13;
         }
 
-        body { background-color: var(--bg-body); color: var(--text-muted); font-family: 'Inter', sans-serif; }
-        .text-heading { color: var(--text-heading) !important; }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .text-heading {
+            color: var(--text-heading) !important;
+        }
 
         .panel-card {
             background-color: var(--bg-panel);
@@ -98,12 +106,17 @@
             font-size: 12px;
             box-sizing: border-box;
         }
+
         .form-input:focus {
             outline: none;
             border-color: #1d4ed8;
-            box-shadow: 0 0 0 2px rgba(29,78,216,.2);
+            box-shadow: 0 0 0 2px rgba(29, 78, 216, .2);
         }
-        .form-input::placeholder { color: var(--text-muted); }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
         .form-input[readonly] {
             background-color: var(--hover-bg);
             color: var(--text-muted);
@@ -119,7 +132,11 @@
             padding-right: 30px;
             cursor: pointer;
         }
-        select.form-input option { background: var(--bg-panel); color: var(--text-body); }
+
+        select.form-input option {
+            background: var(--bg-panel);
+            color: var(--text-body);
+        }
 
         .form-label {
             color: var(--text-muted);
@@ -128,187 +145,438 @@
             margin-bottom: 4px;
             display: block;
         }
-        .form-group { margin-bottom: 1rem; width: 100%; }
+
+        .form-group {
+            margin-bottom: 1rem;
+            width: 100%;
+        }
 
         .btn-primary {
-            background-color: #1d4ed8; color: #ffffff;
-            padding: 8px 20px; border-radius: 0.25rem; border: none;
-            font-size: 12px; font-weight: 500; cursor: pointer;
+            background-color: #1d4ed8;
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
         }
-        .btn-primary:hover { background-color: #2563eb; }
-        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
 
         .btn-secondary {
-            background-color: var(--btn-secondary-bg); color: var(--btn-secondary-text);
-            padding: 8px 20px; border-radius: 0.25rem; border: none;
-            font-size: 12px; font-weight: 500; cursor: pointer;
+            background-color: var(--btn-secondary-bg);
+            color: var(--btn-secondary-text);
+            padding: 8px 20px;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
         }
+
         .btn-secondary:hover {
             background-color: var(--btn-secondary-hover-bg);
             color: var(--btn-secondary-hover-text);
         }
 
         .btn-action {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 4px; padding: 4px 10px; font-size: 10px; font-weight: 500;
-            border-radius: 4px; border: 1px solid transparent; cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 500;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            cursor: pointer;
             font-family: 'Inter', sans-serif;
         }
-        .btn-edit {
-            background: rgba(29,78,216,.1); color: #1d4ed8;
-            border-color: rgba(29,78,216,.25);
-        }
-        .btn-edit:hover { background: #1d4ed8; color: #fff; }
-        .btn-delete {
-            background: rgba(239,68,68,.1); color: #ef4444;
-            border-color: rgba(239,68,68,.25);
-        }
-        .btn-delete:hover { background: #ef4444; color: #fff; }
 
-        .table-container { position: relative; overflow-x: auto; min-height: 120px; }
-        .table-container table {
-            width: 100% !important; border-collapse: collapse; font-size: 11px;
+        .btn-edit {
+            background: rgba(29, 78, 216, .1);
+            color: #1d4ed8;
+            border-color: rgba(29, 78, 216, .25);
         }
+
+        .btn-edit:hover {
+            background: #1d4ed8;
+            color: #fff;
+        }
+
+        .btn-delete {
+            background: rgba(239, 68, 68, .1);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, .25);
+        }
+
+        .btn-delete:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .table-container {
+            position: relative;
+            overflow-x: auto;
+            min-height: 120px;
+        }
+
+        .table-container table {
+            width: 100% !important;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
         .table-container table thead th {
             background-color: var(--table-head-bg) !important;
             color: var(--table-head-text) !important;
-            font-weight: 500; text-align: left; padding: 10px 12px;
+            font-weight: 500;
+            text-align: left;
+            padding: 10px 12px;
             border-bottom: 1px solid var(--border-color);
-            white-space: nowrap; font-size: 10px;
-            text-transform: uppercase; letter-spacing: .5px;
+            white-space: nowrap;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
         }
+
         .table-container table tbody td {
-            padding: 10px 12px; border-bottom: 1px solid var(--border-color);
-            color: var(--table-row-text); vertical-align: middle;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--table-row-text);
+            vertical-align: middle;
         }
-        .table-container table tbody tr:hover { background-color: var(--table-row-hover); }
+
+        .table-container table tbody tr:hover {
+            background-color: var(--table-row-hover);
+        }
 
         .table-loading-overlay {
-            position: absolute; inset: 0; background-color: var(--bg-panel);
-            display: flex; align-items: center; justify-content: center;
-            gap: 8px; font-size: 12px; color: var(--text-muted); z-index: 5;
+            position: absolute;
+            inset: 0;
+            background-color: var(--bg-panel);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            z-index: 5;
         }
-        .table-loading-overlay.hidden { display: none; }
+
+        .table-loading-overlay.hidden {
+            display: none;
+        }
 
         .dataTables_wrapper .dataTables_filter,
-        .dataTables_wrapper .dataTables_length { display: none !important; }
+        .dataTables_wrapper .dataTables_length {
+            display: none !important;
+        }
+
         .dataTables_wrapper .dataTables_info {
-            color: var(--text-muted) !important; font-size: 11px !important;
+            color: var(--text-muted) !important;
+            font-size: 11px !important;
             padding-top: 12px !important;
         }
-        .dataTables_wrapper .dataTables_paginate { padding-top: 12px !important; }
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding: 4px 10px !important; margin: 0 2px !important;
-            border-radius: 4px !important; background: var(--toolbar-btn-bg) !important;
-            border: 1px solid var(--border-color) !important;
-            color: var(--text-muted) !important; font-size: 11px !important;
+
+        .dataTables_wrapper .dataTables_paginate {
+            padding-top: 12px !important;
         }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 4px 10px !important;
+            margin: 0 2px !important;
+            border-radius: 4px !important;
+            background: var(--toolbar-btn-bg) !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-muted) !important;
+            font-size: 11px !important;
+        }
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background: #1d4ed8 !important; color: #fff !important;
+            background: #1d4ed8 !important;
+            color: #fff !important;
             border-color: #1d4ed8 !important;
         }
 
-        .dt-buttons { display: flex !important; gap: 6px !important; flex-wrap: wrap !important; }
+        .dt-buttons {
+            display: flex !important;
+            gap: 6px !important;
+            flex-wrap: wrap !important;
+        }
+
         .dt-buttons .dt-button {
             padding: 6px 12px !important;
             background-color: var(--toolbar-btn-bg) !important;
             border: 1px solid var(--border-color) !important;
             border-radius: .25rem !important;
             color: var(--text-muted) !important;
-            font-size: 10px !important; cursor: pointer !important;
-            display: inline-flex !important; align-items: center !important;
-            gap: 4px !important; height: 30px !important;
+            font-size: 10px !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            height: 30px !important;
             box-sizing: border-box !important;
         }
+
         .dt-buttons .dt-button:hover {
             background-color: var(--hover-bg) !important;
             color: var(--text-heading) !important;
         }
 
         .toolbar-row {
-            display: flex; align-items: center; justify-content: space-between;
-            gap: 10px; flex-wrap: nowrap; width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: nowrap;
+            width: 100%;
         }
-        .toolbar-left { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
-        .toolbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            min-width: 0;
+        }
+
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
 
         .offcanvas {
-            position: fixed; top: 0; bottom: 0; width: 480px; max-width: 90vw;
-            max-height: 100vh; display: flex; flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 480px;
+            max-width: 90vw;
+            max-height: 100vh;
+            display: flex;
+            flex-direction: column;
             background-color: var(--bg-panel);
-            box-shadow: -10px 0 30px rgba(0,0,0,.25);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, .25);
             transform: translateX(100%);
             transition: transform .3s ease-in-out;
-            visibility: hidden; z-index: 99999;
+            visibility: hidden;
+            z-index: 99999;
         }
-        .offcanvas.offcanvas-end { right: 0; border-left: 1px solid var(--border-color); }
-        .offcanvas.showing, .offcanvas.show { transform: translateX(0); visibility: visible; }
+
+        .offcanvas.offcanvas-end {
+            right: 0;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .offcanvas.showing,
+        .offcanvas.show {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
         .offcanvas-backdrop {
-            position: fixed; inset: 0; background-color: var(--modal-overlay);
-            opacity: 0; transition: opacity .15s linear; z-index: 99998;
+            position: fixed;
+            inset: 0;
+            background-color: var(--modal-overlay);
+            opacity: 0;
+            transition: opacity .15s linear;
+            z-index: 99998;
         }
-        .offcanvas-backdrop.show { opacity: 1; }
+
+        .offcanvas-backdrop.show {
+            opacity: 1;
+        }
+
         .offcanvas-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 20px; flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            flex-shrink: 0;
             border-bottom: 1px solid var(--border-color);
         }
-        .offcanvas-title { margin: 0; }
-        .offcanvas-body { flex: 1 1 auto; padding: 20px; overflow-y: auto; }
-        .btn-close {
-            width: 26px; height: 26px; border: none; background: transparent;
-            color: var(--text-muted); cursor: pointer; display: inline-flex;
-            align-items: center; justify-content: center;
-            border-radius: 4px; padding: 0;
+
+        .offcanvas-title {
+            margin: 0;
         }
-        .btn-close::before { content: "\00d7"; font-size: 20px; line-height: 1; }
+
+        .offcanvas-body {
+            flex: 1 1 auto;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .btn-close {
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            padding: 0;
+        }
+
+        .btn-close::before {
+            content: "\00d7";
+            font-size: 20px;
+            line-height: 1;
+        }
 
         .toast {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--bg-panel); border: 1px solid var(--border-color);
-            border-radius: .375rem; padding: 12px 20px;
-            color: var(--text-body); font-size: 12px; z-index: 9999;
-            transform: translateY(100px); opacity: 0;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: .375rem;
+            padding: 12px 20px;
+            color: var(--text-body);
+            font-size: 12px;
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
             transition: all .3s ease-in-out;
-            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
         }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast.success { border-color: #10b981; }
-        .toast.success i { color: #10b981; }
-        .toast.error { border-color: #ef4444; }
-        .toast.error i { color: #ef4444; }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            border-color: #10b981;
+        }
+
+        .toast.success i {
+            color: #10b981;
+        }
+
+        .toast.error {
+            border-color: #ef4444;
+        }
+
+        .toast.error i {
+            color: #ef4444;
+        }
 
         .status-badge {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 3px 9px; border-radius: 12px; font-size: 10px; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
         }
-        .status-active { background: rgba(16,185,129,.12); color: #10b981; border: 1px solid rgba(16,185,129,.25); }
-        .status-inactive { background: rgba(148,163,184,.15); color: #94a3b8; border: 1px solid rgba(148,163,184,.3); }
-        .status-banned { background: rgba(239,68,68,.12); color: #ef4444; border: 1px solid rgba(239,68,68,.25); }
-        .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-        .type-new { background: rgba(16,185,129,.12); color: #10b981; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
-        .type-ref { background: rgba(139,92,246,.12); color: #8b5cf6; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
-        .verified-badge {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;
+        .status-active {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, .25);
         }
-        .verified-yes { background: rgba(29,78,216,.12); color: #1d4ed8; }
-        .verified-no { background: rgba(234,179,8,.15); color: #eab308; }
+
+        .status-inactive {
+            background: rgba(148, 163, 184, .15);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, .3);
+        }
+
+        .status-banned {
+            background: rgba(239, 68, 68, .12);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, .25);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .type-new {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .type-ref {
+            background: rgba(139, 92, 246, .12);
+            color: #8b5cf6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .verified-yes {
+            background: rgba(29, 78, 216, .12);
+            color: #1d4ed8;
+        }
+
+        .verified-no {
+            background: rgba(234, 179, 8, .15);
+            color: #eab308;
+        }
 
         /* Customer name cell */
         .cust-name {
-            font-weight: 600; color: var(--text-heading);
+            font-weight: 600;
+            color: var(--text-heading);
         }
+
         .cust-id {
-            font-size: 9px; color: var(--text-muted); margin-top: 2px;
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-top: 2px;
         }
 
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
-        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
 
-        .hidden { display: none !important; }
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 4px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -338,27 +606,32 @@
                 <div class="toolbar-row">
                     <div class="toolbar-left" id="exportButtonsContainer"></div>
                     <div class="toolbar-right">
-                        <select id="filterStatus" class="form-input text-xs" style="height:30px;padding:4px 30px 4px 10px;width:120px;">
+                        <select id="filterStatus" class="form-input text-xs"
+                            style="height:30px;padding:4px 30px 4px 10px;width:120px;">
                             <option value="">All Status</option>
                             <option value="active">Active</option>
                             <option value="inactive">Inactive</option>
                             <option value="banned">Banned</option>
                         </select>
-                        <select id="filterType" class="form-input text-xs" style="height:30px;padding:4px 30px 4px 10px;width:130px;">
+                        <select id="filterType" class="form-input text-xs"
+                            style="height:30px;padding:4px 30px 4px 10px;width:130px;">
                             <option value="">All Types</option>
                             <option value="new_customer">New Customer</option>
                             <option value="referred_customer">Referred</option>
                         </select>
-                        <select id="filterVerified" class="form-input text-xs" style="height:30px;padding:4px 30px 4px 10px;width:110px;">
+                        <select id="filterVerified" class="form-input text-xs"
+                            style="height:30px;padding:4px 30px 4px 10px;width:110px;">
                             <option value="">All</option>
                             <option value="1">Verified</option>
                             <option value="0">Unverified</option>
                         </select>
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-magnifying-glass text-gray-500 text-xs"></i>
-                            <input type="text" id="customSearchInput" placeholder="Search" class="form-input text-xs" style="height:30px;padding:4px 10px;width:180px;">
+                            <input type="text" id="customSearchInput" placeholder="Search" class="form-input text-xs"
+                                style="height:30px;padding:4px 10px;width:180px;">
                         </div>
-                        <button type="button" onclick="loadCustomers()" class="btn-secondary flex items-center gap-2" style="height:30px;padding:4px 12px;">
+                        <button type="button" onclick="loadCustomers()" class="btn-secondary flex items-center gap-2"
+                            style="height:30px;padding:4px 12px;">
                             <i class="fa-solid fa-rotate"></i> Refresh
                         </button>
                     </div>
@@ -413,7 +686,8 @@
                 <div class="form-group mb-4">
                     <label class="form-label">Player ID <span class="text-red-500">*</span></label>
                     <input type="text" class="form-input" id="c_player_id" placeholder="Original app ID" required>
-                    <small id="playerIdHint" style="color:var(--text-muted);font-size:10px;display:none;">Player ID cannot be changed</small>
+                    <small id="playerIdHint" style="color:var(--text-muted);font-size:10px;display:none;">Player ID
+                        cannot be changed</small>
                 </div>
 
                 <div class="form-group mb-4">
@@ -440,19 +714,22 @@
                 <div class="form-group mb-4">
                     <label class="form-label">Password <span class="text-red-500" id="cPwdRequired">*</span></label>
                     <input type="text" class="form-input" id="c_password" placeholder="Min 6 characters">
-                    <small id="cPwdHint" style="color:var(--text-muted);font-size:10px;display:none;">Leave empty to keep current password</small>
+                    <small id="cPwdHint" style="color:var(--text-muted);font-size:10px;display:none;">Leave empty to
+                        keep current password</small>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div class="form-group mb-4">
                         <label class="form-label">IMEI</label>
                         <input type="text" class="form-input" id="c_imei" placeholder="Device IMEI">
-                        <small id="imeiHint" style="color:var(--text-muted);font-size:10px;display:none;">IMEI cannot be changed</small>
+                        <small id="imeiHint" style="color:var(--text-muted);font-size:10px;display:none;">IMEI cannot be
+                            changed</small>
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Coupon No</label>
                         <input type="text" class="form-input" id="c_coupon_no" placeholder="Referral coupon">
-                        <small id="couponHint" style="color:var(--text-muted);font-size:10px;display:none;">Coupon No cannot be changed</small>
+                        <small id="couponHint" style="color:var(--text-muted);font-size:10px;display:none;">Coupon No
+                            cannot be changed</small>
                     </div>
                 </div>
 
@@ -513,7 +790,7 @@
         // ============================================
         // CONFIG
         // ============================================
-        const API_BASE = 'https://hascol.allowance.flamboyant-spence.92-205-119-218.plesk.page/api/customers/';
+        const API_BASE = 'http://localhost:8080/hascol_customer/api/customers/';
 
         let dataTable = null;
         window.customerStore = {};
@@ -529,7 +806,7 @@
         // ============================================
         // INIT
         // ============================================
-        $(document).ready(function() {
+        $(document).ready(function () {
             dataTable = $('#customerTable').DataTable({
                 dom: 'Bfrtip',
                 buttons: exportButtons,
@@ -547,15 +824,15 @@
                 }
             });
 
-            $('#customSearchInput').on('keyup', function() {
+            $('#customSearchInput').on('keyup', function () {
                 dataTable.search(this.value).draw();
             });
 
-            $('#filterStatus, #filterType, #filterVerified').on('change', function() {
+            $('#filterStatus, #filterType, #filterVerified').on('change', function () {
                 loadCustomers();
             });
 
-            $('#customerForm').on('submit', function(e) {
+            $('#customerForm').on('submit', function (e) {
                 e.preventDefault();
                 saveCustomer();
             });
@@ -568,7 +845,7 @@
         // ============================================
         function escapeHtml(text) {
             if (text === null || text === undefined) return '';
-            return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+            return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
         function showToast(message, type = 'success') {
             const toast = $('#toast');
@@ -606,56 +883,68 @@
                 contentType: 'application/json',
                 data: JSON.stringify(payload),
                 dataType: 'json',
-                success: function(res) {
-                    console.log('Customers Response:', res);
-                    dataTable.clear().draw();
+
+                success: function (res) {
+                    console.log('RAW RESPONSE:', res);
+                    console.log('KEYS:', Object.keys(res));
+
+                    dataTable.clear();
                     window.customerStore = {};
 
-                    if (res && res.status === 'success' && Array.isArray(res.customers) && res.customers.length) {
-                        $.each(res.customers, function(i, c) {
+                    let list = [];
+                    if (res) {
+                        if (Array.isArray(res.hascol_customer)) list = res.hascol_customer;
+                        else if (Array.isArray(res.hascol_customer)) list = res.hascol_customer;
+                        else if (Array.isArray(res.customers)) list = res.customers;
+                        else if (Array.isArray(res.data)) list = res.data;
+                        else if (Array.isArray(res.result)) list = res.result;
+                        else if (Array.isArray(res.customers_list)) list = res.customers_list;
+                        else if (Array.isArray(res)) list = res;
+                    }
+
+                    console.log('LIST LENGTH:', list.length);
+                    console.log('FIRST ITEM:', list[0]);
+
+                    if (res && res.status === 'success' && list.length > 0) {
+                        $.each(list, function (i, c) {
                             window.customerStore[c.id] = c;
 
-                            // ✅ Customer cell — sirf naam aur ID (no initials circle)
                             const customerCell =
-                                '<div>' +
-                                    '<div class="cust-name">' + escapeHtml(c.name) + '</div>' +
-                                    '<div class="cust-id">ID: #' + c.id + '</div>' +
-                                '</div>';
+                                '<div class="cust-name">' + escapeHtml(c.name || '-') + '</div>' +
+                                '<div class="cust-id">ID: #' + (c.id || '') + '</div>';
 
-                            // Status
-                            let stBadge;
-                            if (c.status === 'active') stBadge = '<span class="status-badge status-active"><span class="status-dot"></span>Active</span>';
-                            else if (c.status === 'banned') stBadge = '<span class="status-badge status-banned"><span class="status-dot"></span>Banned</span>';
+                            let stBadge = '';
+                            const st = (c.status || '').toLowerCase();
+                            if (st === 'active') stBadge = '<span class="status-badge status-active"><span class="status-dot"></span>Active</span>';
+                            else if (st === 'banned') stBadge = '<span class="status-badge status-banned"><span class="status-dot"></span>Banned</span>';
                             else stBadge = '<span class="status-badge status-inactive"><span class="status-dot"></span>Inactive</span>';
 
-                            // Type
                             const typeBadge = c.customer_type === 'referred_customer'
-                                ? '<span class="type-ref"><i class="fa-solid fa-user-group"></i> Referred</span>'
-                                : '<span class="type-new"><i class="fa-solid fa-user-plus"></i> New</span>';
+                                ? '<span class="type-ref">Referred</span>'
+                                : '<span class="type-new">New</span>';
 
-                            // Verified
-                            const verBadge = c.verified === 1
-                                ? '<span class="verified-badge verified-yes"><i class="fa-solid fa-circle-check"></i> Yes</span>'
-                                : '<span class="verified-badge verified-no"><i class="fa-solid fa-clock"></i> No</span>';
+                            const verBadge = (c.verified == 1)
+                                ? '<span class="verified-badge verified-yes">Yes</span>'
+                                : '<span class="verified-badge verified-no">No</span>';
 
-                            // Coupons
-                            const coupons = '<div style="font-size:10px;line-height:1.4;">' +
-                                '<div><b style="color:#10b981;">' + c.remaining_coupons + '</b> rem</div>' +
-                                '<div style="color:var(--text-muted);">' + c.used_coupons + ' used</div>' +
-                            '</div>';
+                            const coupons = '<div style="font-size:10px;">' +
+                                '<b style="color:#10b981;">' + (c.remaining_coupons || 0) + '</b> rem<br>' +
+                                '<span style="color:var(--text-muted);">' + (c.used_coupons || 0) + ' used</span>' +
+                                '</div>';
 
+                            const safeName = escapeHtml(c.name || '').replace(/'/g, "\\'");
                             const action =
                                 '<div style="display:flex;gap:5px;">' +
-                                '<button class="btn-action btn-edit" onclick="editCustomer(' + c.id + ')" title="Edit"><i class="fa-solid fa-pen"></i></button>' +
-                                '<button class="btn-action btn-delete" onclick="deleteCustomer(' + c.id + ', \'' + escapeHtml(c.name).replace(/'/g, "\\'") + '\')" title="Delete"><i class="fa-solid fa-trash"></i></button>' +
+                                '<button class="btn-action btn-edit" onclick="editCustomer(' + c.id + ')"><i class="fa-solid fa-pen"></i></button>' +
+                                '<button class="btn-action btn-delete" onclick="deleteCustomer(' + c.id + ', \'' + safeName + '\')"><i class="fa-solid fa-trash"></i></button>' +
                                 '</div>';
 
                             dataTable.row.add([
                                 i + 1,
                                 customerCell,
-                                c.mobile ? escapeHtml(c.mobile) : '<span style="color:var(--text-muted);">—</span>',
-                                c.email ? escapeHtml(c.email) : '<span style="color:var(--text-muted);">—</span>',
-                                c.cnic ? escapeHtml(c.cnic) : '<span style="color:var(--text-muted);">—</span>',
+                                c.mobile || '-',
+                                c.email || '-',
+                                c.cnic || '-',
                                 typeBadge,
                                 coupons,
                                 verBadge,
@@ -664,26 +953,22 @@
                                 action
                             ]);
                         });
-                        showToast('Customers loaded (' + res.total + ')', 'success');
+
+                        showToast('Loaded ' + list.length + ' customers', 'success');
                     } else {
-                        dataTable.row.add([
-                            '<span style="color:var(--text-muted);">No customers available</span>',
-                            '', '', '', '', '', '', '', '', '', ''
-                        ]);
+                        console.warn('List empty. Full response:', res);
+                        showToast('No customers found', 'error');
                     }
 
-                    dataTable.draw(false);
+                    dataTable.draw();
                     $('#tableLoadingOverlay').addClass('hidden');
                 },
-                error: function(xhr, s, e) {
-                    console.error('Load customers error:', e, xhr.responseText);
+
+                error: function (xhr, s, e) {
+                    console.error('AJAX ERROR:', xhr.status, xhr.responseText);
                     dataTable.clear().draw();
-                    dataTable.row.add([
-                        '<span style="color:#ef4444;">Error loading customers</span>',
-                        '', '', '', '', '', '', '', '', '', ''
-                    ]).draw(false);
                     $('#tableLoadingOverlay').addClass('hidden');
-                    showToast('Failed to load customers', 'error');
+                    showToast('API Error: ' + xhr.status, 'error');
                 }
             });
         }
@@ -764,28 +1049,28 @@
             const isEdit = id && id !== '';
 
             const data = {
-                player_id:     ($('#c_player_id').val() || '').trim(),
-                name:          ($('#c_name').val() || '').trim(),
-                mobile:        ($('#c_mobile').val() || '').trim(),
-                cnic:          ($('#c_cnic').val() || '').trim(),
-                email:         ($('#c_email').val() || '').trim(),
-                password:      ($('#c_password').val() || '').trim(),
-                imei:          ($('#c_imei').val() || '').trim(),
-                coupon_no:     ($('#c_coupon_no').val() || '').trim(),
-                address:       ($('#c_address').val() || '').trim(),
+                player_id: ($('#c_player_id').val() || '').trim(),
+                name: ($('#c_name').val() || '').trim(),
+                mobile: ($('#c_mobile').val() || '').trim(),
+                cnic: ($('#c_cnic').val() || '').trim(),
+                email: ($('#c_email').val() || '').trim(),
+                password: ($('#c_password').val() || '').trim(),
+                imei: ($('#c_imei').val() || '').trim(),
+                coupon_no: ($('#c_coupon_no').val() || '').trim(),
+                address: ($('#c_address').val() || '').trim(),
                 customer_type: ($('#c_customer_type').val() || 'new_customer').trim(),
-                status:        ($('#c_status').val() || 'active').trim(),
-                verified:      $('#c_verified').val() || '0'
+                status: ($('#c_status').val() || 'active').trim(),
+                verified: $('#c_verified').val() || '0'
             };
 
             // Validation
-            if (!data.player_id) { Swal.fire({ icon:'warning', title:'Validation', text:'Player ID required', confirmButtonColor:'#1d4ed8' }); $('#c_player_id').focus(); return; }
-            if (!data.name) { Swal.fire({ icon:'warning', title:'Validation', text:'Name required', confirmButtonColor:'#1d4ed8' }); $('#c_name').focus(); return; }
-            if (!data.mobile) { Swal.fire({ icon:'warning', title:'Validation', text:'Mobile required', confirmButtonColor:'#1d4ed8' }); $('#c_mobile').focus(); return; }
-            if (!/^[0-9+\-\s]{7,20}$/.test(data.mobile)) { Swal.fire({ icon:'warning', title:'Validation', text:'Invalid mobile', confirmButtonColor:'#1d4ed8' }); $('#c_mobile').focus(); return; }
-            if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { Swal.fire({ icon:'warning', title:'Validation', text:'Invalid email', confirmButtonColor:'#1d4ed8' }); $('#c_email').focus(); return; }
-            if (!isEdit && !data.password) { Swal.fire({ icon:'warning', title:'Validation', text:'Password required for new customer', confirmButtonColor:'#1d4ed8' }); $('#c_password').focus(); return; }
-            if (data.password && data.password.length < 6) { Swal.fire({ icon:'warning', title:'Validation', text:'Password min 6 chars', confirmButtonColor:'#1d4ed8' }); $('#c_password').focus(); return; }
+            if (!data.player_id) { Swal.fire({ icon: 'warning', title: 'Validation', text: 'Player ID required', confirmButtonColor: '#1d4ed8' }); $('#c_player_id').focus(); return; }
+            if (!data.name) { Swal.fire({ icon: 'warning', title: 'Validation', text: 'Name required', confirmButtonColor: '#1d4ed8' }); $('#c_name').focus(); return; }
+            if (!data.mobile) { Swal.fire({ icon: 'warning', title: 'Validation', text: 'Mobile required', confirmButtonColor: '#1d4ed8' }); $('#c_mobile').focus(); return; }
+            if (!/^[0-9+\-\s]{7,20}$/.test(data.mobile)) { Swal.fire({ icon: 'warning', title: 'Validation', text: 'Invalid mobile', confirmButtonColor: '#1d4ed8' }); $('#c_mobile').focus(); return; }
+            if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { Swal.fire({ icon: 'warning', title: 'Validation', text: 'Invalid email', confirmButtonColor: '#1d4ed8' }); $('#c_email').focus(); return; }
+            if (!isEdit && !data.password) { Swal.fire({ icon: 'warning', title: 'Validation', text: 'Password required for new customer', confirmButtonColor: '#1d4ed8' }); $('#c_password').focus(); return; }
+            if (data.password && data.password.length < 6) { Swal.fire({ icon: 'warning', title: 'Validation', text: 'Password min 6 chars', confirmButtonColor: '#1d4ed8' }); $('#c_password').focus(); return; }
 
             const fd = new FormData();
             Object.keys(data).forEach(k => fd.append(k, data[k]));
@@ -797,7 +1082,7 @@
 
             $.ajax({
                 url: url, method: 'POST', data: fd, processData: false, contentType: false, dataType: 'json',
-                success: function(res) {
+                success: function (res) {
                     console.log('Save customer:', res);
                     btn.prop('disabled', false).html('<i class="fa-regular fa-floppy-disk mr-1"></i> ' + (isEdit ? 'Update' : 'Save'));
 
@@ -818,13 +1103,13 @@
                     } else {
                         let errMsg = res.message || 'Failed';
                         if (res.errors) errMsg = Object.values(res.errors).join('\n');
-                        Swal.fire({ icon:'error', title:'Error!', text: errMsg, confirmButtonText:'OK', confirmButtonColor:'#1d4ed8' });
+                        Swal.fire({ icon: 'error', title: 'Error!', text: errMsg, confirmButtonText: 'OK', confirmButtonColor: '#1d4ed8' });
                     }
                 },
-                error: function(xhr, s, e) {
+                error: function (xhr, s, e) {
                     console.error('Save error:', e, xhr.responseText);
                     btn.prop('disabled', false).html('<i class="fa-regular fa-floppy-disk mr-1"></i> ' + (isEdit ? 'Update' : 'Save'));
-                    Swal.fire({ icon:'error', title:'Server Error', text:'Request failed', confirmButtonText:'OK', confirmButtonColor:'#1d4ed8' });
+                    Swal.fire({ icon: 'error', title: 'Server Error', text: 'Request failed', confirmButtonText: 'OK', confirmButtonColor: '#1d4ed8' });
                 }
             });
         }
@@ -851,16 +1136,16 @@
                     contentType: 'application/json',
                     data: JSON.stringify({ id: id }),
                     dataType: 'json',
-                    success: function(res) {
+                    success: function (res) {
                         if (res && res.status === 'success') {
-                            Swal.fire({ icon:'success', title:'Deleted!', text: res.message, confirmButtonText:'OK', confirmButtonColor:'#1d4ed8' });
+                            Swal.fire({ icon: 'success', title: 'Deleted!', text: res.message, confirmButtonText: 'OK', confirmButtonColor: '#1d4ed8' });
                             loadCustomers();
                         } else {
-                            Swal.fire({ icon:'error', title:'Error', text: res.message || 'Delete failed', confirmButtonText:'OK', confirmButtonColor:'#1d4ed8' });
+                            Swal.fire({ icon: 'error', title: 'Error', text: res.message || 'Delete failed', confirmButtonText: 'OK', confirmButtonColor: '#1d4ed8' });
                         }
                     },
-                    error: function() {
-                        Swal.fire({ icon:'error', title:'Server Error', text:'Delete failed', confirmButtonText:'OK', confirmButtonColor:'#1d4ed8' });
+                    error: function () {
+                        Swal.fire({ icon: 'error', title: 'Server Error', text: 'Delete failed', confirmButtonText: 'OK', confirmButtonColor: '#1d4ed8' });
                     }
                 });
             });
@@ -868,4 +1153,5 @@
     </script>
 
 </body>
+
 </html>
