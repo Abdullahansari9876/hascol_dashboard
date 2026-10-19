@@ -1,7 +1,5 @@
 <?php
-// ============================================
-// Disable all time limits
-// ============================================
+
 set_time_limit(0);
 ini_set('max_execution_time', 0);
 ini_set('max_input_time', 0);

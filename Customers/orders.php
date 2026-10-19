@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 
-    <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
@@ -25,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        (function() {
+        (function () {
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             if (isDarkMode) document.documentElement.classList.add('dark-mode');
         })();
@@ -33,7 +32,7 @@
 
     <script>
         tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'] } } }
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
         }
     </script>
 
@@ -59,6 +58,7 @@
             --btn-secondary-hover-text: #0f2440;
             --toolbar-btn-bg: #ffffff;
         }
+
         html.dark-mode {
             --bg-body: #060b13;
             --bg-panel: #0d1520;
@@ -81,8 +81,15 @@
             --toolbar-btn-bg: #060b13;
         }
 
-        body { background-color: var(--bg-body); color: var(--text-muted); font-family: 'Inter', sans-serif; }
-        .text-heading { color: var(--text-heading) !important; }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .text-heading {
+            color: var(--text-heading) !important;
+        }
 
         .panel-card {
             background-color: var(--bg-panel);
@@ -101,12 +108,16 @@
             box-sizing: border-box;
             transition: border-color .15s, box-shadow .15s;
         }
+
         .form-input:focus {
             outline: none;
             border-color: #1d4ed8;
-            box-shadow: 0 0 0 2px rgba(29,78,216,.2);
+            box-shadow: 0 0 0 2px rgba(29, 78, 216, .2);
         }
-        .form-input::placeholder { color: var(--text-muted); }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
 
         select.form-input {
             appearance: none;
@@ -117,7 +128,11 @@
             padding-right: 30px;
             cursor: pointer;
         }
-        select.form-input option { background: var(--bg-panel); color: var(--text-body); }
+
+        select.form-input option {
+            background: var(--bg-panel);
+            color: var(--text-body);
+        }
 
         .form-label {
             color: var(--text-muted);
@@ -128,64 +143,122 @@
         }
 
         .btn-secondary {
-            background-color: var(--btn-secondary-bg); color: var(--btn-secondary-text);
-            padding: 8px 20px; border-radius: 0.25rem; border: none;
-            font-size: 12px; font-weight: 500; cursor: pointer;
-            display: inline-flex; align-items: center; gap: 6px;
+            background-color: var(--btn-secondary-bg);
+            color: var(--btn-secondary-text);
+            padding: 8px 20px;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             transition: all .15s;
         }
+
         .btn-secondary:hover {
             background-color: var(--btn-secondary-hover-bg);
             color: var(--btn-secondary-hover-text);
         }
 
         .btn-primary {
-            background-color: #1d4ed8; color: #fff;
-            padding: 8px 20px; border-radius: 0.25rem; border: none;
-            font-size: 12px; font-weight: 500; cursor: pointer;
-            display: inline-flex; align-items: center; gap: 6px;
+            background-color: #1d4ed8;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             transition: background-color .15s;
         }
-        .btn-primary:hover { background-color: #2563eb; }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
 
         .btn-action {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 4px; padding: 4px 10px; font-size: 10px; font-weight: 500;
-            border-radius: 4px; border: 1px solid transparent; cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 500;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            cursor: pointer;
             font-family: 'Inter', sans-serif;
         }
-        .btn-view {
-            background: rgba(139,92,246,.1); color: #8b5cf6;
-            border-color: rgba(139,92,246,.25);
-        }
-        .btn-view:hover { background: #8b5cf6; color: #fff; }
 
-        .table-container { position: relative; overflow-x: auto; min-height: 120px; }
-        .table-container table {
-            width: 100% !important; border-collapse: collapse; font-size: 11px;
+        .btn-view {
+            background: rgba(139, 92, 246, .1);
+            color: #8b5cf6;
+            border-color: rgba(139, 92, 246, .25);
         }
+
+        .btn-view:hover {
+            background: #8b5cf6;
+            color: #fff;
+        }
+
+        .table-container {
+            position: relative;
+            overflow-x: auto;
+            min-height: 120px;
+        }
+
+        .table-container table {
+            width: 100% !important;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
         .table-container table thead th {
             background-color: var(--table-head-bg) !important;
             color: var(--table-head-text) !important;
-            font-weight: 500; text-align: left; padding: 10px 12px;
+            font-weight: 500;
+            text-align: left;
+            padding: 10px 12px;
             border-bottom: 1px solid var(--border-color);
-            white-space: nowrap; font-size: 10px;
-            text-transform: uppercase; letter-spacing: .5px;
+            white-space: nowrap;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
         }
+
         .table-container table tbody td {
-            padding: 10px 12px; border-bottom: 1px solid var(--border-color);
-            color: var(--table-row-text); vertical-align: middle;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--table-row-text);
+            vertical-align: middle;
         }
-        .table-container table tbody tr:hover { background-color: var(--table-row-hover); }
+
+        .table-container table tbody tr:hover {
+            background-color: var(--table-row-hover);
+        }
 
         .table-loading-overlay {
-            position: absolute; inset: 0; background-color: var(--bg-panel);
-            display: flex; align-items: center; justify-content: center;
-            gap: 8px; font-size: 12px; color: var(--text-muted); z-index: 5;
+            position: absolute;
+            inset: 0;
+            background-color: var(--bg-panel);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            z-index: 5;
         }
-        .table-loading-overlay.hidden { display: none; }
 
-        /* DataTables wrapper */
+        .table-loading-overlay.hidden {
+            display: none;
+        }
+
         .dataTables_wrapper .dt-buttons {
             display: flex !important;
             gap: 6px !important;
@@ -193,6 +266,7 @@
             margin: 0 0 10px 0 !important;
             float: left;
         }
+
         .dataTables_wrapper .dt-buttons .dt-button {
             padding: 6px 12px !important;
             background-color: var(--toolbar-btn-bg) !important;
@@ -209,21 +283,22 @@
             font-family: 'Inter', sans-serif !important;
             transition: all .15s !important;
         }
+
         .dataTables_wrapper .dt-buttons .dt-button:hover {
             background-color: var(--hover-bg) !important;
             color: var(--text-heading) !important;
             box-shadow: none !important;
         }
 
-        .dataTables_wrapper .dataTables_filter {
-            float: right;
-            margin: 0 0 10px 0 !important;
+        .dataTables_filter {
+            margin: 0 !important;
             display: flex;
             align-items: center;
             gap: 6px;
             position: relative;
         }
-        .dataTables_wrapper .dataTables_filter label {
+
+        .dataTables_filter label {
             color: var(--text-muted) !important;
             font-size: 11px !important;
             font-weight: 500 !important;
@@ -233,7 +308,8 @@
             margin: 0 !important;
             position: relative;
         }
-        .dataTables_wrapper .dataTables_filter label::before {
+
+        .dataTables_filter label::before {
             content: "\f002";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
@@ -246,7 +322,8 @@
             pointer-events: none;
             z-index: 2;
         }
-        .dataTables_wrapper .dataTables_filter input {
+
+        .dataTables_filter input {
             background-color: var(--input-bg) !important;
             border: 1px solid var(--border-color) !important;
             border-radius: 0.25rem !important;
@@ -261,12 +338,14 @@
             box-sizing: border-box !important;
             transition: border-color .15s, box-shadow .15s !important;
         }
-        .dataTables_wrapper .dataTables_filter input:focus {
+
+        .dataTables_filter input:focus {
             outline: none !important;
             border-color: #1d4ed8 !important;
             box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2) !important;
         }
-        .dataTables_wrapper .dataTables_filter input::placeholder {
+
+        .dataTables_filter input::placeholder {
             color: var(--text-muted) !important;
             font-size: 11px !important;
         }
@@ -277,9 +356,11 @@
             padding-top: 12px !important;
             clear: both;
         }
+
         .dataTables_wrapper .dataTables_paginate {
             padding-top: 12px !important;
         }
+
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             padding: 4px 10px !important;
             margin: 0 2px !important;
@@ -289,11 +370,13 @@
             color: var(--text-muted) !important;
             font-size: 11px !important;
         }
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             background: #1d4ed8 !important;
             color: #fff !important;
             border-color: #1d4ed8 !important;
         }
+
         .dataTables_wrapper::after {
             content: "";
             display: table;
@@ -309,25 +392,59 @@
             margin-bottom: 12px;
             padding: 0 4px;
         }
-        .table-toolbar-left { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-        .table-toolbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+        .table-toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .table-toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
 
         .toast {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--bg-panel); border: 1px solid var(--border-color);
-            border-radius: .375rem; padding: 12px 20px;
-            color: var(--text-body); font-size: 12px; z-index: 9999;
-            transform: translateY(100px); opacity: 0;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: .375rem;
+            padding: 12px 20px;
+            color: var(--text-body);
+            font-size: 12px;
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
             transition: all .3s ease-in-out;
-            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
         }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast.success { border-color: #10b981; }
-        .toast.success i { color: #10b981; }
-        .toast.error { border-color: #ef4444; }
-        .toast.error i { color: #ef4444; }
 
-        /* Order Number */
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            border-color: #10b981;
+        }
+
+        .toast.success i {
+            color: #10b981;
+        }
+
+        .toast.error {
+            border-color: #ef4444;
+        }
+
+        .toast.error i {
+            color: #ef4444;
+        }
+
         .order-number {
             font-family: 'Courier New', monospace;
             font-weight: 700;
@@ -340,57 +457,131 @@
             letter-spacing: .3px;
         }
 
-        /* Status badges */
         .st-badge {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 3px 9px; border-radius: 12px; font-size: 10px; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
             white-space: nowrap;
         }
-        .st-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-        .st-pending { background: rgba(234,179,8,.12); color: #eab308; border: 1px solid rgba(234,179,8,.3); }
-        .st-completed { background: rgba(16,185,129,.12); color: #10b981; border: 1px solid rgba(16,185,129,.25); }
-        .st-refunded { background: rgba(148,163,184,.15); color: #94a3b8; border: 1px solid rgba(148,163,184,.3); }
 
-        /* Payment badges */
+        .st-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .st-pending {
+            background: rgba(234, 179, 8, .12);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, .3);
+        }
+
+        .st-completed {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, .25);
+        }
+
+        .st-refunded {
+            background: rgba(148, 163, 184, .15);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, .3);
+        }
+
         .pay-badge {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 2px 8px; border-radius: 4px;
-            font-size: 10px; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
         }
-        .pay-paid { background: rgba(16,185,129,.12); color: #10b981; }
-        .pay-unpaid { background: rgba(234,179,8,.15); color: #eab308; }
-        .pay-refunded { background: rgba(148,163,184,.15); color: #94a3b8; }
 
-        /* Delivery badges */
+        .pay-paid {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+        }
+
+        .pay-unpaid {
+            background: rgba(234, 179, 8, .15);
+            color: #eab308;
+        }
+
+        .pay-refunded {
+            background: rgba(148, 163, 184, .15);
+            color: #94a3b8;
+        }
+
         .del-badge {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 2px 8px; border-radius: 4px;
-            font-size: 10px; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
         }
-        .del-pickup { background: rgba(29,78,216,.1); color: #1d4ed8; }
-        .del-delivery { background: rgba(139,92,246,.1); color: #8b5cf6; }
 
-        /* Money badges */
+        .del-pickup {
+            background: rgba(29, 78, 216, .1);
+            color: #1d4ed8;
+        }
+
+        .del-delivery {
+            background: rgba(139, 92, 246, .1);
+            color: #8b5cf6;
+        }
+
         .money-badge {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
             white-space: nowrap;
         }
-        .money-amount { background: rgba(148,163,184,.15); color: #64748b; }
-        .money-discount { background: rgba(234,179,8,.12); color: #eab308; }
-        .money-final { background: rgba(16,185,129,.12); color: #10b981; }
 
-        /* Cell sub-text */
-        .cell-name { font-weight: 600; color: var(--text-heading); font-size: 11px; }
-        .cell-sub { font-size: 9px; color: var(--text-muted); }
+        .money-amount {
+            background: rgba(148, 163, 184, .15);
+            color: #64748b;
+        }
 
-        /* Summary cards */
+        .money-discount {
+            background: rgba(234, 179, 8, .12);
+            color: #eab308;
+        }
+
+        .money-final {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+        }
+
+        .cell-name {
+            font-weight: 600;
+            color: var(--text-heading);
+            font-size: 11px;
+        }
+
+        .cell-sub {
+            font-size: 9px;
+            color: var(--text-muted);
+        }
+
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 10px;
             margin-bottom: 12px;
         }
+
         .summary-card {
             background: var(--bg-panel);
             border: 1px solid var(--border-color);
@@ -400,26 +591,53 @@
             align-items: center;
             gap: 12px;
         }
+
         .summary-icon {
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 16px; flex-shrink: 0;
-        }
-        .summary-icon.blue { background: rgba(29,78,216,.12); color: #1d4ed8; }
-        .summary-icon.green { background: rgba(16,185,129,.12); color: #10b981; }
-        .summary-icon.yellow { background: rgba(234,179,8,.12); color: #eab308; }
-        .summary-icon.purple { background: rgba(139,92,246,.12); color: #8b5cf6; }
-        .summary-label {
-            font-size: 10px; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: .5px; font-weight: 500;
-        }
-        .summary-value {
-            font-size: 16px; font-weight: 700;
-            color: var(--text-heading); margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
         }
 
-        /* Select2 styling */
+        .summary-icon.blue {
+            background: rgba(29, 78, 216, .12);
+            color: #1d4ed8;
+        }
+
+        .summary-icon.green {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+        }
+
+        .summary-icon.yellow {
+            background: rgba(234, 179, 8, .12);
+            color: #eab308;
+        }
+
+        .summary-icon.purple {
+            background: rgba(139, 92, 246, .12);
+            color: #8b5cf6;
+        }
+
+        .summary-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-weight: 500;
+        }
+
+        .summary-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 2px;
+        }
+
         .select2-container--default .select2-selection--single {
             background-color: var(--input-bg) !important;
             border: 1px solid var(--border-color) !important;
@@ -427,6 +645,7 @@
             height: 32px !important;
             transition: border-color .15s, box-shadow .15s;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__rendered {
             color: var(--text-body) !important;
             line-height: 30px !important;
@@ -435,23 +654,28 @@
             font-size: 12px !important;
             font-family: 'Inter', sans-serif !important;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__placeholder {
             color: var(--text-muted) !important;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__arrow {
             height: 30px !important;
             width: 26px !important;
             right: 2px !important;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__arrow b {
             border-color: var(--text-muted) transparent transparent transparent !important;
             border-width: 5px 4px 0 4px !important;
         }
+
         .select2-container--default.select2-container--focus .select2-selection--single,
         .select2-container--default.select2-container--open .select2-selection--single {
             border-color: #1d4ed8 !important;
             box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2) !important;
         }
+
         .select2-container--default .select2-dropdown {
             background-color: var(--bg-panel) !important;
             border: 1px solid var(--border-color) !important;
@@ -459,6 +683,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
             z-index: 9999 !important;
         }
+
         .select2-container--default .select2-search--dropdown .select2-search__field {
             background-color: var(--input-bg) !important;
             border: 1px solid var(--border-color) !important;
@@ -470,140 +695,481 @@
             height: 32px !important;
             box-sizing: border-box !important;
         }
+
         .select2-container--default .select2-search--dropdown .select2-search__field:focus {
             border-color: #1d4ed8 !important;
             box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2) !important;
         }
+
         .select2-container--default .select2-results__option {
             font-size: 12px !important;
             color: var(--text-body) !important;
             padding: 6px 10px !important;
         }
+
         .select2-container--default .select2-results__option--highlighted[aria-selected] {
             background-color: #1d4ed8 !important;
             color: #ffffff !important;
         }
+
         .select2-container--default .select2-results__option[aria-selected=true] {
             background-color: var(--hover-bg) !important;
             color: var(--text-heading) !important;
         }
-        .select2-results__options { max-height: 280px !important; }
-        .select2-results__options::-webkit-scrollbar { width: 6px; }
-        .select2-results__options::-webkit-scrollbar-track { background: var(--scrollbar-track); }
-        .select2-results__options::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+
+        .select2-results__options {
+            max-height: 280px !important;
+        }
 
         /* Order Details Offcanvas */
         #offcanvasOrderDetails {
-            position: fixed; top: 0; bottom: 0; right: 0;
-            width: 720px; max-width: 95vw;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 780px;
+            max-width: 96vw;
             background: var(--bg-panel);
             border-left: 1px solid var(--border-color);
-            box-shadow: -10px 0 30px rgba(0,0,0,.25);
+            box-shadow: -20px 0 60px rgba(15, 23, 42, .18);
             transform: translateX(100%);
-            transition: transform .3s ease-in-out;
+            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
             visibility: hidden;
             z-index: 99999;
-            display: flex; flex-direction: column;
+            display: flex;
+            flex-direction: column;
         }
+
         #offcanvasOrderDetails.show {
             transform: translateX(0);
             visibility: visible;
         }
+
         .od-backdrop {
-            position: fixed; inset: 0;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(2px);
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(3px);
             opacity: 0;
             pointer-events: none;
-            transition: opacity .25s;
+            transition: opacity .3s;
             z-index: 99998;
         }
-        .od-backdrop.show { opacity: 1; pointer-events: auto; }
-        .od-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 20px; flex-shrink: 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .od-body { flex: 1 1 auto; padding: 20px; overflow-y: auto; }
-        .od-close {
-            width: 30px; height: 30px; border: none; background: transparent;
-            color: var(--text-muted); cursor: pointer; display: inline-flex;
-            align-items: center; justify-content: center;
-            border-radius: 4px; padding: 0; font-size: 20px;
-        }
-        .od-close:hover { background: var(--hover-bg); color: var(--text-heading); }
 
-        /* Details Sections */
-        .od-section {
+        .od-backdrop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .od-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #1d4ed8 0%, #4f46e5 100%);
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        .od-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .od-header-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            backdrop-filter: blur(6px);
+        }
+
+        .od-header-title {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .od-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(255, 255, 255, .12);
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            padding: 0;
+            font-size: 18px;
+            line-height: 1;
+            transition: all .15s;
+        }
+
+        .od-close:hover {
+            background: rgba(255, 255, 255, .25);
+            transform: rotate(90deg);
+        }
+
+        .od-body {
+            flex: 1 1 auto;
+            padding: 20px 24px 24px;
+            overflow-y: auto;
             background: var(--bg-body);
+        }
+
+        .od-section {
+            background: var(--bg-panel);
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 14px 16px;
-            margin-bottom: 12px;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, .04);
+            transition: box-shadow .2s;
         }
+
+        .od-section:hover {
+            box-shadow: 0 4px 14px rgba(15, 23, 42, .06);
+        }
+
         .od-section-title {
-            font-size: 11px; font-weight: 700; color: var(--text-heading);
-            text-transform: uppercase; letter-spacing: .5px;
-            margin-bottom: 10px;
-            display: flex; align-items: center; gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-heading);
+            text-transform: uppercase;
+            letter-spacing: .7px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
         }
+
+        .od-section-title i {
+            color: #1d4ed8;
+            font-size: 12px;
+        }
+
         .od-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px 14px;
-        }
-        .od-item {
-            display: flex; flex-direction: column;
-            gap: 2px;
-        }
-        .od-item-label {
-            font-size: 9px; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: .3px;
-        }
-        .od-item-value {
-            font-size: 12px; color: var(--text-heading);
-            font-weight: 500; word-break: break-word;
+            gap: 14px 20px;
         }
 
-        /* Items table */
-        .od-items-table {
-            width: 100%; border-collapse: collapse; font-size: 11px;
+        .od-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
+
+        .od-item-label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-weight: 600;
+        }
+
+        .od-item-value {
+            font-size: 12.5px;
+            color: var(--text-heading);
+            font-weight: 500;
+            word-break: break-word;
+            line-height: 1.45;
+        }
+
+        .od-info-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(29, 78, 216, .06) 0%, rgba(79, 70, 229, .06) 100%);
+            border: 1px solid rgba(29, 78, 216, .15);
+            margin-bottom: 14px;
+        }
+
+        .od-info-hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .od-info-hero-label {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: .6px;
+            text-transform: uppercase;
+        }
+
+        .od-info-hero-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-heading);
+            font-family: 'Courier New', monospace;
+            letter-spacing: .5px;
+        }
+
+        .od-info-hero-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .od-items-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 11.5px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
         .od-items-table thead th {
             background: var(--table-head-bg);
             color: var(--table-head-text);
-            font-weight: 500; text-align: left; padding: 8px 10px;
-            font-size: 9px; text-transform: uppercase; letter-spacing: .3px;
+            font-weight: 600;
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 9.5px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
             border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
         }
+
         .od-items-table tbody td {
-            padding: 8px 10px;
+            padding: 12px;
             border-bottom: 1px solid var(--border-color);
             color: var(--table-row-text);
             vertical-align: middle;
+            background: var(--bg-panel);
         }
+
         .od-items-table tbody tr:last-child td {
             border-bottom: none;
         }
+
+        .od-items-table tbody tr:hover td {
+            background: var(--hover-bg);
+        }
+
+        .od-product-name {
+            font-weight: 600;
+            color: var(--text-heading);
+            font-size: 12px;
+            line-height: 1.3;
+        }
+
+        .od-product-meta {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 3px;
+            letter-spacing: .2px;
+        }
+
+        .od-qty-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 24px;
+            padding: 0 8px;
+            border-radius: 6px;
+            background: rgba(29, 78, 216, .08);
+            color: #1d4ed8;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .od-disc-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(234, 179, 8, .12);
+            color: #eab308;
+            font-weight: 700;
+            font-size: 10.5px;
+        }
+
         .od-item-total {
-            margin-top: 12px; padding-top: 12px;
-            border-top: 1px solid var(--border-color);
-            display: flex; flex-direction: column; gap: 6px;
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
+
         .od-total-row {
-            display: flex; justify-content: space-between;
-            font-size: 12px; color: var(--text-body);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-body);
         }
+
+        .od-total-row .od-total-label {
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .od-total-row .od-total-value {
+            font-weight: 600;
+            color: var(--text-heading);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .od-total-row.discount-row .od-total-value {
+            color: #eab308;
+        }
+
         .od-total-row.grand {
-            font-size: 14px; font-weight: 700; color: var(--text-heading);
-            padding-top: 8px; border-top: 1px solid var(--border-color);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-heading);
+            padding-top: 10px;
+            margin-top: 4px;
+            border-top: 2px solid var(--border-color);
         }
 
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
-        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+        .od-total-row.grand .od-total-label {
+            color: var(--text-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-size: 11px;
+        }
 
-        .hidden { display: none !important; }
+        .od-total-row.grand .od-total-value {
+            color: #10b981;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .od-coupon-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(234, 179, 8, .08) 0%, rgba(234, 179, 8, .02) 100%);
+            border: 1px dashed rgba(234, 179, 8, .45);
+        }
+
+        .od-coupon-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(234, 179, 8, .15);
+            color: #eab308;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .od-coupon-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .od-coupon-code {
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            color: var(--text-heading);
+            font-size: 13px;
+            letter-spacing: .5px;
+        }
+
+        .od-coupon-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-weight: 600;
+        }
+
+        .od-coupon-amount {
+            font-size: 16px;
+            font-weight: 800;
+            color: #eab308;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .od-notes-card {
+            font-size: 12.5px;
+            color: var(--text-body);
+            line-height: 1.6;
+            padding: 12px 14px;
+            border-radius: 8px;
+            background: var(--bg-body);
+            border-left: 3px solid #1d4ed8;
+        }
+
+        .od-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .od-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .od-body::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 640px) {
+            #offcanvasOrderDetails {
+                width: 100vw;
+                max-width: 100vw;
+            }
+
+            .od-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .od-info-hero {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .od-info-hero-right {
+                justify-content: flex-start;
+            }
+
+            .od-items-table thead th,
+            .od-items-table tbody td {
+                padding: 8px 8px;
+                font-size: 10.5px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -626,7 +1192,6 @@
                 </div>
             </div>
 
-            <!-- Summary Cards -->
             <div class="summary-grid">
                 <div class="summary-card">
                     <div class="summary-icon blue"><i class="fa-solid fa-list"></i></div>
@@ -658,7 +1223,6 @@
                 </div>
             </div>
 
-            <!-- Filters -->
             <div class="panel-card p-3 mb-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                     <div class="lg:col-span-2">
@@ -673,15 +1237,6 @@
                             <option value="">All Status</option>
                             <option value="completed">Completed</option>
                             <option value="pending">Pending</option>
-                            <option value="refunded">Refunded</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="form-label">Payment Status</label>
-                        <select id="filterPaymentStatus" class="form-input text-xs" style="height:32px;">
-                            <option value="">All</option>
-                            <option value="unpaid">Unpaid</option>
-                            <option value="paid">Paid</option>
                             <option value="refunded">Refunded</option>
                         </select>
                     </div>
@@ -702,17 +1257,18 @@
                         <input type="date" id="filterDateTo" class="form-input text-xs" style="height:32px;">
                     </div>
                     <div style="display:flex;gap:8px;align-items:flex-end;">
-                        <button type="button" onclick="loadOrders()" class="btn-primary flex items-center gap-2" style="height:32px;padding:0 16px;flex:1;">
+                        <button type="button" onclick="loadOrders()" class="btn-primary flex items-center gap-2"
+                            style="height:32px;padding:0 16px;flex:1;">
                             <i class="fa-solid fa-filter"></i> Apply
                         </button>
-                        <button type="button" onclick="resetFilters()" class="btn-secondary flex items-center gap-2" style="height:32px;padding:0 14px;" title="Reset all filters">
+                        <button type="button" onclick="resetFilters()" class="btn-secondary flex items-center gap-2"
+                            style="height:32px;padding:0 14px;" title="Reset all filters">
                             <i class="fa-solid fa-rotate-left"></i> Reset
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Table -->
             <div class="panel-card overflow-hidden p-3">
                 <div class="table-toolbar">
                     <div class="table-toolbar-left" id="exportButtonsContainer"></div>
@@ -754,17 +1310,22 @@
         <span id="toastMessage">Data loaded successfully!</span>
     </div>
 
-    <!-- Order Details Offcanvas -->
     <div id="odBackdrop" class="od-backdrop" onclick="closeOrderDetails()"></div>
     <div id="offcanvasOrderDetails">
         <div class="od-header">
-            <h5 class="text-heading text-sm font-semibold" style="margin:0;">
-                <i class="fa-solid fa-receipt mr-2 text-blue-500"></i>Order Details
-            </h5>
-            <button class="od-close" onclick="closeOrderDetails()" title="Close">&times;</button>
+            <div class="od-header-left">
+                <div class="od-header-icon">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+                <div>
+                    <h5 class="od-header-title">Order Details</h5>
+                </div>
+            </div>
+            <button class="od-close" onclick="closeOrderDetails()" title="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
         <div class="od-body" id="odBody">
-            <!-- Filled dynamically -->
         </div>
     </div>
 
@@ -777,10 +1338,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
     <script>
-        // ============================================
-        // CONFIG
-        // ============================================
-        const API_BASE = 'http://localhost:8080/hascol_customer/api/orders/'; // Update with your actual API base URL
+        const API_BASE = 'http://localhost:8080/hascol_customer/api/orders/';
 
         let dataTable = null;
         window.ordStore = {};
@@ -793,10 +1351,7 @@
             { extend: 'print', text: '<i class="fa-solid fa-print"></i> Print', className: 'dt-button' }
         ];
 
-        // ============================================
-        // INIT
-        // ============================================
-        $(document).ready(function() {
+        $(document).ready(function () {
             initCustomerSelect2();
 
             dataTable = $('#ordTable').DataTable({
@@ -820,43 +1375,38 @@
                 }
             });
 
-            // Filter auto-apply
-            $('#filterStatus, #filterPaymentStatus, #filterDelivery').on('change', function() { loadOrders(); });
-            $('#filterCustomer').on('change', function() { loadOrders(); });
+            $('#filterStatus, #filterDelivery').on('change', function () { loadOrders(); });
+            $('#filterCustomer').on('change', function () { loadOrders(); });
 
-            // Initial loads
             loadCustomersForFilter();
             loadOrders();
 
-            // ESC to close offcanvas
-            $(document).on('keydown', function(e) {
+            $(document).on('keydown', function (e) {
                 if (e.key === 'Escape') closeOrderDetails();
             });
         });
 
-        // ============================================
-        // SELECT2
-        // ============================================
         function initCustomerSelect2() {
+            if ($('#filterCustomer').hasClass('select2-hidden-accessible')) {
+                $('#filterCustomer').select2('destroy');
+            }
+
             $('#filterCustomer').select2({
                 placeholder: 'All Customers',
                 allowClear: true,
                 width: '100%',
                 dropdownParent: $('body'),
                 language: {
-                    noResults: function() { return 'No customers found'; },
-                    searching: function() { return 'Searching...'; }
+                    noResults: function () { return 'No customers found'; },
+                    searching: function () { return 'Searching...'; }
                 },
                 minimumResultsForSearch: 0
             });
         }
 
-        // ============================================
-        // HELPERS
-        // ============================================
         function escapeHtml(text) {
             if (text === null || text === undefined) return '';
-            return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+            return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
         function showToast(message, type = 'success') {
             const toast = $('#toast');
@@ -881,14 +1431,12 @@
             return 'Rs ' + Number(n || 0).toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
-        // ⭐ Derive order status from payment status
         function deriveOrderStatus(paymentStatus) {
             if (paymentStatus === 'paid') return 'completed';
             if (paymentStatus === 'refunded') return 'refunded';
             return 'pending';
         }
 
-        // ⭐ Render order status badge from derived status
         function renderOrderStatusBadge(paymentStatus) {
             const derived = deriveOrderStatus(paymentStatus);
             if (derived === 'completed') return '<span class="st-badge st-completed"><span class="st-dot"></span>Completed</span>';
@@ -896,9 +1444,6 @@
             return '<span class="st-badge st-pending"><span class="st-dot"></span>Pending</span>';
         }
 
-        // ============================================
-        // FILTER DROPDOWN
-        // ============================================
         function loadCustomersForFilter() {
             $.ajax({
                 url: API_BASE + 'get-order-customers.php',
@@ -906,29 +1451,40 @@
                 contentType: 'application/json',
                 data: JSON.stringify({}),
                 dataType: 'json',
-                success: function(res) {
+                success: function (res) {
+                    let customers = [];
+                    if (res && Array.isArray(res.hascol_customer)) {
+                        customers = res.hascol_customer;
+                    } else if (res && Array.isArray(res.customers)) {
+                        customers = res.customers;
+                    }
+
+                    if ($('#filterCustomer').hasClass('select2-hidden-accessible')) {
+                        $('#filterCustomer').select2('destroy');
+                    }
+
                     const sel = $('#filterCustomer');
-                    sel.find('option').remove();
+                    sel.empty();
                     sel.append('<option value="">All Customers</option>');
-                    if (res && res.customers && res.customers.length) {
-                        res.customers.forEach(c => {
-                            const label = c.name + (c.mobile ? ' — ' + c.mobile : '');
+
+                    if (customers.length) {
+                        customers.forEach(function (c) {
+                            const label = (c.name || '') + (c.mobile ? ' — ' + c.mobile : '');
                             sel.append('<option value="' + c.id + '">' + escapeHtml(label) + '</option>');
                         });
                     }
+
                     initCustomerSelect2();
                 },
-                error: function() { console.warn('Failed to load customers for filter'); }
+                error: function (xhr, s, e) {
+                    console.error('Failed to load customers:', e, xhr.responseText);
+                }
             });
         }
 
-        // ============================================
-        // RESET FILTERS
-        // ============================================
         function resetFilters() {
             $('#filterCustomer').val('').trigger('change.select2');
             $('#filterStatus').val('');
-            $('#filterPaymentStatus').val('');
             $('#filterDelivery').val('');
             $('#filterDateFrom').val('');
             $('#filterDateTo').val('');
@@ -940,21 +1496,16 @@
             showToast('Filters reset — showing all orders', 'success');
         }
 
-        // ============================================
-        // LOAD ORDERS
-        // ============================================
         function loadOrders() {
             const payload = {};
             const customer_id = $('#filterCustomer').val();
             const status = $('#filterStatus').val();
-            const payment_status = $('#filterPaymentStatus').val();
             const delivery_type = $('#filterDelivery').val();
             const dateFrom = $('#filterDateFrom').val();
             const dateTo = $('#filterDateTo').val();
 
             if (customer_id) payload.customer_id = parseInt(customer_id);
             if (status) payload.status = status;
-            if (payment_status) payload.payment_status = payment_status;
             if (delivery_type) payload.delivery_type = delivery_type;
             if (dateFrom) payload.date_from = dateFrom;
             if (dateTo) payload.date_to = dateTo;
@@ -967,8 +1518,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify(payload),
                 dataType: 'json',
-                success: function(res) {
-                    console.log('Orders Response:', res);
+                success: function (res) {
                     dataTable.clear().draw();
                     window.ordStore = {};
 
@@ -979,54 +1529,45 @@
                         $('#sumFinal').text(Number(res.total_final || 0).toFixed(2));
 
                         if (Array.isArray(res.orders) && res.orders.length) {
-                            $.each(res.orders, function(i, o) {
+                            $.each(res.orders, function (i, o) {
                                 window.ordStore[o.id] = o;
 
-                                // Order Number
                                 const orderNumCell = '<span class="order-number">' + escapeHtml(o.order_number) + '</span>';
 
-                                // Customer
                                 const customerCell = '<div>' +
                                     '<div class="cell-name">' + escapeHtml(o.customer_name) + '</div>' +
                                     '<div class="cell-sub">' + escapeHtml(o.customer_mobile || '—') + '</div>' +
-                                '</div>';
+                                    '</div>';
 
-                                // Dealer
                                 const dealerCell = '<div>' +
                                     '<div class="cell-name">' + escapeHtml(o.dealer_name) + '</div>' +
                                     '<div class="cell-sub">' + escapeHtml(o.dealer_station || '—') + '</div>' +
-                                '</div>';
+                                    '</div>';
 
-                                // Money badges
                                 const amtBadge = '<span class="money-badge money-amount">' + formatMoney(o.subtotal) + '</span>';
                                 const discBadge = o.discount > 0
                                     ? '<span class="money-badge money-discount">-' + formatMoney(o.discount) + '</span>'
                                     : '<span style="color:var(--text-muted);">—</span>';
                                 const finalBadge = '<span class="money-badge money-final">' + formatMoney(o.total_amount) + '</span>';
 
-                                // Coupon
                                 const couponCell = o.coupon_code
                                     ? '<span style="font-family:monospace;font-size:10px;background:var(--hover-bg);padding:2px 6px;border-radius:4px;">' + escapeHtml(o.coupon_code) + '</span>'
                                     : '<span style="color:var(--text-muted);">—</span>';
 
-                                // ⭐ Order Status — derived from payment status
                                 const statusHtml = renderOrderStatusBadge(o.payment_status);
 
-                                // Payment Status
                                 let payHtml;
                                 if (o.payment_status === 'paid') payHtml = '<span class="pay-badge pay-paid"><i class="fa-solid fa-circle-check"></i> Paid</span>';
                                 else if (o.payment_status === 'refunded') payHtml = '<span class="pay-badge pay-refunded"><i class="fa-solid fa-rotate-left"></i> Refunded</span>';
                                 else payHtml = '<span class="pay-badge pay-unpaid"><i class="fa-solid fa-clock"></i> Unpaid</span>';
 
-                                // Delivery
                                 const delHtml = o.delivery_type === 'delivery'
                                     ? '<span class="del-badge del-delivery"><i class="fa-solid fa-truck"></i> Delivery</span>'
                                     : '<span class="del-badge del-pickup"><i class="fa-solid fa-store"></i> Pickup</span>';
 
-                                // Action
                                 const action = '<button class="btn-action btn-view" onclick="viewOrder(' + o.id + ')" title="View Details">' +
                                     '<i class="fa-solid fa-eye"></i> View' +
-                                '</button>';
+                                    '</button>';
 
                                 dataTable.row.add([
                                     i + 1,
@@ -1061,7 +1602,7 @@
                     dataTable.draw(false);
                     $('#tableLoadingOverlay').addClass('hidden');
                 },
-                error: function(xhr, s, e) {
+                error: function (xhr, s, e) {
                     console.error('Load orders error:', e, xhr.responseText);
                     dataTable.clear().draw();
                     dataTable.row.add([
@@ -1074,34 +1615,29 @@
             });
         }
 
-        // ============================================
-        // VIEW ORDER (Details Offcanvas)
-        // ============================================
         function viewOrder(orderId) {
             const o = window.ordStore[orderId];
             if (!o) return;
 
             const body = $('#odBody');
-            body.html('<div style="text-align:center;padding:40px 0;color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin text-blue-400" style="font-size:24px;"></i><div style="margin-top:12px;font-size:12px;">Loading order items...</div></div>');
+            body.html('<div style="text-align:center;padding:60px 0;color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin text-blue-400" style="font-size:28px;"></i><div style="margin-top:14px;font-size:12px;letter-spacing:.3px;">Loading order details...</div></div>');
 
-            // Open offcanvas immediately
             $('#odBackdrop').addClass('show');
             $('#offcanvasOrderDetails').addClass('show');
             document.body.style.overflow = 'hidden';
 
-            // Fetch items
             $.ajax({
                 url: API_BASE + 'get-order-items.php',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ order_id: orderId }),
                 dataType: 'json',
-                success: function(res) {
+                success: function (res) {
                     const items = (res && res.items) ? res.items : [];
                     const grandTotal = (res && res.grand_total) ? res.grand_total : 0;
                     renderOrderDetails(o, items, grandTotal);
                 },
-                error: function(xhr, s, e) {
+                error: function (xhr, s, e) {
                     console.error('Failed to load order items:', e);
                     renderOrderDetails(o, [], 0);
                 }
@@ -1111,122 +1647,126 @@
         function renderOrderDetails(o, items, grandTotal) {
             const body = $('#odBody');
 
-            // ⭐ Order Status — derived from payment status
-            const statusHtml = renderOrderStatusBadge(o.payment_status);
-
-            // Payment badge
             let payHtml;
             if (o.payment_status === 'paid') payHtml = '<span class="pay-badge pay-paid"><i class="fa-solid fa-circle-check"></i> Paid</span>';
             else if (o.payment_status === 'refunded') payHtml = '<span class="pay-badge pay-refunded"><i class="fa-solid fa-rotate-left"></i> Refunded</span>';
             else payHtml = '<span class="pay-badge pay-unpaid"><i class="fa-solid fa-clock"></i> Unpaid</span>';
 
-            // Items table
+            const delHtml = o.delivery_type === 'delivery'
+                ? '<span class="del-badge del-delivery"><i class="fa-solid fa-truck"></i> Delivery</span>'
+                : '<span class="del-badge del-pickup"><i class="fa-solid fa-store"></i> Pickup</span>';
+
             let itemsHtml = '';
             if (items.length === 0) {
-                itemsHtml = '<div style="text-align:center;padding:20px;color:var(--text-muted);font-size:12px;">No items found for this order.</div>';
+                itemsHtml = '<div style="text-align:center;padding:30px 20px;color:var(--text-muted);font-size:12px;">' +
+                    '<i class="fa-solid fa-inbox" style="font-size:24px;opacity:.4;display:block;margin-bottom:10px;"></i>' +
+                    'No items found for this order.</div>';
             } else {
                 itemsHtml = '<table class="od-items-table"><thead><tr>' +
-                    '<th style="width:50px;">#</th>' +
+                    '<th style="width:44px;">#</th>' +
                     '<th>Product</th>' +
-                    '<th style="width:70px;text-align:center;">Qty</th>' +
-                    '<th style="width:90px;text-align:right;">Price</th>' +
+                    '<th style="width:60px;text-align:center;">Qty</th>' +
+                    '<th style="width:100px;text-align:right;">Price</th>' +
                     '<th style="width:70px;text-align:right;">Disc%</th>' +
-                    '<th style="width:100px;text-align:right;">Subtotal</th>' +
-                '</tr></thead><tbody>';
+                    '<th style="width:110px;text-align:right;">Subtotal</th>' +
+                    '</tr></thead><tbody>';
 
-                items.forEach(function(it, idx) {
+                items.forEach(function (it, idx) {
                     itemsHtml += '<tr>' +
-                        '<td>' + (idx + 1) + '</td>' +
+                        '<td style="color:var(--text-muted);font-weight:600;">' + (idx + 1) + '</td>' +
                         '<td>' +
-                            '<div style="font-weight:600;color:var(--text-heading);font-size:12px;">' + escapeHtml(it.product_name) + '</div>' +
-                            '<div style="font-size:10px;color:var(--text-muted);">' +
-                                (it.product_sku ? 'SKU: ' + escapeHtml(it.product_sku) : '') +
-                                (it.product_brand ? (it.product_sku ? ' • ' : '') + escapeHtml(it.product_brand) : '') +
-                            '</div>' +
+                        '<div class="od-product-name">' + escapeHtml(it.product_name) + '</div>' +
+                        '<div class="od-product-meta">' +
+                        (it.product_sku ? 'SKU: ' + escapeHtml(it.product_sku) : '') +
+                        (it.product_brand ? (it.product_sku ? ' • ' : '') + escapeHtml(it.product_brand) : '') +
+                        '</div>' +
                         '</td>' +
-                        '<td style="text-align:center;font-weight:600;">' + it.quantity + '</td>' +
-                        '<td style="text-align:right;">' + formatMoney(it.price) + '</td>' +
-                        '<td style="text-align:right;">' + (it.discount_percent > 0 ? Number(it.discount_percent).toFixed(2) + '%' : '—') + '</td>' +
-                        '<td style="text-align:right;font-weight:600;color:#10b981;">' + formatMoney(it.subtotal) + '</td>' +
-                    '</tr>';
+                        '<td style="text-align:center;"><span class="od-qty-pill">' + it.quantity + '</span></td>' +
+                        '<td style="text-align:right;font-variant-numeric:tabular-nums;">' + formatMoney(it.price) + '</td>' +
+                        '<td style="text-align:right;">' + (it.discount_percent > 0 ? '<span class="od-disc-pill">' + Number(it.discount_percent).toFixed(2) + '%</span>' : '<span style="color:var(--text-muted);">—</span>') + '</td>' +
+                        '<td style="text-align:right;font-weight:700;color:#10b981;font-variant-numeric:tabular-nums;">' + formatMoney(it.subtotal) + '</td>' +
+                        '</tr>';
                 });
 
                 itemsHtml += '</tbody></table>';
 
-                // Totals
                 const subtotalSum = items.reduce((sum, it) => sum + parseFloat(it.subtotal || 0), 0);
                 itemsHtml += '<div class="od-item-total">';
-                itemsHtml += '<div class="od-total-row"><span>Items Subtotal:</span><span>' + formatMoney(subtotalSum) + '</span></div>';
+                itemsHtml += '<div class="od-total-row"><span class="od-total-label">Items Subtotal</span><span class="od-total-value">' + formatMoney(subtotalSum) + '</span></div>';
                 if (o.discount > 0) {
-                    itemsHtml += '<div class="od-total-row"><span>Order Discount:</span><span style="color:#eab308;">-' + formatMoney(o.discount) + '</span></div>';
+                    itemsHtml += '<div class="od-total-row discount-row"><span class="od-total-label">Order Discount</span><span class="od-total-value">- ' + formatMoney(o.discount) + '</span></div>';
                 }
-                itemsHtml += '<div class="od-total-row grand"><span>Total Amount:</span><span>' + formatMoney(o.total_amount) + '</span></div>';
+                itemsHtml += '<div class="od-total-row grand"><span class="od-total-label">Total Amount</span><span class="od-total-value">' + formatMoney(o.total_amount) + '</span></div>';
                 itemsHtml += '</div>';
             }
 
-            // Build full HTML
             let html = '';
 
-            // Header Section
-            html += '<div class="od-section">' +
-                '<div class="od-section-title"><i class="fa-solid fa-hashtag"></i> Order Info</div>' +
-                '<div class="od-grid">' +
-                    '<div class="od-item"><span class="od-item-label">Order Number</span><span class="od-item-value" style="font-family:monospace;">' + escapeHtml(o.order_number) + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Order Status</span><span class="od-item-value">' + statusHtml + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Payment Status</span><span class="od-item-value">' + payHtml + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Payment Method</span><span class="od-item-value">' + (o.payment_method ? escapeHtml(o.payment_method) : '—') + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Delivery Type</span><span class="od-item-value">' + (o.delivery_type === 'delivery' ? 'Delivery' : 'Pickup') + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Station</span><span class="od-item-value">' + (o.station_name ? escapeHtml(o.station_name) : '—') + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Placed On</span><span class="od-item-value">' + formatDate(o.created_at, true) + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Updated</span><span class="od-item-value">' + formatDate(o.updated_at, true) + '</span></div>' +
+            html += '<div class="od-info-hero">' +
+                '<div class="od-info-hero-left">' +
+                '<span class="od-info-hero-label">Order Number</span>' +
+                '<span class="od-info-hero-value">' + escapeHtml(o.order_number) + '</span>' +
                 '</div>' +
-            '</div>';
-
-            // Customer Section
-            html += '<div class="od-section">' +
-                '<div class="od-section-title"><i class="fa-solid fa-user"></i> Customer</div>' +
-                '<div class="od-grid">' +
-                    '<div class="od-item"><span class="od-item-label">Name</span><span class="od-item-value">' + escapeHtml(o.customer_name) + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Mobile</span><span class="od-item-value">' + escapeHtml(o.customer_mobile || '—') + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Email</span><span class="od-item-value">' + escapeHtml(o.customer_email || '—') + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Player ID</span><span class="od-item-value">' + escapeHtml(o.player_id || '—') + '</span></div>' +
+                '<div class="od-info-hero-right">' +
+                payHtml +
                 '</div>' +
-            '</div>';
+                '</div>';
 
-            // Dealer Section
             html += '<div class="od-section">' +
-                '<div class="od-section-title"><i class="fa-solid fa-store"></i> Dealer</div>' +
+                '<div class="od-section-title"><i class="fa-solid fa-circle-info"></i> Order Information</div>' +
                 '<div class="od-grid">' +
-                    '<div class="od-item"><span class="od-item-label">Dealer</span><span class="od-item-value">' + escapeHtml(o.dealer_name) + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Mobile</span><span class="od-item-value">' + escapeHtml(o.dealer_mobile || '—') + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Station</span><span class="od-item-value">' + escapeHtml(o.dealer_station || '—') + '</span></div>' +
-                    '<div class="od-item"><span class="od-item-label">Delivery Address</span><span class="od-item-value">' + (o.delivery_address ? escapeHtml(o.delivery_address) : '—') + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Station</span><span class="od-item-value">' + (o.station_name ? escapeHtml(o.station_name) : '—') + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Delivery Type</span><span class="od-item-value">' + delHtml + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Placed On</span><span class="od-item-value">' + formatDate(o.created_at, true) + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Coupon Code</span><span class="od-item-value">' + (o.coupon_code ? '<span style="font-family:monospace;">' + escapeHtml(o.coupon_code) + '</span>' : '—') + '</span></div>' +
                 '</div>' +
-            '</div>';
+                '</div>';
 
-            // Coupon Section (if applied)
+            html += '<div class="od-section">' +
+                '<div class="od-section-title"><i class="fa-solid fa-user"></i> Customer Information</div>' +
+                '<div class="od-grid">' +
+                '<div class="od-item"><span class="od-item-label">Name</span><span class="od-item-value">' + escapeHtml(o.customer_name) + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Mobile</span><span class="od-item-value">' + escapeHtml(o.customer_mobile || '—') + '</span></div>' +
+                '</div>' +
+                '</div>';
+
+            html += '<div class="od-section">' +
+                '<div class="od-section-title"><i class="fa-solid fa-store"></i> Dealer Information</div>' +
+                '<div class="od-grid">' +
+                '<div class="od-item"><span class="od-item-label">Dealer</span><span class="od-item-value">' + escapeHtml(o.dealer_name) + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Mobile</span><span class="od-item-value">' + escapeHtml(o.dealer_mobile || '—') + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Station</span><span class="od-item-value">' + escapeHtml(o.dealer_station || '—') + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Delivery Address</span><span class="od-item-value">' + (o.delivery_address ? escapeHtml(o.delivery_address) : '—') + '</span></div>' +
+                '</div>' +
+                '</div>';
+
             if (o.coupon_code) {
                 html += '<div class="od-section">' +
                     '<div class="od-section-title"><i class="fa-solid fa-ticket"></i> Coupon Applied</div>' +
-                    '<div class="od-grid">' +
-                        '<div class="od-item"><span class="od-item-label">Code</span><span class="od-item-value" style="font-family:monospace;">' + escapeHtml(o.coupon_code) + '</span></div>' +
-                        '<div class="od-item"><span class="od-item-label">Discount</span><span class="od-item-value" style="color:#eab308;">' + formatMoney(o.discount) + '</span></div>' +
+                    '<div class="od-coupon-card">' +
+                    '<div class="od-coupon-icon"><i class="fa-solid fa-ticket"></i></div>' +
+                    '<div class="od-coupon-info">' +
+                    '<span class="od-coupon-label">Coupon Code</span>' +
+                    '<span class="od-coupon-code">' + escapeHtml(o.coupon_code) + '</span>' +
                     '</div>' +
-                '</div>';
+                    '<div style="text-align:right;">' +
+                    '<span class="od-coupon-label" style="display:block;">Discount</span>' +
+                    '<span class="od-coupon-amount">- ' + formatMoney(o.discount) + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
             }
 
-            // Items Section
             html += '<div class="od-section">' +
-                '<div class="od-section-title"><i class="fa-solid fa-box-open"></i> Order Items (' + items.length + ')</div>' +
+                '<div class="od-section-title"><i class="fa-solid fa-box-open"></i> Order Items <span style="color:var(--text-muted);font-weight:500;">(' + items.length + ')</span></div>' +
                 itemsHtml +
-            '</div>';
+                '</div>';
 
-            // Notes Section (if any)
             if (o.notes) {
                 html += '<div class="od-section">' +
                     '<div class="od-section-title"><i class="fa-solid fa-note-sticky"></i> Notes</div>' +
-                    '<div style="font-size:12px;color:var(--text-body);line-height:1.5;">' + escapeHtml(o.notes) + '</div>' +
-                '</div>';
+                    '<div class="od-notes-card">' + escapeHtml(o.notes) + '</div>' +
+                    '</div>';
             }
 
             body.html(html);
@@ -1240,4 +1780,5 @@
     </script>
 
 </body>
+
 </html>

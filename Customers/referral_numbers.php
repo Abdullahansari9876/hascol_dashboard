@@ -17,15 +17,14 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 
-    <!-- Select2 for searchable dropdown -->
+    <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        (function() {
+        (function () {
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             if (isDarkMode) document.documentElement.classList.add('dark-mode');
         })();
@@ -33,7 +32,7 @@
 
     <script>
         tailwind.config = {
-            theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'] } } }
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
         }
     </script>
 
@@ -51,8 +50,6 @@
             --table-head-text: #475569;
             --table-row-text: #1e293b;
             --table-row-hover: #f1f5f9;
-            --scrollbar-track: #eef1f6;
-            --scrollbar-thumb: #cbd5e1;
             --modal-overlay: rgba(15, 23, 42, 0.45);
             --btn-secondary-bg: #e2e8f0;
             --btn-secondary-text: #334155;
@@ -60,6 +57,7 @@
             --btn-secondary-hover-text: #0f2440;
             --toolbar-btn-bg: #ffffff;
         }
+
         html.dark-mode {
             --bg-body: #060b13;
             --bg-panel: #0d1520;
@@ -73,9 +71,7 @@
             --table-head-text: #94a3b8;
             --table-row-text: #e5e7eb;
             --table-row-hover: #0d1a2a;
-            --scrollbar-track: #060b13;
-            --scrollbar-thumb: #1a2635;
-            --modal-overlay: rgba(6,11,19,.85);
+            --modal-overlay: rgba(6, 11, 19, .85);
             --btn-secondary-bg: #1a2635;
             --btn-secondary-text: #94a3b8;
             --btn-secondary-hover-bg: #1f2a3d;
@@ -83,8 +79,15 @@
             --toolbar-btn-bg: #060b13;
         }
 
-        body { background-color: var(--bg-body); color: var(--text-muted); font-family: 'Inter', sans-serif; }
-        .text-heading { color: var(--text-heading) !important; }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .text-heading {
+            color: var(--text-heading) !important;
+        }
 
         .panel-card {
             background-color: var(--bg-panel);
@@ -103,12 +106,16 @@
             box-sizing: border-box;
             transition: border-color .15s, box-shadow .15s;
         }
+
         .form-input:focus {
             outline: none;
             border-color: #1d4ed8;
-            box-shadow: 0 0 0 2px rgba(29,78,216,.2);
+            box-shadow: 0 0 0 2px rgba(29, 78, 216, .2);
         }
-        .form-input::placeholder { color: var(--text-muted); }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
 
         select.form-input {
             appearance: none;
@@ -119,7 +126,11 @@
             padding-right: 30px;
             cursor: pointer;
         }
-        select.form-input option { background: var(--bg-panel); color: var(--text-body); }
+
+        select.form-input option {
+            background: var(--bg-panel);
+            color: var(--text-body);
+        }
 
         .form-label {
             color: var(--text-muted);
@@ -130,71 +141,131 @@
         }
 
         .btn-secondary {
-            background-color: var(--btn-secondary-bg); color: var(--btn-secondary-text);
-            padding: 8px 20px; border-radius: 0.25rem; border: none;
-            font-size: 12px; font-weight: 500; cursor: pointer;
-            display: inline-flex; align-items: center; gap: 6px;
+            background-color: var(--btn-secondary-bg);
+            color: var(--btn-secondary-text);
+            padding: 8px 20px;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             transition: all .15s;
         }
+
         .btn-secondary:hover {
             background-color: var(--btn-secondary-hover-bg);
             color: var(--btn-secondary-hover-text);
         }
 
         .btn-primary {
-            background-color: #1d4ed8; color: #fff;
-            padding: 8px 20px; border-radius: 0.25rem; border: none;
-            font-size: 12px; font-weight: 500; cursor: pointer;
-            display: inline-flex; align-items: center; gap: 6px;
+            background-color: #1d4ed8;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             transition: background-color .15s;
         }
-        .btn-primary:hover { background-color: #2563eb; }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
 
         .btn-action {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 4px; padding: 4px 10px; font-size: 10px; font-weight: 500;
-            border-radius: 4px; border: 1px solid transparent; cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 500;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            cursor: pointer;
             font-family: 'Inter', sans-serif;
         }
-        .btn-delete {
-            background: rgba(239,68,68,.1); color: #ef4444;
-            border-color: rgba(239,68,68,.25);
-        }
-        .btn-delete:hover { background: #ef4444; color: #fff; }
-        .btn-delete:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            background: rgba(148,163,184,.1);
-            color: #94a3b8;
-            border-color: rgba(148,163,184,.25);
+
+        .btn-edit {
+            background: rgba(29, 78, 216, .1);
+            color: #1d4ed8;
+            border-color: rgba(29, 78, 216, .25);
         }
 
-        .table-container { position: relative; overflow-x: auto; min-height: 120px; }
-        .table-container table {
-            width: 100% !important; border-collapse: collapse; font-size: 11px;
+        .btn-edit:hover {
+            background: #1d4ed8;
+            color: #fff;
         }
+
+        .btn-edit:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: rgba(148, 163, 184, .1);
+            color: #94a3b8;
+            border-color: rgba(148, 163, 184, .25);
+        }
+
+        .table-container {
+            position: relative;
+            overflow-x: auto;
+            min-height: 120px;
+        }
+
+        .table-container table {
+            width: 100% !important;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
         .table-container table thead th {
             background-color: var(--table-head-bg) !important;
             color: var(--table-head-text) !important;
-            font-weight: 500; text-align: left; padding: 10px 12px;
+            font-weight: 500;
+            text-align: left;
+            padding: 10px 12px;
             border-bottom: 1px solid var(--border-color);
-            white-space: nowrap; font-size: 10px;
-            text-transform: uppercase; letter-spacing: .5px;
+            white-space: nowrap;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
         }
+
         .table-container table tbody td {
-            padding: 10px 12px; border-bottom: 1px solid var(--border-color);
-            color: var(--table-row-text); vertical-align: middle;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--table-row-text);
+            vertical-align: middle;
         }
-        .table-container table tbody tr:hover { background-color: var(--table-row-hover); }
+
+        .table-container table tbody tr:hover {
+            background-color: var(--table-row-hover);
+        }
 
         .table-loading-overlay {
-            position: absolute; inset: 0; background-color: var(--bg-panel);
-            display: flex; align-items: center; justify-content: center;
-            gap: 8px; font-size: 12px; color: var(--text-muted); z-index: 5;
+            position: absolute;
+            inset: 0;
+            background-color: var(--bg-panel);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            z-index: 5;
         }
-        .table-loading-overlay.hidden { display: none; }
 
-        /* DataTables wrapper */
+        .table-loading-overlay.hidden {
+            display: none;
+        }
+
+        /* DataTables Export Buttons */
         .dataTables_wrapper .dt-buttons {
             display: flex !important;
             gap: 6px !important;
@@ -202,6 +273,7 @@
             margin: 0 0 10px 0 !important;
             float: left;
         }
+
         .dataTables_wrapper .dt-buttons .dt-button {
             padding: 6px 12px !important;
             background-color: var(--toolbar-btn-bg) !important;
@@ -218,13 +290,15 @@
             font-family: 'Inter', sans-serif !important;
             transition: all .15s !important;
         }
+
         .dataTables_wrapper .dt-buttons .dt-button:hover {
             background-color: var(--hover-bg) !important;
             color: var(--text-heading) !important;
             box-shadow: none !important;
         }
 
-        .dataTables_wrapper .dataTables_filter {
+        /* DataTables Search Input */
+        .dataTables_filter {
             float: right;
             margin: 0 0 10px 0 !important;
             display: flex;
@@ -232,7 +306,8 @@
             gap: 6px;
             position: relative;
         }
-        .dataTables_wrapper .dataTables_filter label {
+
+        .dataTables_filter label {
             color: var(--text-muted) !important;
             font-size: 11px !important;
             font-weight: 500 !important;
@@ -242,7 +317,8 @@
             margin: 0 !important;
             position: relative;
         }
-        .dataTables_wrapper .dataTables_filter label::before {
+
+        .dataTables_filter label::before {
             content: "\f002";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
@@ -255,7 +331,8 @@
             pointer-events: none;
             z-index: 2;
         }
-        .dataTables_wrapper .dataTables_filter input {
+
+        .dataTables_filter input {
             background-color: var(--input-bg) !important;
             border: 1px solid var(--border-color) !important;
             border-radius: 0.25rem !important;
@@ -270,25 +347,30 @@
             box-sizing: border-box !important;
             transition: border-color .15s, box-shadow .15s !important;
         }
-        .dataTables_wrapper .dataTables_filter input:focus {
+
+        .dataTables_filter input:focus {
             outline: none !important;
             border-color: #1d4ed8 !important;
             box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2) !important;
         }
-        .dataTables_wrapper .dataTables_filter input::placeholder {
+
+        .dataTables_filter input::placeholder {
             color: var(--text-muted) !important;
             font-size: 11px !important;
         }
 
+        /* DataTables Info & Pagination */
         .dataTables_wrapper .dataTables_info {
             color: var(--text-muted) !important;
             font-size: 11px !important;
             padding-top: 12px !important;
             clear: both;
         }
+
         .dataTables_wrapper .dataTables_paginate {
             padding-top: 12px !important;
         }
+
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             padding: 4px 10px !important;
             margin: 0 2px !important;
@@ -298,11 +380,13 @@
             color: var(--text-muted) !important;
             font-size: 11px !important;
         }
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             background: #1d4ed8 !important;
             color: #fff !important;
             border-color: #1d4ed8 !important;
         }
+
         .dataTables_wrapper::after {
             content: "";
             display: table;
@@ -318,12 +402,14 @@
             margin-bottom: 12px;
             padding: 0 4px;
         }
+
         .table-toolbar-left {
             display: flex;
             align-items: center;
             gap: 6px;
             flex-wrap: wrap;
         }
+
         .table-toolbar-right {
             display: flex;
             align-items: center;
@@ -332,30 +418,73 @@
         }
 
         .toast {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--bg-panel); border: 1px solid var(--border-color);
-            border-radius: .375rem; padding: 12px 20px;
-            color: var(--text-body); font-size: 12px; z-index: 9999;
-            transform: translateY(100px); opacity: 0;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: .375rem;
+            padding: 12px 20px;
+            color: var(--text-body);
+            font-size: 12px;
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
             transition: all .3s ease-in-out;
-            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
         }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast.success { border-color: #10b981; }
-        .toast.success i { color: #10b981; }
-        .toast.error { border-color: #ef4444; }
-        .toast.error i { color: #ef4444; }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            border-color: #10b981;
+        }
+
+        .toast.success i {
+            color: #10b981;
+        }
+
+        .toast.error {
+            border-color: #ef4444;
+        }
+
+        .toast.error i {
+            color: #ef4444;
+        }
 
         /* Status badges */
         .ref-status {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 3px 9px; border-radius: 12px; font-size: 10px; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
         }
-        .ref-used { background: rgba(239,68,68,.12); color: #ef4444; border: 1px solid rgba(239,68,68,.25); }
-        .ref-available { background: rgba(16,185,129,.12); color: #10b981; border: 1px solid rgba(16,185,129,.25); }
-        .ref-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-        /* Referral code */
+        .ref-used {
+            background: rgba(239, 68, 68, .12);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, .25);
+        }
+
+        .ref-available {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, .25);
+        }
+
+        .ref-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
         .ref-code {
             font-family: 'Courier New', monospace;
             font-weight: 700;
@@ -368,9 +497,70 @@
             display: inline-block;
         }
 
-        /* Customer cell */
-        .cell-name { font-weight: 600; color: var(--text-heading); font-size: 11px; }
-        .cell-sub { font-size: 9px; color: var(--text-muted); }
+        .cell-name {
+            font-weight: 600;
+            color: var(--text-heading);
+            font-size: 11px;
+        }
+
+        .cell-sub {
+            font-size: 9px;
+            color: var(--text-muted);
+        }
+
+        .table-section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .table-section-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .table-section-icon.blue {
+            background: rgba(29, 78, 216, .12);
+            color: #1d4ed8;
+        }
+
+        .table-section-icon.green {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+        }
+
+        .table-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .table-section-desc {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin: 2px 0 0 0;
+        }
+
+        .table-section-badge {
+            margin-left: auto;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: var(--hover-bg);
+            color: var(--text-muted);
+        }
 
         /* Summary cards */
         .summary-grid {
@@ -379,6 +569,7 @@
             gap: 10px;
             margin-bottom: 12px;
         }
+
         .summary-card {
             background: var(--bg-panel);
             border: 1px solid var(--border-color);
@@ -388,29 +579,49 @@
             align-items: center;
             gap: 12px;
         }
+
         .summary-icon {
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 16px; flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
         }
-        .summary-icon.blue { background: rgba(29,78,216,.12); color: #1d4ed8; }
-        .summary-icon.green { background: rgba(16,185,129,.12); color: #10b981; }
-        .summary-icon.red { background: rgba(239,68,68,.12); color: #ef4444; }
+
+        .summary-icon.blue {
+            background: rgba(29, 78, 216, .12);
+            color: #1d4ed8;
+        }
+
+        .summary-icon.green {
+            background: rgba(16, 185, 129, .12);
+            color: #10b981;
+        }
+
+        .summary-icon.red {
+            background: rgba(239, 68, 68, .12);
+            color: #ef4444;
+        }
+
         .summary-label {
-            font-size: 10px; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: .5px; font-weight: 500;
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-weight: 500;
         }
+
         .summary-value {
-            font-size: 16px; font-weight: 700;
-            color: var(--text-heading); margin-top: 2px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 2px;
         }
 
-        /* ============================================
-           Select2 Custom Styling (matches form-input)
-           ============================================ */
-
-        /* Container */
+        /* Select2 */
         .select2-container--default .select2-selection--single {
             background-color: var(--input-bg) !important;
             border: 1px solid var(--border-color) !important;
@@ -418,22 +629,27 @@
             height: 32px !important;
             transition: border-color .15s, box-shadow .15s;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__rendered {
             color: var(--text-body) !important;
             line-height: 30px !important;
             padding-left: 10px !important;
-            padding-right: 30px !important;
+            padding-right: 55px !important;   /* space for clear + arrow */
             font-size: 12px !important;
             font-family: 'Inter', sans-serif !important;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__placeholder {
             color: var(--text-muted) !important;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__arrow {
             height: 30px !important;
             width: 26px !important;
             right: 2px !important;
+            z-index: 5 !important;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__arrow b {
             border-color: var(--text-muted) transparent transparent transparent !important;
             border-width: 5px 4px 0 4px !important;
@@ -442,7 +658,25 @@
             margin-top: -2px !important;
         }
 
-        /* Focus state */
+        /* Clear (×) icon fix */
+        .select2-container--default .select2-selection--single .select2-selection__clear {
+            position: absolute !important;
+            right: 26px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            color: var(--text-muted) !important;
+            cursor: pointer !important;
+            z-index: 10 !important;
+            padding: 0 4px !important;
+            line-height: 1 !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__clear:hover {
+            color: #ef4444 !important;
+        }
+
         .select2-container--default.select2-container--focus .select2-selection--single,
         .select2-container--default.select2-container--open .select2-selection--single {
             border-color: #1d4ed8 !important;
@@ -450,17 +684,18 @@
             outline: none !important;
         }
 
-        /* Dropdown */
         .select2-container--default .select2-dropdown {
             background-color: var(--bg-panel) !important;
             border: 1px solid var(--border-color) !important;
             border-radius: 0.25rem !important;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
-            z-index: 9999 !important;
+            z-index: 99999 !important;
         }
+
         .select2-container--default .select2-search--dropdown {
             padding: 6px !important;
         }
+
         .select2-container--default .select2-search--dropdown .select2-search__field {
             background-color: var(--input-bg) !important;
             border: 1px solid var(--border-color) !important;
@@ -473,66 +708,70 @@
             height: 32px !important;
             box-sizing: border-box !important;
         }
+
         .select2-container--default .select2-search--dropdown .select2-search__field:focus {
             border-color: #1d4ed8 !important;
             box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2) !important;
         }
-        .select2-container--default .select2-search--dropdown .select2-search__field::placeholder {
-            color: var(--text-muted) !important;
-        }
 
-        /* Results */
         .select2-container--default .select2-results__option {
             font-size: 12px !important;
             color: var(--text-body) !important;
             padding: 6px 10px !important;
         }
+
         .select2-container--default .select2-results__option--highlighted[aria-selected] {
             background-color: #1d4ed8 !important;
             color: #ffffff !important;
         }
+
         .select2-container--default .select2-results__option[aria-selected=true] {
             background-color: var(--hover-bg) !important;
             color: var(--text-heading) !important;
         }
+
         .select2-results__options {
             max-height: 280px !important;
         }
 
-        /* Scrollbar for dropdown */
-        .select2-results__options::-webkit-scrollbar {
-            width: 6px;
-        }
-        .select2-results__options::-webkit-scrollbar-track {
-            background: var(--scrollbar-track);
-        }
-        .select2-results__options::-webkit-scrollbar-thumb {
-            background: var(--scrollbar-thumb);
-            border-radius: 4px;
-        }
-
-        /* Loading message */
         .select2-container--default .select2-results__option.loading-results {
             color: var(--text-muted) !important;
             font-style: italic !important;
         }
-        /* No results */
+
         .select2-container--default .select2-results__message {
             color: var(--text-muted) !important;
             font-size: 12px !important;
             padding: 8px 10px !important;
         }
 
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
-        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+        /* SweetAlert */
+        .swal2-container {
+            z-index: 99999 !important;
+        }
 
-        .hidden { display: none !important; }
+        .hidden {
+            display: none !important;
+        }
 
         @media (max-width: 768px) {
-            .dataTables_wrapper .dataTables_filter input { width: 160px !important; }
-            .dataTables_wrapper .dt-buttons { float: none; margin-bottom: 8px !important; }
-            .dataTables_wrapper .dataTables_filter { float: none; justify-content: flex-start; }
+            .dataTables_filter input {
+                width: 160px !important;
+            }
+
+            .dataTables_wrapper .dt-buttons {
+                float: none;
+                margin-bottom: 8px !important;
+            }
+
+            .dataTables_filter {
+                float: none;
+                justify-content: flex-start;
+            }
+
+            .table-section-badge {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -554,9 +793,12 @@
                     </h2>
                     <p class="text-[10px] text-gray-500">View referral codes and their usage</p>
                 </div>
+                <button type="button" onclick="openAddReferralModal()" class="btn-primary flex items-center gap-2"
+                    style="height:32px;padding:0 16px;">
+                    <i class="fa-solid fa-plus"></i> Add Referral
+                </button>
             </div>
 
-            <!-- Summary Cards -->
             <div class="summary-grid">
                 <div class="summary-card">
                     <div class="summary-icon blue"><i class="fa-solid fa-list"></i></div>
@@ -581,7 +823,6 @@
                 </div>
             </div>
 
-            <!-- Filters (Custom Search removed) -->
             <div class="panel-card p-3 mb-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                     <div class="lg:col-span-2">
@@ -606,19 +847,33 @@
                         <label class="form-label">Date To</label>
                         <input type="date" id="filterDateTo" class="form-input text-xs" style="height:32px;">
                     </div>
-                    <div class="lg:col-span-4" style="display:flex;gap:8px;align-items:flex-end;justify-content:flex-end;">
-                        <button type="button" onclick="loadReferrals()" class="btn-primary flex items-center gap-2" style="height:32px;padding:0 16px;">
+                    <div class="lg:col-span-4"
+                        style="display:flex;gap:8px;align-items:flex-end;justify-content:flex-end;">
+                        <button type="button" onclick="loadReferrals()" class="btn-primary flex items-center gap-2"
+                            style="height:32px;padding:0 16px;">
                             <i class="fa-solid fa-filter"></i> Apply
                         </button>
-                        <button type="button" onclick="resetFilters()" class="btn-secondary flex items-center gap-2" style="height:32px;padding:0 14px;" title="Reset all filters">
+                        <button type="button" onclick="resetFilters()" class="btn-secondary flex items-center gap-2"
+                            style="height:32px;padding:0 14px;" title="Reset all filters">
                             <i class="fa-solid fa-rotate-left"></i> Reset
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Table -->
-            <div class="panel-card overflow-hidden p-3">
+            <!-- TABLE 1: MANUALLY CREATED REFERRALS -->
+            <div class="panel-card overflow-hidden p-3 mb-4">
+                <div class="table-section-header">
+                    <div class="table-section-icon blue">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <div>
+                        <h3 class="table-section-title">Manually Created Referrals</h3>
+                        <p class="table-section-desc">Referral codes created by admin — not linked to any customer</p>
+                    </div>
+                    <span class="table-section-badge" id="manualCountBadge">0 records</span>
+                </div>
+
                 <div class="table-toolbar">
                     <div class="table-toolbar-left" id="exportButtonsContainer"></div>
                     <div class="table-toolbar-right" id="searchContainer"></div>
@@ -633,11 +888,52 @@
                             <tr>
                                 <th>S.No</th>
                                 <th>Referral No</th>
+                                <th>Assigned To</th>
                                 <th>Status</th>
                                 <th>Used By</th>
                                 <th>Used At</th>
                                 <th>Created</th>
-                                <th style="width:70px;">Action</th>
+                                <th style="width:90px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABLE 2: CUSTOMER-GENERATED REFERRALS -->
+            <div class="panel-card overflow-hidden p-3">
+                <div class="table-section-header">
+                    <div class="table-section-icon green">
+                        <i class="fa-solid fa-user-friends"></i>
+                    </div>
+                    <div>
+                        <h3 class="table-section-title">Customer-Generated Referrals</h3>
+                        <p class="table-section-desc">Referral codes generated through customers — linked to referring customer</p>
+                    </div>
+                    <span class="table-section-badge" id="customerCountBadge">0 records</span>
+                </div>
+
+                <div class="table-toolbar">
+                    <div class="table-toolbar-left" id="refByExportButtonsContainer"></div>
+                    <div class="table-toolbar-right" id="refBySearchContainer"></div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-loading-overlay" id="refByLoadingOverlay">
+                        <i class="fa-solid fa-spinner fa-spin text-blue-400"></i> Loading referrals by customers...
+                    </div>
+                    <table id="refByTable" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Referral No</th>
+                                <th>Referred By</th>
+                                <th>Assigned To</th>
+                                <th>Status</th>
+                                <th>Used By</th>
+                                <th>Used At</th>
+                                <th>Created</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -647,6 +943,100 @@
 
         </div>
     </main>
+
+    <!-- ADD REFERRAL MODAL -->
+    <div id="addReferralModal" class="hidden"
+        style="position:fixed;inset:0;background:var(--modal-overlay);z-index:9998;display:flex;align-items:center;justify-content:center;padding:16px;">
+        <div class="panel-card"
+            style="width:100%;max-width:440px;padding:20px;border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,.4);">
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h3 class="text-heading" style="font-size:14px;font-weight:600;margin:0;">
+                    <i class="fa-solid fa-plus-circle text-blue-500 mr-2"></i>Add Referral Number
+                </h3>
+                <button type="button" onclick="closeAddReferralModal()"
+                    style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:16px;">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div style="margin-bottom:14px;">
+                <label class="form-label">Referral Number <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="newReferralNo" class="form-input text-xs"
+                    placeholder="Enter 10-digit referral code" style="height:32px;"
+                    maxlength="10" inputmode="numeric" pattern="[0-9]*"
+                    autocomplete="off">
+                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Only digits (0–9), maximum 10 digits
+                </div>
+            </div>
+
+            <div
+                style="background:var(--hover-bg);padding:10px 12px;border-radius:4px;margin-bottom:16px;font-size:11px;color:var(--text-muted);">
+                <i class="fa-solid fa-circle-info mr-1"></i>
+                Please enter a unique 10-digit referral code. Duplicate codes will be rejected.
+            </div>
+
+            <div style="display:flex;justify-content:flex-end;gap:8px;">
+                <button type="button" onclick="closeAddReferralModal()" class="btn-secondary" style="height:32px;">
+                    Cancel
+                </button>
+                <button type="button" id="btnSaveReferral" onclick="createReferral()" class="btn-primary"
+                    style="height:32px;padding:0 18px;">
+                    <i class="fa-solid fa-check"></i> Create
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT REFERRAL MODAL -->
+    <div id="editReferralModal" class="hidden"
+        style="position:fixed;inset:0;background:var(--modal-overlay);z-index:9998;display:flex;align-items:center;justify-content:center;padding:16px;">
+        <div class="panel-card"
+            style="width:100%;max-width:440px;padding:20px;border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,.4);">
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h3 class="text-heading" style="font-size:14px;font-weight:600;margin:0;">
+                    <i class="fa-solid fa-pen-to-square text-blue-500 mr-2"></i>Edit Referral Number
+                </h3>
+                <button type="button" onclick="closeEditReferralModal()"
+                    style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:16px;">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <input type="hidden" id="editReferralId">
+
+            <div style="margin-bottom:14px;">
+                <label class="form-label">Referral Number <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="editReferralNo" class="form-input text-xs"
+                    placeholder="Enter 10-digit referral code" style="height:32px;"
+                    maxlength="10" inputmode="numeric" pattern="[0-9]*"
+                    autocomplete="off">
+                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Only digits (0–9), maximum 10 digits
+                </div>
+            </div>
+
+            <div
+                style="background:var(--hover-bg);padding:10px 12px;border-radius:4px;margin-bottom:16px;font-size:11px;color:var(--text-muted);">
+                <i class="fa-solid fa-circle-info mr-1"></i>
+                Only unused referrals can be edited. Duplicate codes will be rejected.
+            </div>
+
+            <div style="display:flex;justify-content:flex-end;gap:8px;">
+                <button type="button" onclick="closeEditReferralModal()" class="btn-secondary" style="height:32px;">
+                    Cancel
+                </button>
+                <button type="button" id="btnUpdateReferral" onclick="updateReferral()" class="btn-primary"
+                    style="height:32px;padding:0 18px;">
+                    <i class="fa-solid fa-check"></i> Update
+                </button>
+            </div>
+        </div>
+    </div>
 
     <div id="toast" class="toast">
         <i class="fa-solid fa-check-circle mr-2"></i>
@@ -668,6 +1058,7 @@
         const API_BASE = 'http://localhost:8080/hascol_customer/api/referrals-no-list/';
 
         let dataTable = null;
+        let refByTable = null;
         window.refStore = {};
 
         const exportButtons = [
@@ -681,10 +1072,9 @@
         // ============================================
         // INIT
         // ============================================
-        $(document).ready(function() {
-            // ─── Initialize Select2 on Customer dropdown ───
-            initCustomerSelect2();
+        $(document).ready(function () {
 
+            // Table 1: Manually Created Referrals
             dataTable = $('#refTable').DataTable({
                 dom: 'Bfrtip',
                 buttons: exportButtons,
@@ -692,12 +1082,12 @@
                 order: [],
                 columnDefs: [{ orderable: false, targets: '_all' }],
                 language: {
-                    emptyTable: 'No referral numbers found',
+                    emptyTable: 'No manually created referrals found',
                     info: 'Showing _START_ to _END_ of _TOTAL_',
                     infoEmpty: '0 entries',
                     infoFiltered: '(filtered from _MAX_)',
                     search: '',
-                    searchPlaceholder: 'Search in table...'
+                    searchPlaceholder: 'Search'
                 },
                 initComplete: function () {
                     this.api().buttons().container().appendTo('#exportButtonsContainer');
@@ -706,41 +1096,113 @@
                 }
             });
 
-            // Filters auto-apply
-            $('#filterUsed').on('change', function() { loadReferrals(); });
-
-            // ─── Customer dropdown change → auto apply ───
-            // (Use jQuery .on — Select2 triggers 'change' event on this)
-            $('#filterCustomer').on('change', function() {
-                loadReferrals();
+            // Table 2: Customer-Generated Referrals
+            refByTable = $('#refByTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: exportButtons,
+                pageLength: 10,
+                order: [],
+                columnDefs: [{ orderable: false, targets: '_all' }],
+                language: {
+                    emptyTable: 'No customer-generated referrals found',
+                    info: 'Showing _START_ to _END_ of _TOTAL_',
+                    infoEmpty: '0 entries',
+                    infoFiltered: '(filtered from _MAX_)',
+                    search: '',
+                    searchPlaceholder: 'Search'
+                },
+                initComplete: function () {
+                    this.api().buttons().container().appendTo('#refByExportButtonsContainer');
+                    const searchBox = $('#refByTable_wrapper .dataTables_filter');
+                    searchBox.appendTo('#refBySearchContainer');
+                }
             });
 
-            // Initial loads
+            $('#filterUsed').on('change', function () { loadReferrals(); });
+            $('#filterCustomer').on('change', function () { loadReferrals(); });
+
+            // ✅ NEW: Numeric-only input restriction (type + paste)
+            bindNumericOnlyInput('#newReferralNo');
+            bindNumericOnlyInput('#editReferralNo');
+
             loadCustomersForFilter();
             loadReferrals();
         });
 
         // ============================================
-        // INITIALIZE SELECT2 ON CUSTOMER DROPDOWN
+        // NUMERIC-ONLY INPUT (digits, max 10, paste-safe)
+        // ============================================
+        function bindNumericOnlyInput(selector) {
+            const $el = $(selector);
+            if (!$el.length) return;
+
+            // Block invalid keys before they're entered
+            $el.on('keypress', function (e) {
+                const char = String.fromCharCode(e.which);
+                // Allow control keys (backspace, tab, arrows, delete, etc.)
+                if (e.which === 0 || e.ctrlKey || e.metaKey) return;
+                if (!/[0-9]/.test(char)) {
+                    e.preventDefault();
+                    return false;
+                }
+                // Block input if already 10 digits and typing another
+                const currentVal = $(this).val() || '';
+                const selLen = (this.selectionEnd || 0) - (this.selectionStart || 0);
+                if (currentVal.length >= 10 && selLen === 0) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // Handle paste + any other input method
+            $el.on('input paste drop', function () {
+                const $this = $(this);
+                // Use setTimeout so value updates first
+                setTimeout(function () {
+                    let v = $this.val() || '';
+                    v = v.replace(/[^0-9]/g, '');   // digits only
+                    if (v.length > 10) v = v.substring(0, 10); // max 10
+                    if ($this.val() !== v) {
+                        $this.val(v);
+                    }
+                }, 0);
+            });
+        }
+
+        // ============================================
+        // SELECT2 INIT (with clear-icon fix)
         // ============================================
         function initCustomerSelect2() {
-            $('#filterCustomer').select2({
+            const $el = $('#filterCustomer');
+
+            if ($el.hasClass('select2-hidden-accessible')) {
+                $el.select2('destroy');
+            }
+
+            $el.select2({
                 placeholder: 'All Customers',
                 allowClear: true,
                 width: '100%',
-                dropdownParent: $('body'), // prevent overflow issues
+                dropdownParent: $('body'),
                 language: {
-                    noResults: function() {
-                        return 'No customers found';
-                    },
-                    searching: function() {
-                        return 'Searching...';
-                    },
-                    inputTooShort: function() {
-                        return 'Type to search customers...';
-                    }
+                    noResults: function () { return 'No customers found'; },
+                    searching: function () { return 'Searching...'; },
+                    inputTooShort: function () { return 'Type to search customers...'; }
                 },
-                minimumResultsForSearch: 0 // always show search box
+                minimumResultsForSearch: 0
+            });
+
+            // ✅ Clear (×) icon click fix
+            $el.off('select2:unselecting.fixclear select2:opening.fixclear');
+            $el.on('select2:unselecting.fixclear', function () {
+                $(this).data('state', 'unselected');
+            });
+            $el.on('select2:opening.fixclear', function (e) {
+                if ($(this).data('state') === 'unselected') {
+                    $(this).removeData('state');
+                    e.preventDefault();
+                    return false;
+                }
             });
         }
 
@@ -749,8 +1211,9 @@
         // ============================================
         function escapeHtml(text) {
             if (text === null || text === undefined) return '';
-            return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+            return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
         }
+
         function showToast(message, type = 'success') {
             const toast = $('#toast');
             toast.removeClass('success error').addClass(type);
@@ -759,6 +1222,7 @@
             clearTimeout(window._toastT);
             window._toastT = setTimeout(() => toast.removeClass('show'), 3000);
         }
+
         function formatDate(dt, withTime) {
             if (!dt) return '—';
             const d = new Date(dt.replace(' ', 'T'));
@@ -781,21 +1245,31 @@
                 contentType: 'application/json',
                 data: JSON.stringify({}),
                 dataType: 'json',
-                success: function(res) {
+                success: function (res) {
                     const sel = $('#filterCustomer');
-                    // Clear existing options (except placeholder)
-                    sel.find('option').remove();
+
+                    if (sel.hasClass('select2-hidden-accessible')) {
+                        sel.select2('destroy');
+                    }
+
+                    sel.empty();
                     sel.append('<option value="">All Customers</option>');
-                    if (res && res.customers && res.customers.length) {
-                        res.customers.forEach(c => {
+
+                    const customerList = res.hascol_customer || res.customers || [];
+
+                    if (customerList.length) {
+                        customerList.forEach(function (c) {
                             const label = c.name + (c.mobile ? ' — ' + c.mobile : '');
                             sel.append('<option value="' + c.id + '">' + escapeHtml(label) + '</option>');
                         });
                     }
-                    // Re-init Select2 with new options (keeps search working)
+
                     initCustomerSelect2();
                 },
-                error: function() { console.warn('Failed to load customers for filter'); }
+                error: function (xhr, s, e) {
+                    console.error('Customers load failed:', e, xhr.responseText);
+                    showToast('Failed to load customers', 'error');
+                }
             });
         }
 
@@ -803,13 +1277,15 @@
         // RESET FILTERS
         // ============================================
         function resetFilters() {
-            $('#filterCustomer').val('').trigger('change.select2'); // reset select2
+            $('#filterCustomer').val(null).trigger('change.select2');
             $('#filterUsed').val('');
             $('#filterDateFrom').val('');
             $('#filterDateTo').val('');
 
             dataTable.search('').draw();
             dataTable.page(0).draw(false);
+            refByTable.search('').draw();
+            refByTable.page(0).draw(false);
 
             loadReferrals();
             showToast('Filters reset — showing all referrals', 'success');
@@ -831,6 +1307,7 @@
             if (dateTo) payload.date_to = dateTo;
 
             $('#tableLoadingOverlay').removeClass('hidden');
+            $('#refByLoadingOverlay').removeClass('hidden');
 
             $.ajax({
                 url: API_BASE + 'get-referrals.php',
@@ -838,10 +1315,13 @@
                 contentType: 'application/json',
                 data: JSON.stringify(payload),
                 dataType: 'json',
-                success: function(res) {
-                    console.log('Referrals Response:', res);
+                success: function (res) {
                     dataTable.clear().draw();
+                    refByTable.clear().draw();
                     window.refStore = {};
+
+                    let manualCount = 0;
+                    let customerCount = 0;
 
                     if (res && res.status === 'success') {
                         $('#sumTotal').text(res.total || 0);
@@ -849,7 +1329,8 @@
                         $('#sumUnused').text(res.total_unused || 0);
 
                         if (Array.isArray(res.referrals) && res.referrals.length) {
-                            $.each(res.referrals, function(i, r) {
+
+                            $.each(res.referrals, function (i, r) {
                                 window.refStore[r.id] = r;
 
                                 const refCode = '<span class="ref-code">' + escapeHtml(r.referral_no) + '</span>';
@@ -863,101 +1344,364 @@
                                     usedByCell = '<div>' +
                                         '<div class="cell-name">' + escapeHtml(r.used_by_name) + '</div>' +
                                         '<div class="cell-sub">' + escapeHtml(r.used_by_mobile || '—') + '</div>' +
-                                    '</div>';
+                                        '</div>';
                                 }
 
                                 const usedAtCell = r.used_at
                                     ? '<span style="color:var(--text-body);font-size:11px;">' + formatDate(r.used_at, true) + '</span>'
                                     : '<span style="color:var(--text-muted);">—</span>';
 
-                                let action = '';
-                                if (r.is_used === 0) {
-                                    action = '<button class="btn-action btn-delete" onclick="deleteReferral(' + r.id + ', \'' + escapeHtml(r.referral_no).replace(/'/g, "\\'") + '\')" title="Delete">' +
-                                        '<i class="fa-solid fa-trash"></i>' +
-                                    '</button>';
-                                } else {
-                                    action = '<button class="btn-action btn-delete" disabled title="Cannot delete a used referral">' +
-                                        '<i class="fa-solid fa-trash"></i>' +
-                                    '</button>';
+                                let assignedToCell = '<span style="color:var(--text-muted);">—</span>';
+                                if (r.user_name) {
+                                    assignedToCell = '<span class="cell-name">' + escapeHtml(r.user_name) + '</span>';
                                 }
 
-                                dataTable.row.add([
-                                    i + 1,
-                                    refCode,
-                                    statusHtml,
-                                    usedByCell,
-                                    usedAtCell,
-                                    formatDate(r.created_at, true),
-                                    action
-                                ]);
+                                let action = '';
+                                if (r.is_used === 0) {
+                                    action = '<button class="btn-action btn-edit" onclick="openEditReferralModal(' + r.id + ')" title="Edit">' +
+                                        '<i class="fa-solid fa-pen-to-square"></i>' +
+                                        '</button>';
+                                } else {
+                                    action = '<button class="btn-action btn-edit" disabled title="Cannot edit a used referral">' +
+                                        '<i class="fa-solid fa-pen-to-square"></i>' +
+                                        '</button>';
+                                }
+
+                                // Table 1: Manual referrals
+                                if (!r.referred_by_customer_id) {
+                                    dataTable.row.add([
+                                        manualCount + 1,
+                                        refCode,
+                                        assignedToCell,
+                                        statusHtml,
+                                        usedByCell,
+                                        usedAtCell,
+                                        formatDate(r.created_at, true),
+                                        action
+                                    ]);
+                                    manualCount++;
+                                }
+
+                                // Table 2: Customer-generated referrals
+                                if (r.referred_by_customer_id) {
+                                    let referredByCell = '<span style="color:var(--text-muted);">—</span>';
+                                    if (r.referred_by_name) {
+                                        referredByCell =
+                                            '<div>' +
+                                            '<div class="cell-name">' + escapeHtml(r.referred_by_name) + '</div>' +
+                                            '<div class="cell-sub">' + escapeHtml(r.referred_by_mobile || '—') + '</div>' +
+                                            '</div>';
+                                    } else {
+                                        referredByCell = '<span style="color:var(--text-muted);">Customer #' + r.referred_by_customer_id + '</span>';
+                                    }
+
+                                    refByTable.row.add([
+                                        customerCount + 1,
+                                        refCode,
+                                        referredByCell,
+                                        assignedToCell,
+                                        statusHtml,
+                                        usedByCell,
+                                        usedAtCell,
+                                        formatDate(r.created_at, true)
+                                    ]);
+                                    customerCount++;
+                                }
                             });
+
                             showToast('Loaded ' + res.total + ' referral numbers', 'success');
                         } else {
                             dataTable.row.add([
-                                '<span style="color:var(--text-muted);">No referral numbers found</span>',
-                                '', '', '', '', '', ''
+                                '<span style="color:var(--text-muted);">No manually created referrals found</span>',
+                                '', '', '', '', '', '', ''
+                            ]);
+
+                            refByTable.row.add([
+                                '<span style="color:var(--text-muted);">No customer-generated referrals found</span>',
+                                '', '', '', '', '', '', ''
                             ]);
                         }
                     } else {
                         dataTable.row.add([
                             '<span style="color:#ef4444;">Error loading referrals</span>',
-                            '', '', '', '', '', ''
+                            '', '', '', '', '', '', ''
+                        ]);
+
+                        refByTable.row.add([
+                            '<span style="color:#ef4444;">Error loading referrals</span>',
+                            '', '', '', '', '', '', ''
                         ]);
                     }
 
+                    $('#manualCountBadge').text(manualCount + (manualCount === 1 ? ' record' : ' records'));
+                    $('#customerCountBadge').text(customerCount + (customerCount === 1 ? ' record' : ' records'));
+
                     dataTable.draw(false);
+                    refByTable.draw(false);
                     $('#tableLoadingOverlay').addClass('hidden');
+                    $('#refByLoadingOverlay').addClass('hidden');
                 },
-                error: function(xhr, s, e) {
+                error: function (xhr, s, e) {
                     console.error('Load referrals error:', e, xhr.responseText);
                     dataTable.clear().draw();
+                    refByTable.clear().draw();
+
                     dataTable.row.add([
                         '<span style="color:#ef4444;">Error loading referrals</span>',
-                        '', '', '', '', '', ''
+                        '', '', '', '', '', '', ''
                     ]).draw(false);
+
+                    refByTable.row.add([
+                        '<span style="color:#ef4444;">Error loading referrals</span>',
+                        '', '', '', '', '', '', ''
+                    ]).draw(false);
+
                     $('#tableLoadingOverlay').addClass('hidden');
+                    $('#refByLoadingOverlay').addClass('hidden');
                     showToast('Failed to load referrals', 'error');
                 }
             });
         }
 
         // ============================================
-        // DELETE
+        // ADD REFERRAL — MODAL
         // ============================================
-        function deleteReferral(id, refNo) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Delete Referral Number?',
-                html: 'Delete <b>' + escapeHtml(refNo) + '</b>?<br><small style="color:#94a3b8;">This action cannot be undone.</small>',
-                showCancelButton: true,
-                confirmButtonColor: '#ef4444',
-                cancelButtonColor: '#64748b',
-                confirmButtonText: '<i class="fa-solid fa-trash"></i> Yes, Delete',
-                cancelButtonText: 'Cancel',
-                reverseButtons: true
-            }).then(r => {
-                if (!r.isConfirmed) return;
-                $.ajax({
-                    url: API_BASE + 'delete-referral.php',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({ id: id }),
-                    dataType: 'json',
-                    success: function(res) {
-                        if (res && res.status === 'success') {
-                            Swal.fire({ icon:'success', title:'Deleted!', text: res.message, confirmButtonText:'OK', confirmButtonColor:'#1d4ed8' });
-                            loadReferrals();
-                        } else {
-                            Swal.fire({ icon:'error', title:'Error', text: res.message || 'Delete failed', confirmButtonText:'OK', confirmButtonColor:'#1d4ed8' });
-                        }
-                    },
-                    error: function() {
-                        Swal.fire({ icon:'error', title:'Server Error', text:'Delete failed', confirmButtonText:'OK', confirmButtonColor:'#1d4ed8' });
-                    }
+        function openAddReferralModal() {
+            $('#newReferralNo').val('');
+            $('#addReferralModal').removeClass('hidden');
+            setTimeout(() => $('#newReferralNo').focus(), 100);
+        }
+
+        function closeAddReferralModal() {
+            $('#addReferralModal').addClass('hidden');
+        }
+
+        // ============================================
+        // EDIT REFERRAL — MODAL
+        // ============================================
+        function openEditReferralModal(id) {
+            const r = window.refStore[id];
+            if (!r) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Not Found',
+                    text: 'Referral data not found.',
+                    confirmButtonColor: '#1d4ed8'
                 });
+                return;
+            }
+
+            if (r.is_used === 1) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Cannot Edit',
+                    text: 'This referral has already been used and cannot be edited.',
+                    confirmButtonColor: '#1d4ed8'
+                });
+                return;
+            }
+
+            $('#editReferralId').val(r.id);
+            $('#editReferralNo').val(r.referral_no || '');
+            $('#editReferralModal').removeClass('hidden');
+            setTimeout(() => $('#editReferralNo').focus(), 100);
+        }
+
+        function closeEditReferralModal() {
+            $('#editReferralModal').addClass('hidden');
+            $('#editReferralId').val('');
+            $('#editReferralNo').val('');
+        }
+
+        $(document).on('click', '#addReferralModal', function (e) {
+            if (e.target === this) closeAddReferralModal();
+        });
+
+        $(document).on('click', '#editReferralModal', function (e) {
+            if (e.target === this) closeEditReferralModal();
+        });
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeAddReferralModal();
+                closeEditReferralModal();
+            }
+        });
+
+        // ============================================
+        // CREATE REFERRAL
+        // ============================================
+        function createReferral() {
+            const referralNo = $('#newReferralNo').val().trim();
+
+            if (!referralNo) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Referral Number Required',
+                    text: 'Please enter a referral code.',
+                    confirmButtonColor: '#1d4ed8'
+                });
+                return;
+            }
+
+            if (!/^\d{10}$/.test(referralNo)) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Invalid Referral Number',
+                    text: 'Referral number must be exactly 10 digits.',
+                    confirmButtonColor: '#1d4ed8'
+                });
+                return;
+            }
+
+            const $btn = $('#btnSaveReferral');
+            $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> Creating...');
+
+            $.ajax({
+                url: API_BASE + 'create-referral.php',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ referral_no: referralNo }),
+                dataType: 'json',
+                success: function (res) {
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-check"></i> Create');
+
+                    if (res && res.status === 'success') {
+                        closeAddReferralModal();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Created!',
+                            text: res.message || 'Referral number created successfully.',
+                            confirmButtonColor: '#1d4ed8',
+                            timer: 2000,
+                            showConfirmButton: true
+                        }).then(() => {
+                            loadReferrals();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (res && res.message) || 'Failed to create referral.',
+                            confirmButtonColor: '#1d4ed8'
+                        });
+                    }
+                },
+                error: function (xhr, s, e) {
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-check"></i> Create');
+                    console.error('Create referral error:', e, xhr.responseText);
+
+                    let errMsg = 'Failed to reach the server.';
+                    try {
+                        const parsed = JSON.parse(xhr.responseText);
+                        if (parsed && parsed.message) errMsg = parsed.message;
+                    } catch (_) {
+                        if (xhr.responseText) errMsg = xhr.responseText.substring(0, 200);
+                    }
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Server Error',
+                        html: '<div style="font-size:12px;text-align:left;">' + errMsg + '</div>',
+                        confirmButtonColor: '#1d4ed8'
+                    });
+                }
+            });
+        }
+
+        // ============================================
+        // UPDATE REFERRAL
+        // ============================================
+        function updateReferral() {
+            const id = parseInt($('#editReferralId').val());
+            const referralNo = $('#editReferralNo').val().trim();
+
+            if (!id || id <= 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid ID',
+                    text: 'Referral ID is missing.',
+                    confirmButtonColor: '#1d4ed8'
+                });
+                return;
+            }
+
+            if (!referralNo) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Referral Number Required',
+                    text: 'Please enter a referral code.',
+                    confirmButtonColor: '#1d4ed8'
+                });
+                return;
+            }
+
+            if (!/^\d{10}$/.test(referralNo)) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Invalid Referral Number',
+                    text: 'Referral number must be exactly 10 digits.',
+                    confirmButtonColor: '#1d4ed8'
+                });
+                return;
+            }
+
+            const $btn = $('#btnUpdateReferral');
+            $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> Updating...');
+
+            $.ajax({
+                url: API_BASE + 'update-referral.php',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ id: id, referral_no: referralNo }),
+                dataType: 'json',
+                success: function (res) {
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-check"></i> Update');
+
+                    if (res && res.status === 'success') {
+                        closeEditReferralModal();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Updated!',
+                            text: res.message || 'Referral number updated successfully.',
+                            confirmButtonColor: '#1d4ed8',
+                            timer: 2000,
+                            showConfirmButton: true
+                        }).then(() => {
+                            loadReferrals();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: (res && res.message) || 'Failed to update referral.',
+                            confirmButtonColor: '#1d4ed8'
+                        });
+                    }
+                },
+                error: function (xhr, s, e) {
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-check"></i> Update');
+                    console.error('Update referral error:', e, xhr.responseText);
+
+                    let errMsg = 'Failed to reach the server.';
+                    try {
+                        const parsed = JSON.parse(xhr.responseText);
+                        if (parsed && parsed.message) errMsg = parsed.message;
+                    } catch (_) {
+                        if (xhr.responseText) errMsg = xhr.responseText.substring(0, 200);
+                    }
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Server Error',
+                        html: '<div style="font-size:12px;text-align:left;">' + errMsg + '</div>',
+                        confirmButtonColor: '#1d4ed8'
+                    });
+                }
             });
         }
     </script>
 
 </body>
+
 </html>

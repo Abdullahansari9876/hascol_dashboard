@@ -1,0 +1,22 @@
+# Ignore folders
+api/
+cache/
+logs/
+app/
+bootstrap/
+config/
+database/
+node_modules/
+vendor/
+storage/
+public/
+
+# Local database configuration (project root)
+/config.php
+
+# Ignore specific files
+*.log
+*.cache
+.env
+.DS_Store
+Thumbs.db

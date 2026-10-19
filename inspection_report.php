@@ -1,5 +1,5 @@
 <?php
-// Inspection Report - Themed Version (FINAL - UI Tweaks v2)
+// Inspection Report - Themed Version (FINAL - last_vists_dates API Removed)
 // APIs sourced from live inspection_report.php
 // UI/Theme sourced from reference php.txt
 ?>
@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Inspection Report | Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,   initial-scale=1.0">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -510,7 +510,7 @@
             break-after: avoid;
         }
 
-        /* ✅ Failed image placeholder (agar image convert na ho sake) */
+        /* Failed image placeholder (agar image convert na ho sake) */
         .pdf-export-mode img[data-failed="true"] {
             border: 1px dashed #ef4444;
             padding: 2px;
@@ -664,7 +664,6 @@
                         <div class="w-full text-[11px] text-gray-500">
                             Completion Date : <span id="survey_complete_time" class="text-heading font-medium"></span>
                         </div>
-                        <div id="last_recon" class="w-full"></div>
                         <div class="w-full text-[11px] text-gray-500">
                             Site Name : <span id="survey_dealer_name" class="text-heading font-medium"></span>
                         </div>
@@ -689,10 +688,6 @@
         var API_BASE = "http://151.106.17.246:8080/hascolbridgeApis/";
         var FILES_BASE = "http://151.106.17.246:8080/hascolBridge_files/";
         var API_KEY = "03201232927";
-
-        // ✅ CORS-Safe Image Proxy — apne server par image_proxy.php file banayein
-        // Agar proxy available nahi hai to ye fallback use hoga
-        var IMAGE_PROXY = 'image_proxy.php?url=';
 
         var dataTable = null;
 
@@ -864,13 +859,10 @@
         }
 
         // ============================================
-        // ✅ Thumbnail Loader — FIXED: crossOrigin hata diya
-        // HTML preview mein normal img load ki tarah kaam karta hai
-        // PDF ke waqt alag se DataURL conversion hoti hai
+        // Thumbnail Loader
         // ============================================
         function loadThumbnail(imgEl, imageUrl) {
             var img = new Image();
-            // ✅ FIX: crossOrigin hata diya — normal img load
             img.onload = function() {
                 $(imgEl).attr('src', imageUrl).show();
                 $(imgEl).siblings('.file-icon-fallback').hide();
@@ -955,7 +947,6 @@
             });
 
             initializeDataTable();
-            get_settings();
             fetchtable();
         });
 
@@ -1054,31 +1045,6 @@
         function closeColumnDropdown() { $('#columnDropdownMenu').removeClass('show'); }
 
         // ============================================
-        // get_settings()
-        // ============================================
-        function get_settings() {
-            fetch(API_BASE + "get/get_settings.php?key=" + API_KEY)
-                .then(function(response) { return response.json(); })
-                .then(function(result) {
-                    var username = result['name'], logo = result['logo'];
-                    var color = result['color'], text_color = result['text_color'];
-                    var inactive_color = result['inactive_color'];
-
-                    if (color) $('#sidebar_color').css("background-color", color);
-                    if (text_color) $('#sidebar_color .active').css('color', text_color);
-                    if (inactive_color) {
-                        $("#sidebar_color").find("*").css("color", inactive_color);
-                        $('#sidebar_color .active').css('color', text_color);
-                    }
-                    $(".logo_image").attr("src", FILES_BASE + logo);
-                    $(".small_logo").attr("src", FILES_BASE + logo);
-                    $('.project_name').text(username);
-                    $('#projectname').text(username);
-                })
-                .catch(function(error) { console.log('settings error:', error); });
-        }
-
-        // ============================================
         // fetchtable()
         // ============================================
         function fetchtable() {
@@ -1109,6 +1075,7 @@
 
                     var rowsToAdd = [];
                     $.each(response, function(index, data) {
+                        // Inspection button
                         var inspection_btn = '<button type="button" onclick="displaySurvey(' + data.id + ',' +
                             data.id + ',' + data.dealer_id + ', \'' + String(data.dealer_name).replace(/'/g, "\\'") +
                             '\',\'' + data.time + '\',\'' + data.visit_close_time + '\',\'' + data.name +
@@ -1116,11 +1083,13 @@
                             ')" class="action-btn edit"><i class="fas fa-align-justify"></i></button>';
                         var inpection = (data.inspection == 1) ? inspection_btn : "---";
 
+                        // Dealer sign
                         var dealer_sign = (data.dealer_sign != null) ?
                             '<a href="' + FILES_BASE + 'uploads/' + data.dealer_sign +
                             '" target="_blank"><i class="fas fa-file-image" style="color:#10b981;font-size:20px;font-weight:bold;"></i></a>' :
                             "---";
 
+                        // Stock reconciliation button
                         var stock_recon_btn = '<button type="button" onclick="get_recon_stock(' + data.id +
                             ',' + data.dealer_id + ', \'' + String(data.dealer_name).replace(/'/g, "\\'") + '\',\'' +
                             data.time + '\',\'' + data.visit_close_time + '\',\'' + data.name + '\',\'' + data.type +
@@ -1154,29 +1123,6 @@
         }
 
         // ============================================
-        // last_vists_dates()
-        // ============================================
-        function last_vists_dates(report, last_visit_id, comp_date) {
-            $('#last_recon').empty();
-            fetch(API_BASE + "get/inspection/get_second_last_visit_recon.php?key=" + API_KEY +
-                    "&id=" + last_visit_id + "&report=" + report)
-                .then(function(response) { return response.json(); })
-                .then(function(result) {
-                    if (result.length > 0) {
-                        var last_time = result[0]['created_at'];
-                        var differenceDays = Math.round((new Date(comp_date) - new Date(last_time)) / (1000 * 60 * 60 * 24));
-                        $('#last_recon').append(
-                            '<div class="w-full text-[11px] text-gray-500">Last Visit Date : <span class="text-heading font-medium">' + last_time + '</span></div>' +
-                            '<div class="w-full text-[11px] text-gray-500">Days Since Last Visit : <span class="text-heading font-medium">' + differenceDays + '</span></div>'
-                        );
-                    } else {
-                        $('#last_recon').append('<div class="w-full text-[11px] text-gray-500">Last Visit Date : <span class="text-heading font-medium">First Time</span></div>');
-                    }
-                })
-                .catch(function(error) { console.error(error); });
-        }
-
-        // ============================================
         // displaySurvey() — INSPECTION REPORT MODAL
         // ============================================
         function displaySurvey(id, inspection_id, dealer_id, dealer_name, isp_date, comp_date, username, type, last_visit_id) {
@@ -1186,7 +1132,6 @@
             $('#survey_dealer_name').text(dealer_name);
             $('#survey_ispector_name').text(username);
             $('#survey_type').text(type);
-            last_vists_dates('inspection', last_visit_id, comp_date);
             $('#survey-container').empty();
 
             fetch(API_BASE + "get/get_dealer_survey_response.php?key=" + API_KEY + "&inspection_id=" +
@@ -1279,7 +1224,6 @@
                         row.append($('<td>').addClass('col-file').html('---'));
                     } else {
                         var imageUrl = FILES_BASE + 'uploads/' + question.cancel_file;
-                        // ✅ FIX: crossorigin="anonymous" hata diya
                         var thumbHtml = '<div class="file-thumb-box" tabindex="0" data-img-src="' + imageUrl + '" onclick="showImagePopup(\'' + imageUrl.replace(/'/g, "\\'") + '\'); $(this).addClass(\'thumb-active\'); setTimeout(function(){ $(\'.file-thumb-box\').removeClass(\'thumb-active\'); }, 800);">' +
                             '<img src="" alt="preview" style="display:none;" />' +
                             '<i class="fas fa-file-image file-icon-fallback"></i>' +
@@ -1311,7 +1255,6 @@
             $('#survey_dealer_name').text(dealer_name);
             $('#survey_ispector_name').text(username);
             $('#survey_type').text(type);
-            last_vists_dates('stock_variation', last_visit_id, comp_date);
             $('#survey-container').empty();
 
             fetch(API_BASE + "get/get_dealer_stock_recon_new.php?key=" + API_KEY + "&task_id=" + task_id +
@@ -1397,7 +1340,6 @@
 
         // ============================================
         // Lazy-load thumbnails for recon images
-        // ✅ FIX: crossorigin="anonymous" hata diya
         // ============================================
         function lazyLoadReconThumbnails() {
             $('#survey-container .file-thumb-box[data-nozzle-id]').each(function() {
@@ -1414,7 +1356,6 @@
                             var imageUrl = FILES_BASE + "uploads/" + result[0].file;
                             $box.data('image-url', imageUrl);
                             $box.data('loaded', true);
-                            // ✅ FIX: crossorigin hata diya
                             var $img = $('<img src="' + imageUrl + '" alt="preview" />');
                             $img.on('error', function() {
                                 $(this).remove();
@@ -1468,23 +1409,9 @@
         }
 
         // ============================================================
-        // ✅ PDF EXPORT — CORS-SAFE IMAGE HANDLING (UNCHANGED)
-        // ============================================================
-        // Ye poora section BILKUL SAME hai — PDF mein images aati
-        // rahengi jaise pehle aa rahi thi.
-        //
-        // HTML preview ke liye hum loadThumbnail se normal img load
-        // kar rahe hain (CORS ki zaroorat nahi).
-        //
-        // PDF ke liye ye functions alag se DataURL conversion karte
-        // hain (crossOrigin img + proxy + fetch fallback).
-        //
-        // Dono paths alag hain — ek doosre ko affect nahi karte.
+        // PDF EXPORT — CORS-SAFE IMAGE HANDLING
         // ============================================================
 
-        /**
-         * Ek blob ko DataURL mein convert karein
-         */
         function blobToDataURL(blob) {
             return new Promise(function(resolve, reject) {
                 var reader = new FileReader();
@@ -1494,12 +1421,6 @@
             });
         }
 
-        /**
-         * Ek image URL ko DataURL mein convert karein — 3-level fallback
-         * Level 1: Direct fetch (agar CORS allow hai)
-         * Level 2: Proxy ke through (agar image_proxy.php available hai)
-         * Level 3: crossOrigin img element (last resort)
-         */
         function urlToDataURL(url) {
             return new Promise(function(resolve) {
                 if (!url || url.startsWith('data:')) {
@@ -1507,7 +1428,6 @@
                     return;
                 }
 
-                // Level 1: Direct fetch
                 fetch(url, { mode: 'cors', credentials: 'omit' })
                     .then(function(res) {
                         if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -1516,18 +1436,7 @@
                     .then(blobToDataURL)
                     .then(resolve)
                     .catch(function() {
-                        // Level 2: Proxy
-                        fetch(IMAGE_PROXY + encodeURIComponent(url))
-                            .then(function(res) {
-                                if (!res.ok) throw new Error('Proxy HTTP ' + res.status);
-                                return res.blob();
-                            })
-                            .then(blobToDataURL)
-                            .then(resolve)
-                            .catch(function() {
-                                // Level 3: crossOrigin img element
-                                tryImgElement();
-                            });
+                        tryImgElement();
                     });
 
                 function tryImgElement() {
@@ -1555,12 +1464,6 @@
             });
         }
 
-        /**
-         * Container ke andar saari images ko DataURL mein convert karein
-         * — WeakSet use karke duplicate processing se bachte hain
-         * — Original URL ko data-original-src mein save karte hain
-         * — Failed images ko mark karte hain (delete nahi karte)
-         */
         function preloadAllImagesAsDataURL(container) {
             var promises = [];
             var processed = new WeakSet();
@@ -1573,7 +1476,6 @@
                 var src = img.getAttribute('src');
                 if (!src || src.startsWith('data:')) return;
 
-                // Original URL save karein (debugging ke liye)
                 img.setAttribute('data-original-src', src);
 
                 var p = urlToDataURL(src).then(function(dataUrl) {
@@ -1581,7 +1483,6 @@
                         img.setAttribute('src', dataUrl);
                         img.removeAttribute('crossorigin');
                     } else {
-                        // Failed — placeholder mark karein (delete nahi)
                         img.setAttribute('data-failed', 'true');
                     }
                 });
@@ -1591,9 +1492,6 @@
             return Promise.all(promises);
         }
 
-        /**
-         * Saari images ke load hone ka intezar karein
-         */
         function waitForImages(container) {
             var promises = [];
             var imgs = container.querySelectorAll('img');
@@ -1608,9 +1506,6 @@
             return Promise.all(promises);
         }
 
-        /**
-         * Main PDF Export — CORS-Safe (UNCHANGED)
-         */
         function getPDF() {
             var currentDate = new Date();
             var formattedDate = currentDate.toLocaleString().replace(/[/:, ]/g, '-');
@@ -1624,18 +1519,14 @@
 
             element.classList.add('pdf-export-mode');
 
-            // STEP 1: Saari images ko DataURL mein convert karein
             preloadAllImagesAsDataURL(element)
                 .then(function() {
-                    // STEP 2: DOM mein images load hone ka intezar
                     return waitForImages(element);
                 })
                 .then(function() {
-                    // STEP 3: Browser ko paint karne ka mauqa dein
                     return new Promise(function(r) { setTimeout(r, 300); });
                 })
                 .then(function() {
-                    // STEP 4: PDF generate karein
                     $btn.html('<i class="fa-solid fa-spinner fa-spin mr-1"></i> Generating PDF...');
 
                     var opt = {
@@ -1645,13 +1536,13 @@
                         html2canvas: {
                             scale: 2,
                             useCORS: true,
-                            allowTaint: false,  // ✅ Tainted canvas allow na karein
+                            allowTaint: false,
                             logging: false,
                             backgroundColor: '#ffffff',
                             windowWidth: element.scrollWidth,
                             scrollX: 0,
                             scrollY: 0,
-                            imageTimeout: 30000  // ✅ Slow images ke liye 30s
+                            imageTimeout: 30000
                         },
                         jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' },
                         pagebreak: {

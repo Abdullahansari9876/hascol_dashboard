@@ -1837,6 +1837,7 @@
             }
         }
 
+        // Delete User
         function confirmDelete() {
             const userId = parseInt($('#deleteUserId').val());
 
