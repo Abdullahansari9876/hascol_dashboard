@@ -488,9 +488,11 @@
         }
 
         .st-refunded {
-            background: rgba(148, 163, 184, .15);
-            color: #94a3b8;
-            border: 1px solid rgba(148, 163, 184, .3);
+            background: rgba(239, 68, 68, .12);
+            /* Light Red Background */
+            color: #ef4444;
+            /* Strong Red Text */
+            border: 1px solid rgba(239, 68, 68, .3);
         }
 
         .pay-badge {
@@ -1338,7 +1340,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
     <script>
-        const API_BASE = 'http://localhost:8080/hascol_customer/api/orders/';
+        const API_BASE = 'https://hascol.allowance.flamboyant-spence.92-205-119-218.plesk.page/api/orders/';
 
         let dataTable = null;
         window.ordStore = {};
@@ -1431,16 +1433,9 @@
             return 'Rs ' + Number(n || 0).toLocaleString('en-PK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
-        function deriveOrderStatus(paymentStatus) {
-            if (paymentStatus === 'paid') return 'completed';
-            if (paymentStatus === 'refunded') return 'refunded';
-            return 'pending';
-        }
-
-        function renderOrderStatusBadge(paymentStatus) {
-            const derived = deriveOrderStatus(paymentStatus);
-            if (derived === 'completed') return '<span class="st-badge st-completed"><span class="st-dot"></span>Completed</span>';
-            if (derived === 'refunded') return '<span class="st-badge st-refunded"><span class="st-dot"></span>Refunded</span>';
+        function renderOrderStatusBadge(status) {
+            if (status === 'completed') return '<span class="st-badge st-completed"><span class="st-dot"></span>Completed</span>';
+            if (status === 'refunded' || status === 'reverted' || status === 'cancelled') return '<span class="st-badge st-refunded"><span class="st-dot"></span>Reverted</span>';
             return '<span class="st-badge st-pending"><span class="st-dot"></span>Pending</span>';
         }
 
@@ -1554,12 +1549,17 @@
                                     ? '<span style="font-family:monospace;font-size:10px;background:var(--hover-bg);padding:2px 6px;border-radius:4px;">' + escapeHtml(o.coupon_code) + '</span>'
                                     : '<span style="color:var(--text-muted);">—</span>';
 
-                                const statusHtml = renderOrderStatusBadge(o.payment_status);
+                                const statusHtml = renderOrderStatusBadge(o.status);
 
+                                // ✅ Payment Status ab database wali value (refunded) hi show karega
                                 let payHtml;
-                                if (o.payment_status === 'paid') payHtml = '<span class="pay-badge pay-paid"><i class="fa-solid fa-circle-check"></i> Paid</span>';
-                                else if (o.payment_status === 'refunded') payHtml = '<span class="pay-badge pay-refunded"><i class="fa-solid fa-rotate-left"></i> Refunded</span>';
-                                else payHtml = '<span class="pay-badge pay-unpaid"><i class="fa-solid fa-clock"></i> Unpaid</span>';
+                                if (o.payment_status === 'paid') {
+                                    payHtml = '<span class="pay-badge pay-paid"><i class="fa-solid fa-circle-check"></i> Paid</span>';
+                                } else if (o.payment_status === 'refunded') {
+                                    payHtml = '<span class="pay-badge pay-refunded"><i class="fa-solid fa-rotate-left"></i> Refunded</span>';
+                                } else {
+                                    payHtml = '<span class="pay-badge pay-unpaid"><i class="fa-solid fa-clock"></i> Unpaid</span>';
+                                }
 
                                 const delHtml = o.delivery_type === 'delivery'
                                     ? '<span class="del-badge del-delivery"><i class="fa-solid fa-truck"></i> Delivery</span>'
@@ -1648,9 +1648,16 @@
             const body = $('#odBody');
 
             let payHtml;
-            if (o.payment_status === 'paid') payHtml = '<span class="pay-badge pay-paid"><i class="fa-solid fa-circle-check"></i> Paid</span>';
-            else if (o.payment_status === 'refunded') payHtml = '<span class="pay-badge pay-refunded"><i class="fa-solid fa-rotate-left"></i> Refunded</span>';
-            else payHtml = '<span class="pay-badge pay-unpaid"><i class="fa-solid fa-clock"></i> Unpaid</span>';
+            if (o.status === 'reverted' || o.status === 'cancelled') {
+                // Yahan humne badge ko thoda bada aur clear kar diya hai
+                payHtml = '<span class="st-badge st-refunded" style="font-size: 11px; padding: 4px 12px;"><i class="fa-solid fa-ban"></i> Order Reverted</span>';
+            } else if (o.payment_status === 'paid') {
+                payHtml = '<span class="pay-badge pay-paid"><i class="fa-solid fa-circle-check"></i> Paid</span>';
+            } else if (o.payment_status === 'refunded') {
+                payHtml = '<span class="pay-badge pay-refunded"><i class="fa-solid fa-rotate-left"></i> Refunded</span>';
+            } else {
+                payHtml = '<span class="pay-badge pay-unpaid"><i class="fa-solid fa-clock"></i> Unpaid</span>';
+            }
 
             const delHtml = o.delivery_type === 'delivery'
                 ? '<span class="del-badge del-delivery"><i class="fa-solid fa-truck"></i> Delivery</span>'
@@ -1658,9 +1665,16 @@
 
             let itemsHtml = '';
             if (items.length === 0) {
-                itemsHtml = '<div style="text-align:center;padding:30px 20px;color:var(--text-muted);font-size:12px;">' +
-                    '<i class="fa-solid fa-inbox" style="font-size:24px;opacity:.4;display:block;margin-bottom:10px;"></i>' +
-                    'No items found for this order.</div>';
+                if (o.status === 'reverted' || o.status === 'cancelled') {
+                    itemsHtml = '<div style="text-align:center;padding:30px 20px;color:#ef4444;font-size:12px;background:rgba(239, 68, 68, 0.05);border-radius:8px;">' +
+                        '<i class="fa-solid fa-rotate-left" style="font-size:24px;display:block;margin-bottom:10px;"></i>' +
+                        '<b>Order Reverted</b><br>This order was cancelled and items were restored to stock.</div>';
+                }
+                else {
+                    itemsHtml = '<div style="text-align:center;padding:30px 20px;color:var(--text-muted);font-size:12px;">' +
+                        '<i class="fa-solid fa-inbox" style="font-size:24px;opacity:.4;display:block;margin-bottom:10px;"></i>' +
+                        'No items found for this order.</div>';
+                }
             } else {
                 itemsHtml = '<table class="od-items-table"><thead><tr>' +
                     '<th style="width:44px;">#</th>' +
@@ -1736,7 +1750,7 @@
                 '<div class="od-item"><span class="od-item-label">Dealer</span><span class="od-item-value">' + escapeHtml(o.dealer_name) + '</span></div>' +
                 '<div class="od-item"><span class="od-item-label">Mobile</span><span class="od-item-value">' + escapeHtml(o.dealer_mobile || '—') + '</span></div>' +
                 '<div class="od-item"><span class="od-item-label">Station</span><span class="od-item-value">' + escapeHtml(o.dealer_station || '—') + '</span></div>' +
-                '<div class="od-item"><span class="od-item-label">Delivery Address</span><span class="od-item-value">' + (o.delivery_address ? escapeHtml(o.delivery_address) : '—') + '</span></div>' +
+                '<div class="od-item"><span class="od-item-label">Dealer Address</span><span class="od-item-value">' + (o.dealer_address ? escapeHtml(o.dealer_address) : '—') + '</span></div>' +
                 '</div>' +
                 '</div>';
 

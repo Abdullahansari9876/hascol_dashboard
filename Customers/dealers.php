@@ -171,6 +171,8 @@
         .loc-suggestion-item .sug-text { line-height: 1.4; }
         .loc-suggestion-item .sug-main { font-weight: 500; }
         .loc-suggestion-item .sug-sub { font-size: 10px; color: var(--text-muted); }
+        .loc-suggestion-item.active { background: var(--hover-bg); color: var(--text-heading); }
+        .loc-suggestion-note { padding: 6px 12px; font-size: 10px; color: var(--text-muted); background: var(--hover-bg); border-bottom: 1px solid var(--border-color); }
         .loc-search-loading {
             position: absolute;
             right: 10px;
@@ -382,7 +384,7 @@
 
     <script>
         
-        const API_BASE = 'http://localhost:8080/hascol_customer/api/dealer/';
+        const API_BASE = 'https://hascol.allowance.flamboyant-spence.92-205-119-218.plesk.page/api/dealer/';
 
         let dataTable = null;
         window.dealerStore = {};
@@ -397,6 +399,8 @@
         // Geocoding search
         let locSearchTimer = null;
         let locSearchAbort = null;
+        let locResults = [];
+        let locActiveIndex = -1;
 
         const exportButtons = [
             { extend: 'copy', text: '<i class="fa-regular fa-copy"></i> Copy', className: 'dt-button' },
@@ -442,12 +446,17 @@
             });
 
             const offcanvasEl = document.getElementById('offcanvasDealer');
+            // Har dafa form khulne par map ko form ke lat/lng se sync karo
+            // (pehle sirf pehli dafa marker set hota tha, is liye dusre dealer par purani location dikhti thi)
             offcanvasEl.addEventListener('shown.bs.offcanvas', function () {
-                if (!dealerMap) {
-                    initDealerMap();
-                } else {
-                    setTimeout(() => { dealerMap.invalidateSize(); }, 150);
-                }
+                if (!dealerMap) initDealerMap();
+                syncMapWithInputs();
+            });
+            offcanvasEl.addEventListener('hidden.bs.offcanvas', function () {
+                if (locSearchAbort) locSearchAbort.abort();
+                clearTimeout(locSearchTimer);
+                $('#locSuggestions').removeClass('show').empty();
+                $('#locSearchLoading').addClass('hidden');
             });
 
             initLocationSearch();
@@ -485,8 +494,10 @@
             $input.on('input', function() {
                 const q = $(this).val().trim();
                 clearTimeout(locSearchTimer);
+                locActiveIndex = -1;
 
                 if (q.length < 3) {
+                    if (locSearchAbort) locSearchAbort.abort();
                     $sug.removeClass('show').empty();
                     $loading.addClass('hidden');
                     return;
@@ -494,7 +505,7 @@
 
                 locSearchTimer = setTimeout(function() {
                     searchLocation(q);
-                }, 400);
+                }, 450);
             });
 
             $input.on('focus', function() {
@@ -504,66 +515,219 @@
             });
 
             $input.on('keydown', function(e) {
+                const $items = $sug.find('.loc-suggestion-item[data-idx]');
+
                 if (e.key === 'Escape') {
                     $sug.removeClass('show');
+                    return;
+                }
+
+                if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                    if (!$items.length) return;
+                    e.preventDefault();
+                    $sug.addClass('show');
+                    locActiveIndex += (e.key === 'ArrowDown') ? 1 : -1;
+                    if (locActiveIndex < 0) locActiveIndex = $items.length - 1;
+                    if (locActiveIndex >= $items.length) locActiveIndex = 0;
+                    $items.removeClass('active');
+                    const el = $items.eq(locActiveIndex).addClass('active')[0];
+                    if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' });
+                    return;
+                }
+
+                if (e.key === 'Enter') {
+                    // Enter dabane se form submit na ho
+                    e.preventDefault();
+                    if (locActiveIndex >= 0 && locResults[locActiveIndex]) {
+                        selectLocation(locResults[locActiveIndex]);
+                        return;
+                    }
+                    const q = $(this).val().trim();
+                    if (q.length >= 3) {
+                        clearTimeout(locSearchTimer);
+                        searchLocation(q);
+                    }
                 }
             });
         }
 
-        function searchLocation(query) {
-            const $sug = $('#locSuggestions');
+        // "24.8607, 67.0011" type karne par seedha coordinates use ho jayen
+        function parseLatLng(q) {
+            const m = q.match(/^\s*(-?\d{1,2}(?:\.\d+)?)\s*[,;\s]\s*(-?\d{1,3}(?:\.\d+)?)\s*$/);
+            if (!m) return null;
+            const lat = parseFloat(m[1]);
+            const lng = parseFloat(m[2]);
+            if (lat < -90 || lat > 90 || lng < -180 || lng > 180) return null;
+            return { lat: lat, lng: lng };
+        }
+
+        // Lamba/descriptive address na mile to chhoti queries try karo
+        // e.g. "16 KMS FROM HASSANKOT, BHUPTIAN CHOWK RAIWIND RD, LAHORE"
+        //   -> "BHUPTIAN CHOWK RAIWIND RD, LAHORE" -> "LAHORE"
+        function buildQueryVariants(q) {
+            const clean = q.replace(/\s+/g, ' ').trim();
+            const out = [clean];
+            const add = function(v) {
+                v = v.replace(/^[\s,]+|[\s,]+$/g, '');
+                if (v.length >= 3 && out.indexOf(v) === -1) out.push(v);
+            };
+            const parts = clean.split(',').map(function(x) { return x.trim(); }).filter(Boolean);
+            if (parts.length > 1) {
+                add(parts.slice(1).join(', '));
+                if (parts.length > 2) add(parts.slice(2).join(', '));
+                add(parts[parts.length - 1]);
+            } else {
+                const words = clean.split(' ');
+                for (let i = 1; i < words.length - 1 && out.length < 3; i++) {
+                    add(words.slice(i).join(' '));
+                }
+            }
+            return out;
+        }
+
+        // Provider 1: Photon (OpenStreetMap data, typeahead-friendly, CORS enabled)
+        function fetchPhoton(q, signal) {
+            const url = 'https://photon.komoot.io/api/?limit=8&lang=en&lat=30.3753&lon=69.3451&q=' + encodeURIComponent(q);
+            return fetch(url, { signal: signal })
+                .then(function(r) {
+                    if (!r.ok) throw new Error('Photon HTTP ' + r.status);
+                    return r.json();
+                })
+                .then(function(data) {
+                    const list = (data && data.features) ? data.features : [];
+                    return list.map(function(f) {
+                        const p = f.properties || {};
+                        const c = (f.geometry && f.geometry.coordinates) || [];
+                        if (c.length < 2) return null;
+                        const street = [p.housenumber, p.street].filter(Boolean).join(' ');
+                        const display = [p.name, street, p.district, p.city, p.county, p.state, p.postcode, p.country]
+                            .filter(function(v, i, a) { return v && a.indexOf(v) === i; })
+                            .join(', ');
+                        return {
+                            lat: c[1],
+                            lon: c[0],
+                            name: p.name || p.street || '',
+                            display_name: display,
+                            address: {
+                                house_number: p.housenumber,
+                                road: p.street,
+                                suburb: p.district,
+                                city: p.city || p.county,
+                                state: p.state,
+                                postcode: p.postcode,
+                                country: p.country
+                            }
+                        };
+                    }).filter(Boolean);
+                });
+        }
+
+        // Provider 2 (fallback): Nominatim
+        function fetchNominatim(q, signal) {
+            const url = 'https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=8&accept-language=en&q=' + encodeURIComponent(q);
+            return fetch(url, { signal: signal })
+                .then(function(r) {
+                    if (!r.ok) throw new Error('Nominatim HTTP ' + r.status);
+                    return r.json();
+                })
+                .then(function(list) { return Array.isArray(list) ? list : []; });
+        }
+
+        async function searchLocation(query) {
             const $loading = $('#locSearchLoading');
 
-            if (locSearchAbort) {
-                locSearchAbort.abort();
-            }
+            if (locSearchAbort) locSearchAbort.abort();
             locSearchAbort = new AbortController();
+            const signal = locSearchAbort.signal;
 
+            locActiveIndex = -1;
             $loading.removeClass('hidden');
-            $sug.removeClass('show');
 
-            const url = 'https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=8&q=' + encodeURIComponent(query);
-
-            fetch(url, {
-                signal: locSearchAbort.signal,
-                headers: { 'Accept-Language': 'en' }
-            })
-            .then(r => r.json())
-            .then(data => {
+            // Direct "lat, lng" input
+            const ll = parseLatLng(query);
+            if (ll) {
                 $loading.addClass('hidden');
-                $sug.empty();
+                renderLocationResults([{
+                    _coords: true,
+                    lat: ll.lat,
+                    lon: ll.lng,
+                    name: 'Use these coordinates',
+                    display_name: ll.lat + ', ' + ll.lng
+                }], query, '', false);
+                return;
+            }
 
-                if (!data || !data.length) {
-                    $sug.html('<div class="loc-suggestion-item" style="cursor:default;color:var(--text-muted);"><i class="fa-solid fa-circle-info"></i><span>No results found</span></div>').addClass('show');
-                    return;
+            try {
+                const variants = buildQueryVariants(query);
+                const providers = [fetchPhoton, fetchNominatim];
+                let results = [];
+                let used = '';
+                let hadError = false;
+
+                outer:
+                for (const provider of providers) {
+                    for (const v of variants) {
+                        try {
+                            results = await provider(v, signal);
+                        } catch (err) {
+                            if (err.name === 'AbortError') throw err;
+                            console.warn('Location provider failed:', err);
+                            hadError = true;
+                            results = [];
+                        }
+                        if (results.length) { used = v; break outer; }
+                    }
                 }
 
-                data.forEach(item => {
-                    const display = item.display_name || '';
-                    const main = item.name || display.split(',')[0];
-                    const sub = display.replace(main, '').replace(/^,\s*/, '');
-
-                    const $item = $('<div class="loc-suggestion-item"></div>');
-                    $item.html(
-                        '<i class="fa-solid fa-location-dot"></i>' +
-                        '<div class="sug-text">' +
-                            '<div class="sug-main">' + escapeHtml(main) + '</div>' +
-                            '<div class="sug-sub">' + escapeHtml(sub) + '</div>' +
-                        '</div>'
-                    );
-                    $item.on('click', function() {
-                        selectLocation(item);
-                    });
-                    $sug.append($item);
-                });
-
-                $sug.addClass('show');
-            })
-            .catch(err => {
+                if (signal.aborted) return;
+                $loading.addClass('hidden');
+                renderLocationResults(results, query, used, hadError);
+            } catch (err) {
                 if (err.name === 'AbortError') return;
                 $loading.addClass('hidden');
                 console.error('Location search error:', err);
+            }
+        }
+
+        function renderLocationResults(results, query, used, hadError) {
+            const $sug = $('#locSuggestions');
+            $sug.empty();
+            locResults = results || [];
+            locActiveIndex = -1;
+
+            if (!locResults.length) {
+                const msg = hadError
+                    ? 'Search service not reachable. Check internet connection and try again.'
+                    : 'No results found. Try a shorter name (area / city) or type "lat, lng".';
+                $sug.html('<div class="loc-suggestion-item" style="cursor:default;color:var(--text-muted);"><i class="fa-solid fa-circle-info"></i><span>' + escapeHtml(msg) + '</span></div>').addClass('show');
+                return;
+            }
+
+            const normalizedQuery = query.replace(/\s+/g, ' ').trim();
+            if (used && used !== normalizedQuery) {
+                $sug.append('<div class="loc-suggestion-note">Exact address not found. Showing results for <b>' + escapeHtml(used) + '</b></div>');
+            }
+
+            locResults.forEach(function(item, idx) {
+                const display = item.display_name || '';
+                const main = item.name || display.split(',')[0];
+                const sub = display.replace(main, '').replace(/^,\s*/, '');
+
+                const $item = $('<div class="loc-suggestion-item"></div>').attr('data-idx', idx);
+                $item.html(
+                    '<i class="fa-solid fa-location-dot"></i>' +
+                    '<div class="sug-text">' +
+                        '<div class="sug-main">' + escapeHtml(main) + '</div>' +
+                        '<div class="sug-sub">' + escapeHtml(sub) + '</div>' +
+                    '</div>'
+                );
+                $item.on('click', function() {
+                    selectLocation(item);
+                });
+                $sug.append($item);
             });
+
+            $sug.addClass('show');
         }
 
         function selectLocation(item) {
@@ -577,6 +741,12 @@
             setMarker(lat, lng);
             if (dealerMap) {
                 dealerMap.setView([lat, lng], 15);
+            }
+
+            // Direct coordinates: address reverse geocode se aayega
+            if (item._coords) {
+                reverseGeocode(lat, lng);
+                return;
             }
 
             const addr = item.address || {};
@@ -620,27 +790,42 @@
                 setMarker(lat, lng);
                 reverseGeocode(lat, lng);
             });
+        }
+
+        // Map ko hamesha form ke latitude/longitude ke mutabiq set karta hai.
+        // Offcanvas har dafa khulne par (Add ya kisi bhi dealer ka Edit) call hota hai.
+        function syncMapWithInputs() {
+            if (!dealerMap) return;
+            dealerMap.invalidateSize();
 
             const lat = parseFloat($('#d_latitude').val());
             const lng = parseFloat($('#d_longitude').val());
-            if (!isNaN(lat) && !isNaN(lng) && lat !== 0 && lng !== 0) {
-                setMarker(lat, lng);
-                dealerMap.setView([lat, lng], 14);
-            }
 
+            if (!isNaN(lat) && !isNaN(lng) && !(lat === 0 && lng === 0)) {
+                setMarker(lat, lng);
+                dealerMap.setView([lat, lng], 15, { animate: false });
+            } else {
+                if (dealerMarker) {
+                    dealerMap.removeLayer(dealerMarker);
+                    dealerMarker = null;
+                }
+                dealerMap.setView([defaultLat, defaultLng], defaultZoom, { animate: false });
+            }
             updateCoordDebug();
         }
 
         function setMarker(lat, lng) {
-            if (dealerMarker) {
-                dealerMap.removeLayer(dealerMarker);
+            if (dealerMap) {
+                if (dealerMarker) {
+                    dealerMap.removeLayer(dealerMarker);
+                }
+                dealerMarker = L.marker([lat, lng], { draggable: true }).addTo(dealerMap);
+                dealerMarker.on('dragend', function() {
+                    const pos = dealerMarker.getLatLng();
+                    updateCoords(pos.lat, pos.lng);
+                    reverseGeocode(pos.lat, pos.lng);
+                });
             }
-            dealerMarker = L.marker([lat, lng], { draggable: true }).addTo(dealerMap);
-            dealerMarker.on('dragend', function() {
-                const pos = dealerMarker.getLatLng();
-                updateCoords(pos.lat, pos.lng);
-                reverseGeocode(pos.lat, pos.lng);
-            });
             updateCoords(lat, lng);
         }
 
