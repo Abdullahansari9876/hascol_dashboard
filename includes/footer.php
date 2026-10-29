@@ -26,6 +26,7 @@
         background-color: var(--footer-bg);
         border-color: var(--border-color);
         transition: background-color .25s ease, border-color .25s ease;
+        /* Hello world */
     }
 
     @media (max-width: 480px) {
