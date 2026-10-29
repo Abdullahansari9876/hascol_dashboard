@@ -1,5 +1,12 @@
 <?php
-// Hascol Customer - Orders Management (Read-Only)
+session_start();
+
+// Check karein ke user login hai ya nahi
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+    // Agar session nahi hai, toh Login page par bhej dein
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -1340,7 +1347,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
     <script>
-        const API_BASE = 'https://hascol.allowance.flamboyant-spence.92-205-119-218.plesk.page/api/orders/';
+        const API_BASE = 'http://localhost:8080/hascol_customer/api/orders/';
 
         let dataTable = null;
         window.ordStore = {};

@@ -1,5 +1,12 @@
 <?php
-// Hascol Customer - Referral Numbers Management
+session_start();
+
+// Check karein ke user login hai ya nahi
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+    // Agar session nahi hai, toh Login page par bhej dein
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -789,7 +796,7 @@
             <div class="flex flex-wrap justify-between items-center mb-4 gap-2">
                 <div>
                     <h2 class="text-heading font-semibold text-base tracking-wide uppercase">
-                        <i class="fa-solid fa-ticket mr-2 text-blue-500"></i>Referral Numbers
+                        <i class="fa-solid fa-ticket mr-2 text-blue-500"></i>Relationship Numbers
                     </h2>
                     <p class="text-[10px] text-gray-500">View referral codes and their usage</p>
                 </div>
@@ -803,7 +810,7 @@
                 <div class="summary-card">
                     <div class="summary-icon blue"><i class="fa-solid fa-list"></i></div>
                     <div>
-                        <div class="summary-label">Total Referrals</div>
+                        <div class="summary-label">Total Retionalship no</div>
                         <div class="summary-value" id="sumTotal">0</div>
                     </div>
                 </div>
@@ -887,7 +894,7 @@
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Referral No</th>
+                                <th>Relationship No</th>
                                 <th>Assigned To</th>
                                 <th>Status</th>
                                 <th>Used By</th>
@@ -927,7 +934,7 @@
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Referral No</th>
+                                <th>Relationship No</th>
                                 <th>Referred By</th>
                                 <th>Assigned To</th>
                                 <th>Status</th>

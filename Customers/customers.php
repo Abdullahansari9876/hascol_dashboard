@@ -1,5 +1,12 @@
 <?php
-// Hascol Customer - Customers Management
+session_start();
+
+// Check karein ke user login hai ya nahi
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+    // Agar session nahi hai, toh Login page par bhej dein
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

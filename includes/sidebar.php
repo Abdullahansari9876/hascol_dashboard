@@ -1397,7 +1397,7 @@ function navUrl($path)
                     Coupons
                 </a>
 
-                <a href="<?php echo navUrl('Customers/device-requests.php'); ?>"
+                <!-- <a href="<?php echo navUrl('Customers/device-requests.php'); ?>"
                     class="nav <?php echo isActive('Customers/device-requests.php'); ?>">
                     <span class="ic">
                         <svg viewBox="0 0 24 24">
@@ -1407,7 +1407,7 @@ function navUrl($path)
                         </svg>
                     </span>
                     Device Requests
-                </a>
+                </a> -->
 
                 <a href="<?php echo navUrl('Customers/advertisements.php'); ?>"
                     class="nav <?php echo isActive('Customers/advertisements.php'); ?>">
