@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
     <meta charset="utf-8" />
     <title>Products | Hascol Customer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/images/favicon.ico">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -26,6 +27,8 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Image Compressor -->
+    <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.2.1/dist/compressor.min.js"></script>
 
     <script>
         (function() {
@@ -550,6 +553,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                                     <th>S.No</th>
                                     <th>Product</th>
                                     <th>SKU</th>
+                                    <th>Size</th> <!-- NAYA COLUMN -->
                                     <th>Sub Category</th>
                                     <th>Brand</th>
                                     <th>Price</th>
@@ -708,7 +712,9 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                     <label class="form-label">Product Name <span class="text-red-500">*</span></label>
                     <input type="text" class="form-input" id="prod_name" placeholder="Enter Product Name" required>
                 </div>
-                <div class="grid grid-cols-2 gap-3">
+                
+                <!-- NAYA: Brand, SKU aur Size ek sath -->
+                <div class="grid grid-cols-3 gap-3">
                     <div class="form-group mb-4">
                         <label class="form-label">Brand</label>
                         <input type="text" class="form-input" id="prod_brand" placeholder="Brand">
@@ -717,7 +723,12 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                         <label class="form-label">SKU</label>
                         <input type="text" class="form-input" id="prod_sku" placeholder="SKU">
                     </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label">Pack Size (Volume)</label>
+                        <input type="text" class="form-input" id="prod_size" placeholder="e.g. 4L, 3L">
+                    </div>
                 </div>
+
                 <div class="form-group mb-4">
                     <label class="form-label">Description</label>
                     <textarea class="form-input" id="prod_description" rows="3" placeholder="Description"></textarea>
@@ -784,7 +795,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
         // ============================================
         // CONFIG & GLOBALS
         // ============================================
-        const API_BASE = 'http://localhost:8080/hascol_customer/api/products/';
+        const API_BASE = 'http://localhost:8080/hascol_customer/api/products/'; // Aapka API base
         let activeTab = 'category';
         let catTable = null, subcatTable = null, prodTable = null;
         window.catStore = {};
@@ -876,25 +887,45 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
         function previewImage(input, previewId, wrapId, removeFieldId) {
             const file = input.files && input.files[0];
             if (!file) return;
-            if (file.size > 2 * 1024 * 1024) {
-                Swal.fire({ icon:'warning', title:'File Too Large', text:'Image must not exceed 2 MB', confirmButtonColor:'#1d4ed8' });
-                input.value = ''; return;
-            }
+            
             if (!/^image\//.test(file.type)) {
                 Swal.fire({ icon:'warning', title:'Invalid File', text:'Please select an image', confirmButtonColor:'#1d4ed8' });
                 input.value = ''; return;
             }
-            const reader = new FileReader();
-            reader.onload = e => {
-                $('#' + previewId).attr('src', e.target.result);
-                $('#' + wrapId).show();
-                $('#' + removeFieldId).val('0');
-            };
-            reader.readAsDataURL(file);
+
+            // CompressorJS use karke image ko resize & compress karein
+            new Compressor(file, {
+                quality: 0.8,
+                maxWidth: 1200,
+                maxHeight: 1200,
+                success(result) {
+                    const compressedFile = new File([result], file.name, {
+                        type: result.type,
+                        lastModified: Date.now()
+                    });
+
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(compressedFile);
+                    input.files = dataTransfer.files;
+
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        $('#' + previewId).attr('src', e.target.result);
+                        $('#' + wrapId).show();
+                        $('#' + removeFieldId).val('0');
+                    };
+                    reader.readAsDataURL(compressedFile);
+                },
+                error(err) {
+                    console.error(err.message);
+                    Swal.fire({ icon:'error', title:'Error', text:'Image process nahi ho saki.', confirmButtonColor:'#1d4ed8' });
+                    input.value = '';
+                }
+            });
         }
 
         // ============================================
-        // DATA TABLES INIT  — Fixed: only own buttons move
+        // DATA TABLES INIT
         // ============================================
         function initCatTable() {
             catTable = $('#catTable').DataTable({
@@ -910,7 +941,6 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                     infoFiltered: '(filtered from _MAX_)'
                 },
                 initComplete: function () {
-                    // ✅ Only THIS table's buttons
                     this.api().buttons().container().appendTo('#cat-exportButtons');
                 }
             });
@@ -930,7 +960,6 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                     infoFiltered: '(filtered from _MAX_)'
                 },
                 initComplete: function () {
-                    // ✅ Only THIS table's buttons
                     this.api().buttons().container().appendTo('#subcat-exportButtons');
                 }
             });
@@ -942,7 +971,8 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                 buttons: exportButtons,
                 pageLength: 10,
                 order: [],
-                columnDefs: [{ orderable: false, targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }],
+                // Size column add hone ki wajah se targets update kiye hain [0,1,2,3,4,5,6,7,8,9,10,11]
+                columnDefs: [{ orderable: false, targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] }],
                 language: {
                     emptyTable: 'No products',
                     info: 'Showing _START_ to _END_ of _TOTAL_',
@@ -950,7 +980,6 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                     infoFiltered: '(filtered from _MAX_)'
                 },
                 initComplete: function () {
-                    // ✅ Only THIS table's buttons
                     this.api().buttons().container().appendTo('#prod-exportButtons');
                 }
             });
@@ -1164,13 +1193,14 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
                                 i + 1,
                                 '<span style="font-weight:600;color:var(--text-heading);">' + escapeHtml(d.name) + '</span>',
                                 d.sku ? escapeHtml(d.sku) : '<span style="color:var(--text-muted);">—</span>',
+                                d.size ? escapeHtml(d.size) : '<span style="color:var(--text-muted);">—</span>', // NAYA: Size row
                                 escapeHtml(d.sub_category_name || '—'),
                                 d.brand ? escapeHtml(d.brand) : '<span style="color:var(--text-muted);">—</span>',
                                 price, discount, stock, img, stBadge, action
                             ]);
                         });
                     } else {
-                        prodTable.row.add(['<span style="color:var(--text-muted);">No products</span>','','','','','','','','','','']);
+                        prodTable.row.add(['<span style="color:var(--text-muted);">No products</span>','','','','','','','','','','','']);
                     }
                     prodTable.draw(false);
                     $('#prodLoadingOverlay').addClass('hidden');
@@ -1428,6 +1458,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
             $('#prod_name').val(d.name || '');
             $('#prod_brand').val(d.brand || '');
             $('#prod_sku').val(d.sku || '');
+            $('#prod_size').val(d.size || ''); // NAYA: Size load karna
             $('#prod_description').val(d.description || '');
             $('#prod_price').val(d.price || 0);
             $('#prod_discount').val(d.discount_percent || 0);
@@ -1449,6 +1480,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
             $('#prod_price').val(0);
             $('#prod_discount').val(0);
             $('#prod_stock').val(0);
+            $('#prod_size').val(''); // NAYA: Form reset karna
             $('#prodImgPreview').attr('src', '');
             $('#prodImgPreviewWrap').hide();
         }
@@ -1464,6 +1496,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
             const name = ($('#prod_name').val() || '').trim();
             const brand = ($('#prod_brand').val() || '').trim();
             const sku = ($('#prod_sku').val() || '').trim();
+            const size = ($('#prod_size').val() || '').trim(); // NAYA: Size value
             const description = ($('#prod_description').val() || '').trim();
             const price = parseFloat($('#prod_price').val() || 0);
             const discount = parseFloat($('#prod_discount').val() || 0);
@@ -1481,6 +1514,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
             fd.append('name', name);
             fd.append('brand', brand);
             fd.append('sku', sku);
+            fd.append('size', size); // NAYA: FormData mein add karna
             fd.append('description', description);
             fd.append('price', price);
             fd.append('discount_percent', discount);

@@ -11,6 +11,7 @@ if (empty($_SESSION['csrf_token'])) {
     <meta charset="utf-8" />
     <title>Login | Hascol Customer Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/images/favicon.ico">
     <meta name="description" content="Hascol Customer Portal Login">
     
     <script src="https://cdn.tailwindcss.com"></script>
